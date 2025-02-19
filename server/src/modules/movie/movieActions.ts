@@ -24,4 +24,22 @@ const read: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read };
+const add: RequestHandler = async (req, res, next) => {
+  try {
+    const movie = {
+      id: req.body.id,
+      title: req.body.title,
+      synopsis: req.body.synopsis,
+      release_year: req.body.release_year,
+      duration: req.body.duration,
+      poster: req.body.poster,
+      trailer: req.body.trailer,
+    };
+    const insertId = await movieRepository.create(movie);
+    res.status(201).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, read, add };
