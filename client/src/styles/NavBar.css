@@ -16,7 +16,7 @@ nav {
     border: none;
     font-size: 12px;
     font-weight: 500;
-    font-family: Poppins;
+    font-family: Poppins, sans-serif;
     letter-spacing: 0.6px;
     color: white;
   }

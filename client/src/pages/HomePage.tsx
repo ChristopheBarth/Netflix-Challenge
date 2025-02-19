@@ -1,9 +1,3 @@
-import NavBar from "../components/NavBar";
-
 export default function HomePage() {
-  return (
-    <>
-      <NavBar />
-    </>
-  );
+  return <h1>L’original au service du digital</h1>;
 }
