@@ -42,4 +42,13 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add };
+const destroy: RequestHandler = async (req, res, next) => {
+  try {
+    const movieId = Number(req.params.id);
+    await movieRepository.delete(movieId);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+export default { browse, read, add, destroy };

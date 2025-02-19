@@ -41,6 +41,12 @@ class MovieRepository {
     const [rows] = await databaseClient.query<Rows>("select * from movie");
     return rows as Movie[];
   }
+  async delete(id: number) {
+    const [result] = await databaseClient.query<Result>(
+      "delete from movie where id = ?",
+      [id],
+    );
+    return result.affectedRows;
+  }
 }
-
 export default new MovieRepository();
