@@ -1,0 +1,29 @@
+nav {
+  margin: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 50px;
+  }
+  a {
+    border-radius: 4px;
+    padding: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    background: rgba(126, 126, 126, 1);
+    border: none;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Poppins, sans-serif;
+    letter-spacing: 0.6px;
+    color: white;
+  }
+}
+
+@media only screen and (min-width: 792px) {
+  nav {
+    margin: 1.5rem 5rem;
+  }
+}
