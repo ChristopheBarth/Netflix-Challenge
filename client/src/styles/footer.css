@@ -1,0 +1,16 @@
+footer {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  img {
+    width: 50px;
+    margin-top: 2rem;
+  }
+  h3 {
+    margin-top: 1rem;
+  }
+  a {
+    color: black;
+    opacity: 0.8;
+  }
+}
