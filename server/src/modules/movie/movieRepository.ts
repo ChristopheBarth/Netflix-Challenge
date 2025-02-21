@@ -41,6 +41,22 @@ class MovieRepository {
     const [rows] = await databaseClient.query<Rows>("select * from movie");
     return rows as Movie[];
   }
+
+  async update(movie: Movie) {
+    const [result] = await databaseClient.query<Result>(
+      "update movie set title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?",
+      [
+        movie.title,
+        movie.synopsis,
+        movie.release_year,
+        movie.duration,
+        movie.poster,
+        movie.trailer,
+      ],
+    );
+    return result.affectedRows;
+  }
+
   async delete(id: number) {
     const [result] = await databaseClient.query<Result>(
       "delete from movie where id = ?",
