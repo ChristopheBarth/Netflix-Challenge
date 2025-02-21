@@ -31,7 +31,7 @@ export default function Footer() {
           </ul>
         </div>
         <div>
-          <h3>Régles et conditions</h3>
+          <h3>Règles et conditions</h3>
           <ul>
             <li>
               <Link to={"#"}>Conditions d'utilisation</Link>
@@ -48,7 +48,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <section>© 2025 Original Digital by Wilders</section>
+      <div>© 2025 Original Digital by Wilders</div>
     </footer>
   );
 }
