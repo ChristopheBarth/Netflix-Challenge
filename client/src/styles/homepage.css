@@ -1,3 +1,6 @@
+.all-element {
+  margin: 1rem;
+}
 .input-mail {
   display: flex;
   flex-direction: column;
