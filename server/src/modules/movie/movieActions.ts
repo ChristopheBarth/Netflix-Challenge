@@ -42,6 +42,28 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
+const edit: RequestHandler = async (req, res, next) => {
+  try {
+    const movie = {
+      id: Number(req.params.id),
+      title: req.body.title,
+      synopsis: req.body.synopsis,
+      release_year: req.body.release_year,
+      duration: req.body.duration,
+      poster: req.body.poster,
+      trailer: req.body.trailer,
+    };
+    const affectedRows = await movieRepository.update(movie);
+    if (affectedRows === 0) {
+      res.sendStatus(404);
+    } else {
+      res.sendStatus(204);
+    }
+  } catch (err) {
+    next(err);
+  }
+};
+
 const destroy: RequestHandler = async (req, res, next) => {
   try {
     const movieId = Number(req.params.id);
@@ -51,4 +73,4 @@ const destroy: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-export default { browse, read, add, destroy };
+export default { browse, read, add, destroy, edit };
