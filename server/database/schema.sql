@@ -39,7 +39,7 @@ insert into movie (title, synopsis, release_year, duration, poster, trailer, cas
 VALUES
   ("Matrix","Programmeur anonyme dans un service administratif le jour, Thomas Anderson devient Neo la nuit venue. Sous ce pseudonyme, il est l'un des pirates les plus recherchés du cyber-espace. A cheval entre deux mondes, Neo est assailli par d'étranges songes et des messages cryptés provenant d'un certain Morpheus. Celui-ci l'exhorte à aller au-delà des apparences et à trouver la réponse à la question qui hante constamment ses pensées : qu'est-ce que la Matrice ? Nul ne le sait, et aucun homme n'est encore parvenu à en percer les defenses. Mais Morpheus est persuadé que Neo est l'Elu, le libérateur mythique de l'humanité annoncé selon la prophétie. Ensemble, ils se lancent dans une lutte sans retour contre la Matrice et ses terribles agents...", "1999", "02:15:00",  "https://fr.web.img4.acsta.net/c_310_420/medias/04/34/49/043449_af.jpg", "https://www.youtube.com/watch?v=vKQi3bBA1y8&ab_channel=RottenTomatoesClassicTrailers", "Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss, Hugo Weaving", "Lilly Wachowski et Lana Wachowski");
 
-insert into user (id, first_name, first_name, email, password, subscription, role)
+insert into user ( first_name, last_name, email, password, subscription, role)
 VALUES
-("Julien", "Picart", "jPicart@gmail.com", "taratata", true, "administrateur")
+("Julien", "Picart", "jPicart@gmail.com", "taratata", true, "administrateur"),
 ("Kevin", "Guiterrez", "K.guigui@gmail.com", "kaka", false, "utilisateur");
