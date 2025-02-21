@@ -6,8 +6,7 @@
 
 :root {
   --title-font: "Poppins", sans-serif;
-  --body-font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  --body-font: verdana, sans-serif;
   --primary-color: black;
   --bg-button: #7e7e7e;
   --secondary-color: white;

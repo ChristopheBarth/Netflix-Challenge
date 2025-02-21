@@ -16,7 +16,7 @@ nav {
     border: none;
     font-size: 12px;
     font-weight: 500;
-    font-family: var(), sans-serif;
+    font-family: var(--body-font), sans-serif;
     letter-spacing: 0.6px;
     color: var(--secondary-color);
   }
