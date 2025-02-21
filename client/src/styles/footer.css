@@ -13,4 +13,21 @@ footer {
     color: black;
     opacity: 0.8;
   }
+  section {
+    margin-top: 1rem;
+    opacity: 0.6;
+  }
+}
+
+@media only screen and (min-width: 792px) {
+  footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .nav-footer {
+      display: flex;
+      flex-direction: row;
+      gap: 3rem;
+    }
+  }
 }
