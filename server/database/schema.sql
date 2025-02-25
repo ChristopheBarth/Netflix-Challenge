@@ -89,3 +89,6 @@ VALUES
   ("In the Lost Land", "Une reine cherche désespérément à concrétiser son amour. Elle engage alors une puissante sorcière nommée Gray Alys et l’envoie dans le désert fantomatique des Lost Lands, où Alys et son guide, le vagabond Boyce, doivent surpasser l’Homme et le démon...", "2025", "1:41:00", "https://media.senscritique.com/media/000022586849/300/in_the_lost_lands.jpg", "https://youtu.be/hnPsOnw9-JU", "Milla Jovovich, Dave Bautista, Arly Jover, Amara Okereke, Fraser James, Simon Lööf", "Paul W. S. Anderson");
 
 
+insert into genre (name)
+VALUES
+("Action"), ("Horreur"), ("Science-fiction"), ("Drame"), ("Romance"), ("Comédie"), ("Aventure"), ("Jeunesse"), ("Thriller"), ("Policier");
