@@ -1,0 +1,167 @@
+.input-mail {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+  a {
+    background-color: var(--bg-button);
+    color: var(--secondary-color);
+    padding: 1rem;
+    margin-top: 0.7rem;
+    border-radius: var(--button-radius);
+  }
+}
+
+.top-element {
+  text-align: center;
+
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+}
+
+.top-element > h1 {
+  font-size: 2rem;
+  margin: 1rem;
+}
+
+.top-element > p {
+  margin-top: 2rem;
+}
+
+.input-mail > input {
+  padding: 1rem;
+}
+
+.arrow {
+  min-height: 3rem;
+  min-width: 3rem;
+  padding: 3rem;
+  margin: 0 auto;
+}
+
+section > h2 {
+  text-align: center;
+  margin: 1rem;
+}
+
+.offer {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.free > p:not(:first-child) {
+  opacity: 30%;
+}
+
+.content {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.offer > button {
+  border: none;
+  font-size: large;
+  background: none;
+}
+
+.middle-element > h2 {
+  line-height: 1.7rem;
+}
+.button.active {
+  border-bottom: 2px solid black;
+}
+
+.bottom-element {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+  margin-top: 2rem;
+  a {
+    background-color: var(--bg-button);
+    color: var(--secondary-color);
+    padding: 0.5rem;
+    margin-top: 0.7rem;
+    border-radius: var(--button-radius);
+  }
+}
+
+@media only screen and (min-width: 792px) {
+  .all-element {
+    display: flex;
+    margin: 5rem;
+    height: 72vh;
+    justify-content: space-between;
+    gap: 4rem;
+  }
+
+  .bottom-element {
+    display: none;
+  }
+
+  .middle-element {
+    background-image: url("public/bg-desktop.svg");
+    background-size: cover;
+    border-radius: var(--button-radius);
+    width: 70%;
+    color: var(--secondary-color);
+    padding: 3rem;
+  }
+
+  .top-element {
+    display: flex;
+    flex-direction: column;
+    max-width: 33%;
+    text-align: left;
+  }
+  .arrow {
+    display: none;
+  }
+
+  .free > p:not(:first-child) {
+    opacity: 30%;
+  }
+
+  .button-middle {
+    border: none;
+    background-color: black;
+    color: var(--secondary-color);
+    padding: 0.5rem;
+    width: 15rem;
+    border-radius: var(--button-radius);
+    margin-top: 4rem;
+  }
+
+  .middle-element > h2 {
+    margin-top: 4rem;
+  }
+
+  .top-element > h1 {
+    font-size: 2rem;
+  }
+
+  .offer > button {
+    color: var(--secondary-color);
+  }
+
+  .input-mail > a {
+    padding: 1rem;
+    text-align: center;
+  }
+
+  .input-mail > input {
+    padding: 1rem;
+  }
+}
+
+@media only screen and (max-width: 792px) {
+  .button-middle {
+    display: none;
+  }
+
+  .input-mail {
+    margin: 1rem;
+    margin-top: 2rem;
+  }
+}
