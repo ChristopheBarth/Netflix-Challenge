@@ -1,4 +1,4 @@
-interface MovieTypes {
+interface MovieType {
   id: number;
   title: string;
   release_year: string;

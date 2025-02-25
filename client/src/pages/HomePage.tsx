@@ -6,8 +6,8 @@ import MovieCards from "../components/MovieCards";
 
 export default function HomePage() {
   const [selectedOffer, setSelectedOffer] = useState("free");
-  const movie = useLoaderData() as MovieTypes[];
-  console.info(movie);
+  const movies = useLoaderData() as MovieType[];
+  console.info(movies);
   return (
     <section className="all-element">
       <section className="top-element">
@@ -23,7 +23,7 @@ export default function HomePage() {
         <img src="public\arrow-down.png" alt="" className="arrow" />
         <h2>Tendances Actuelles</h2>
         <section className="movie-container">
-          {movie.map((movie) => (
+          {movies.map((movie) => (
             <MovieCards key={movie.id} movie={movie} />
           ))}
         </section>

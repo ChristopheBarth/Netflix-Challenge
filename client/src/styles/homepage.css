@@ -1,5 +1,5 @@
 .all-element {
-  margin: 1rem;
+  padding: 1rem;
 }
 .input-mail {
   display: flex;
@@ -16,7 +16,6 @@
 
 .top-element {
   text-align: center;
-
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -131,7 +130,7 @@ section > h2 {
   .top-element {
     display: flex;
     flex-direction: column;
-    max-width: 33%;
+    width: calc(100% / 3);
     text-align: left;
   }
   .top-element > h2 {
@@ -141,10 +140,6 @@ section > h2 {
   }
   .arrow {
     display: none;
-  }
-
-  .free > p:not(:first-child) {
-    opacity: 30%;
   }
 
   .button-middle {
