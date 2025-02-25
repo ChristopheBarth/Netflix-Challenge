@@ -17,7 +17,15 @@ body {
   font-size: 16px;
   line-height: 1.7;
   font-family: var(--body-font);
-  background-image: url("public/bg-header.png");
+  /* background-image: url(""); */
+  background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 0.493),
+      rgba(255, 255, 255, 0.103)
+    ), url("public/bg-header.png") top center no-repeat;
+  padding: 0;
+  margin: 0px;
+  background-size: 130%;
 
   a {
     text-decoration: none;

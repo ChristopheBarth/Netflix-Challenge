@@ -1,4 +1,3 @@
-import "../styles/moviecards.css";
 export default function MovieCards({ movie }: MovieProps) {
   return (
     <>
