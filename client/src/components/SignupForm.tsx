@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import SvgIcons from "./SvgIcons";
 import "../styles/signupForm.css";
 
@@ -143,14 +144,12 @@ export default function SignupForm() {
         </div>
         <div className="checkbox-container">
           <input type="checkbox" checked={checked} onChange={toggleCheck} />
-          <p>En cochant cette case, j'accepte les CGU.</p>
+          <p>En cochant cette case, vous acceptez les CGU.</p>
         </div>
         <button type="submit" className="signup-button" disabled={!checked}>
           Créer un compte
         </button>
-        <a href="test" className="login-link">
-          Se connecter
-        </a>
+        <Link to="#">Se connecter</Link>
       </form>
     </div>
   );
