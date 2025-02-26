@@ -5,6 +5,7 @@ interface MovieType {
   poster: string;
   duration: string;
   synopsis: string;
+  trailer: string;
 }
 
 interface MoviesProps {
