@@ -17,8 +17,10 @@ export default function Signup() {
 
   return (
     <section>
-      <h1>Créer ton compte</h1>
-      <SignupForm user={user} handleChangeForm={handleChangeForm} />
+      <div className="section-container">
+        <h1>Créer ton compte</h1>
+        <SignupForm user={user} handleChangeForm={handleChangeForm} />
+      </div>
     </section>
   );
 }

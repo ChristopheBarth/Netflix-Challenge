@@ -26,7 +26,6 @@
     width: 100%;
     border: 1px solid var(--primary-color);
     border-radius: 5px;
-    outline: none;
   }
   .password-input {
     position: relative;
