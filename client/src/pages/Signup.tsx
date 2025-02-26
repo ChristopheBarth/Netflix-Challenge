@@ -4,11 +4,11 @@ import "../styles/signup.css";
 
 export default function Signup() {
   const [user, setUser] = useState({
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
     confirmPassword: "",
-    first_name: "",
-    last_name: "",
   } as UserTypes);
 
   const handleChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {

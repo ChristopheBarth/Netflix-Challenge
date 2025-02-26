@@ -15,7 +15,7 @@ export default function HomePage() {
         </p>
         <div className="input-mail">
           <input type="text" placeholder="Adresse e-mail" />
-          <Link to="/">S' inscrire</Link>
+          <Link to="/signup">S'inscrire</Link>
         </div>
         <img src="public\arrow-down.png" alt="" className="arrow" />
       </section>
