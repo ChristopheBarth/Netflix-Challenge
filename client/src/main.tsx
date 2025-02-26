@@ -7,9 +7,9 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
-// import HomePage from "./pages/HomePage";
-// import MovieDetail from "./pages/MovieDetail";
-// import { getMovieById, getMovieCard } from "./services/request";
+import HomePage from "./pages/HomePage";
+import MovieDetail from "./pages/MovieDetail";
+import { getMovieById, getMovieCard } from "./services/request";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -23,21 +23,21 @@ const router = createBrowserRouter([
     // The root path
     element: <App />, // Renders the App component for the home page
     children: [
-      // {
-      //   path: "/",
-      //   element: <HomePage />,
-      //   loader: getMovieCard,
-      // },
-      // {
-      //   path: "/movies/:id",
-      //   element: <MovieDetail />,
-      //   loader: async ({ params }) => getMovieById(Number(params.id)),
-      // },
-      // {
-      //   path: "/movies/:id",
-      //   element: <MovieDetail />,
-      //   loader: async ({ params }) => getMovieById(Number(params.id)),
-      // },
+      {
+        path: "/",
+        element: <HomePage />,
+        loader: getMovieCard,
+      },
+      {
+        path: "/movies/:id",
+        element: <MovieDetail />,
+        loader: async ({ params }) => getMovieById(Number(params.id)),
+      },
+      {
+        path: "/movies/:id",
+        element: <MovieDetail />,
+        loader: async ({ params }) => getMovieById(Number(params.id)),
+      },
     ],
     // Try adding a new route! For example, "/about" with an About component
   },
