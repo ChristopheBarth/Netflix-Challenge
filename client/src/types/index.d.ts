@@ -11,3 +11,8 @@ interface SvgTypes {
   width: string;
   height: string;
 }
+
+interface FormTypes {
+  user: UserTypes;
+  handleChangeForm: React.ChangeEventHandler<HTMLInputElement>;
+}

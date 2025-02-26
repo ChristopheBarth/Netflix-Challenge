@@ -18,19 +18,7 @@ const icon = [
   },
 ];
 
-export default function SignupForm() {
-  const [user, setUser] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    first_name: "",
-    last_name: "",
-  } as UserTypes);
-
-  const handleChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-
+export default function SignupForm({ user, handleChangeForm }: FormTypes) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -59,7 +47,6 @@ export default function SignupForm() {
   return (
     <div className="signup-container">
       <form onSubmit={handleSubmit}>
-        <h1>Créer un compte</h1>
         <h3>Tous les champs sont obligatoires</h3>
         <div className="form-group">
           <label htmlFor="first_name">Prénom</label>
