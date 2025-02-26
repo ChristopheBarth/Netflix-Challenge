@@ -12,7 +12,7 @@ type Movie = {
 };
 
 class MovieRepository {
-  async create(movie: Omit<Movie, "id">) {
+  async create(movie: Omit<Movie, "id" | "genres">) {
     const [result] = await databaseClient.query<Result>(
       "insert into movie (title, synopsis, release_year, duration, poster, trailer) values (?, ?, ?, ?, ?, ?)",
       [
@@ -44,7 +44,7 @@ class MovieRepository {
 
   async update(movie: Movie) {
     const [result] = await databaseClient.query<Result>(
-      "update movie set title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?",
+      "update movie set title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?, where id = ?",
       [
         movie.title,
         movie.synopsis,

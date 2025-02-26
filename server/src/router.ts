@@ -13,5 +13,9 @@ router.post("/api/movies", movieActions.add);
 router.put("/api/movies/:id", movieActions.edit);
 router.delete("/api/movies/:id", movieActions.destroy);
 /* ************************************************************************ */
+import movieGenreActions from "./modules/movieGenre/movieGenreActions";
+
+router.get("/api/movieGenre", movieGenreActions.browse);
+router.get("/api/movieGenre/:id", movieGenreActions.read);
 
 export default router;
