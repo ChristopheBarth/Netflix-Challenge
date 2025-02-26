@@ -1,0 +1,51 @@
+h1 {
+  text-align: center;
+}
+
+.container-movies {
+  background-color: #7e7e7e;
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  border-radius: 10px;
+}
+
+.container-movies img {
+  width: 85%;
+  border-radius: 10px;
+}
+
+.container-movies button {
+  position: relative;
+  background: none;
+  border: none;
+  cursor: pointer;
+  top: 1rem;
+}
+
+.container-movies h2 {
+  position: relative;
+  margin-left: 2rem;
+  top: 1rem;
+}
+
+.container-movies p {
+  margin-left: 2rem;
+  position: relative;
+  top: 1rem;
+  width: 85%;
+}
+
+.container-movies .informations {
+  display: flex;
+  align-self: start;
+}
+.container-movies .bio {
+  position: relative;
+  top: 1rem;
+  padding-bottom: 4rem;
+}
+
+details summary {
+  list-style: none;
+}

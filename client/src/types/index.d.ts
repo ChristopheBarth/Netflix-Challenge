@@ -3,8 +3,10 @@ interface MovieType {
   title: string;
   release_year: string;
   poster: string;
+  duration: string;
+  synopsis: string;
 }
 
-interface MovieProps {
-  movie: MovieTypes;
+interface MoviesProps {
+  movie: MovieType;
 }

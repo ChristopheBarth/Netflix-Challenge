@@ -1,4 +1,4 @@
-export default function MovieCards({ movie }: MovieProps) {
+export default function MovieCards({ movie }: MoviesProps) {
   return (
     <>
       <div className="card-movie">
