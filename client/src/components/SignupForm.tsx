@@ -92,11 +92,7 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
               placeholder="Votre mot de passe"
               required
             />
-            <span
-              className="password-toggle"
-              onClick={togglePassword}
-              onKeyDown={togglePassword}
-            >
+            <span onClick={togglePassword} onKeyDown={togglePassword}>
               <SvgIcons
                 path={showIconPassword.path}
                 height={showIconPassword.height}
@@ -117,7 +113,6 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
               required
             />
             <span
-              className="password-toggle"
               onClick={toggleConfirmPassword}
               onKeyDown={toggleConfirmPassword}
             >
@@ -138,7 +133,7 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           />
           <p>En cochant cette case, vous acceptez les CGU.</p>
         </div>
-        <button type="submit" className="signup-button" disabled={!checked}>
+        <button type="submit" disabled={!checked}>
           Créer un compte
         </button>
         <Link to="#">Se connecter</Link>
