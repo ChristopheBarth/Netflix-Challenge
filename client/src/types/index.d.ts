@@ -1,13 +1,13 @@
 interface MovieType {
   id: number;
   title: string;
-  synopsis: string;
   release_year: string;
-  duration: string;
   poster: string;
+  duration: string;
+  synopsis: string;
   trailer: string;
 }
 
 interface MoviesProps {
-  movies: MovieType[];
+  movie: MovieType;
 }
