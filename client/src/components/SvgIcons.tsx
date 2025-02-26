@@ -1,6 +1,6 @@
 export default function SvgIcons({ path, height, width }: SvgTypes) {
   return (
-    <div>
+    <>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         height={height}
@@ -11,6 +11,6 @@ export default function SvgIcons({ path, height, width }: SvgTypes) {
       >
         <path d={path} />
       </svg>
-    </div>
+    </>
   );
 }

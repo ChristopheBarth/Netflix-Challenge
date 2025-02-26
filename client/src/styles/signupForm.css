@@ -1,3 +1,84 @@
 .signup-container {
-  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem;
+  form {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    background-color: var(--secondary-color);
+    border-radius: 5px;
+    padding: 1rem;
+    width: 326px;
+  }
+  h3 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0.5rem;
+  }
+  input {
+    padding: 0.5rem;
+    width: 100%;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    outline: none;
+  }
+  .password-input {
+    position: relative;
+    user-select: none;
+  }
+  span {
+    position: absolute;
+    transform: translateY(+20%);
+    left: 88%;
+    cursor: pointer;
+  }
+  .checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 1rem 0;
+  }
+  .check {
+    width: auto;
+    margin-right: 0.5rem;
+    cursor: pointer;
+  }
+  p {
+    font-size: 0.5rem;
+  }
+  button {
+    padding: 0.5rem;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  a {
+    color: var(--primary-color);
+    opacity: 0.6;
+    margin-top: 0.5rem;
+    text-align: center;
+  }
+}
+
+button:disabled {
+  background-color: var(--primary-color);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  transition: 0.2s ease;
+}
+
+a:hover {
+  color: var(--primary-color);
+  opacity: 1;
 }

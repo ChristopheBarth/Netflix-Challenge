@@ -130,7 +130,12 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           </div>
         </div>
         <div className="checkbox-container">
-          <input type="checkbox" checked={checked} onChange={toggleCheck} />
+          <input
+            type="checkbox"
+            className="check"
+            checked={checked}
+            onChange={toggleCheck}
+          />
           <p>En cochant cette case, vous acceptez les CGU.</p>
         </div>
         <button type="submit" className="signup-button" disabled={!checked}>

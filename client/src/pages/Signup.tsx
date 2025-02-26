@@ -1,5 +1,6 @@
 import { useState } from "react";
 import SignupForm from "../components/SignupForm";
+import "../styles/signup.css";
 
 export default function Signup() {
   const [user, setUser] = useState({
