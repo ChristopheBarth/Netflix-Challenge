@@ -27,7 +27,6 @@ const read: RequestHandler = async (req, res, next) => {
 const add: RequestHandler = async (req, res, next) => {
   try {
     const user = {
-      id: req.body.id,
       first_name: req.body.first_name,
       last_name: req.body.last_name,
       email: req.body.email,
