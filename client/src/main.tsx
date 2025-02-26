@@ -8,7 +8,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 // Import the main app component
 import App from "./App";
 import HomePage from "./pages/HomePage";
+import MovieDetail from "./pages/MovieDetail";
 import Signup from "./pages/Signup";
+
+import { getMovieById, getMovies } from "./services/request";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -25,6 +28,12 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+        loader: getMovies,
+      },
+      {
+        path: "/movies/:id",
+        element: <MovieDetail />,
+        loader: async ({ params }) => getMovieById(Number(params.id)),
       },
       {
         path: "/signup",

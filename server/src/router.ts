@@ -14,4 +14,14 @@ router.put("/api/movies/:id", movieActions.edit);
 router.delete("/api/movies/:id", movieActions.destroy);
 /* ************************************************************************ */
 
+import userAction from "./modules/user/userAction";
+
+router.get("/api/users", userAction.browse);
+router.get("/api/users/:id", userAction.read);
+router.post("/api/users", userAction.add);
+router.put("/api/users/:id", userAction.edit);
+router.delete("/api/users/:id", userAction.destroy);
+
+/* ************************************************************************ */
+
 export default router;

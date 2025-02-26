@@ -88,4 +88,12 @@ VALUES
   ("Peter Pan's Neverland Nightmare", "Adaptation horrifique de l'oeuvre de James Matthew Barrie...", "2025", "1:30:00", "https://media.senscritique.com/media/000022513281/300/peter_pan_s_neverland_nightmare.jpg", "https://youtu.be/OYbxAYK8hoQ", "Charity Kase, Martin Portlock, Kit Green, Megan Placito, Olumide Olorunfemi, Philip Philmar", "Scott Chambers"),
   ("In the Lost Land", "Une reine cherche désespérément à concrétiser son amour. Elle engage alors une puissante sorcière nommée Gray Alys et l’envoie dans le désert fantomatique des Lost Lands, où Alys et son guide, le vagabond Boyce, doivent surpasser l’Homme et le démon...", "2025", "1:41:00", "https://media.senscritique.com/media/000022586849/300/in_the_lost_lands.jpg", "https://youtu.be/hnPsOnw9-JU", "Milla Jovovich, Dave Bautista, Arly Jover, Amara Okereke, Fraser James, Simon Lööf", "Paul W. S. Anderson");
 
+insert into user ( first_name, last_name, email, password, subscription, role)
+VALUES
+("Julien", "Picart", "jPicart@gmail.com", "taratata", true, "administrateur"),
+("Kevin", "Guiterrez", "K.guigui@gmail.com", "kaka", false, "utilisateur");
+
+insert into genre (name)
+VALUES
+("Action"), ("Horreur"), ("Science-fiction"), ("Drame"), ("Romance"), ("Comédie"), ("Aventure"), ("Jeunesse"), ("Thriller"), ("Policier");
 
