@@ -47,9 +47,12 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
   return (
     <div className="signup-container">
       <form onSubmit={handleSubmit}>
+        <h1>Créer ton compte</h1>
         <h3>Tous les champs sont obligatoires</h3>
         <div className="form-group">
-          <label htmlFor="first_name">Prénom</label>
+          <label htmlFor="first_name">
+            Prénom<p>*</p>
+          </label>
           <input
             type="text"
             id="first_name"
@@ -61,7 +64,9 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="last_name">Nom</label>
+          <label htmlFor="last_name">
+            Nom<p>*</p>
+          </label>
           <input
             type="text"
             id="last_name"
@@ -73,7 +78,9 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="email">Email</label>
+          <label htmlFor="email">
+            Email<p>*</p>
+          </label>
           <input
             type="email"
             id="email"
@@ -85,8 +92,8 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           />
         </div>
         <div className="form-group">
-          <label id="password" htmlFor="password">
-            Mot de passe
+          <label htmlFor="password">
+            Mot de passe<p>*</p>
           </label>
           <div className="password-input">
             <input
@@ -108,7 +115,9 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           </div>
         </div>
         <div className="form-group">
-          <label htmlFor="confirmPassword">Confirmez votre mot de passe</label>
+          <label htmlFor="confirmPassword">
+            Confirmez votre mot de passe<p>*</p>
+          </label>
           <div className="password-input">
             <input
               type={confirmPassword ? "text" : "password"}
@@ -132,13 +141,15 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           </div>
         </div>
         <div className="checkbox-container">
-          <input
-            type="checkbox"
-            id="checkbox"
-            className="check"
-            checked={checked}
-            onChange={toggleCheck}
-          />
+          <label htmlFor="checkbox">
+            <input
+              type="checkbox"
+              id="checkbox"
+              className="check"
+              checked={checked}
+              onChange={toggleCheck}
+            />
+          </label>
           <p>En cochant cette case, vous acceptez les CGU.</p>
         </div>
         <button type="submit" disabled={!checked}>
