@@ -1,17 +1,18 @@
 import axios from "axios";
-const getMovieCard = () => {
+const API = import.meta.env.VITE_API_URL;
+const getMovies = () => {
   return axios
-    .get("http://localhost:3310/api/movies")
+    .get(`${API}/api/movies`)
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
 const getMovieById = (id: number) => {
   return axios
-    .get(`http://localhost:3310/api/movies/${id}`)
+    .get(`${API}/api/movies/${id}`)
     .then((response) => response.data)
     .catch((error) => {
       console.error(error);
     });
 };
 
-export { getMovieById, getMovieCard };
+export { getMovieById, getMovies };
