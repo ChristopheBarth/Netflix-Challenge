@@ -5,7 +5,7 @@ export default function NavBar() {
   return (
     <nav>
       <img src="public\Logo_OriginalDigital.webp" alt="Logo" />
-      <Link to="/">Nous rejoindre</Link>
+      <Link to="/signup">Nous rejoindre</Link>
     </nav>
   );
 }

@@ -54,7 +54,7 @@ export default function HomePage() {
             </div>
           )}
           <button type="button" className="button-middle">
-            Nous rejoindre
+            <Link to="/signup">Nous rejoindre</Link>
           </button>
         </div>
       </section>
