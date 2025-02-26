@@ -52,6 +52,7 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           <label htmlFor="first_name">Prénom</label>
           <input
             type="text"
+            id="first_name"
             name="first_name"
             value={user.first_name}
             onChange={handleChangeForm}
@@ -63,6 +64,7 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           <label htmlFor="last_name">Nom</label>
           <input
             type="text"
+            id="last_name"
             name="last_name"
             value={user.last_name}
             onChange={handleChangeForm}
@@ -74,6 +76,7 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           <label htmlFor="email">Email</label>
           <input
             type="email"
+            id="email"
             name="email"
             value={user.email}
             onChange={handleChangeForm}
@@ -82,10 +85,13 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           />
         </div>
         <div className="form-group">
-          <label htmlFor="password">Mot de passe</label>
+          <label id="password" htmlFor="password">
+            Mot de passe
+          </label>
           <div className="password-input">
             <input
               type={showPassword ? "text" : "password"}
+              id="password"
               name="password"
               value={user.password}
               onChange={handleChangeForm}
@@ -106,6 +112,7 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
           <div className="password-input">
             <input
               type={confirmPassword ? "text" : "password"}
+              id="confirmPassword"
               name="confirmPassword"
               value={user.confirmPassword}
               onChange={handleChangeForm}
@@ -127,6 +134,7 @@ export default function SignupForm({ user, handleChangeForm }: FormTypes) {
         <div className="checkbox-container">
           <input
             type="checkbox"
+            id="checkbox"
             className="check"
             checked={checked}
             onChange={toggleCheck}
