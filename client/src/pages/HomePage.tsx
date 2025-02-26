@@ -1,13 +1,11 @@
-import { Link } from "react-router-dom";
-import "../styles/homepage.css";
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import MovieCards from "../components/MovieCards";
+import "../styles/homepage.css";
 
 export default function HomePage() {
   const [selectedOffer, setSelectedOffer] = useState("free");
   const movies = useLoaderData() as MovieType[];
-  console.info(movies);
   return (
     <section className="all-element">
       <section className="top-element">
@@ -20,7 +18,7 @@ export default function HomePage() {
           <input type="text" placeholder="Adresse e-mail" />
           <Link to="/">S' inscrire</Link>
         </div>
-        <img src="public\arrow-down.png" alt="" className="arrow" />
+        <img src="/arrow-down.png" alt="" className="arrow" />
         <h2>Tendances Actuelles</h2>
         <section className="movie-container">
           {movies.map((movie) => (

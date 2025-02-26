@@ -119,7 +119,7 @@ section > h2 {
   }
 
   .middle-element {
-    background-image: url("public/bg-desktop.svg");
+    background-image: url("/bg-desktop.svg");
     background-size: cover;
     border-radius: var(--button-radius);
     width: 70%;
