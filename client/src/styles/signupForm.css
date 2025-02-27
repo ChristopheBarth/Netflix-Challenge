@@ -35,8 +35,11 @@ form {
   .password-input > button {
     position: absolute;
     transform: translate(-50%, -50%);
-    top: 65%;
-    right: 50%;
+    top: 66%;
+    right: 1%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
   }
   .checkbox {
     display: flex;

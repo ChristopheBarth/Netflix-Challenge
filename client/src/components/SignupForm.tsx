@@ -117,25 +117,27 @@ export default function SignupForm() {
           />
         </button>
       </div>
-      <label htmlFor="confirmPassword">
-        Confirmez votre mot de passe<p>*</p>
-      </label>
-      <input
-        type={confirmPassword ? "text" : "password"}
-        id="confirmPassword"
-        name="confirmPassword"
-        value={user.confirmPassword}
-        onChange={handleChangeForm}
-        placeholder="Confirmez votre mot de passe"
-        required
-      />
-      <button type="button" onClick={toggleConfirmPassword}>
-        <SvgIcons
-          path={showIconConfirmPassword.path}
-          height={showIconConfirmPassword.height}
-          width={showIconConfirmPassword.width}
+      <div className="password-input">
+        <label htmlFor="confirmPassword">
+          Confirmez votre mot de passe<p>*</p>
+        </label>
+        <input
+          type={confirmPassword ? "text" : "password"}
+          id="confirmPassword"
+          name="confirmPassword"
+          value={user.confirmPassword}
+          onChange={handleChangeForm}
+          placeholder="Confirmez votre mot de passe"
+          required
         />
-      </button>
+        <button type="button" onClick={toggleConfirmPassword}>
+          <SvgIcons
+            path={showIconConfirmPassword.path}
+            height={showIconConfirmPassword.height}
+            width={showIconConfirmPassword.width}
+          />
+        </button>
+      </div>
       <label htmlFor="checkbox" className="checkbox">
         <input
           type="checkbox"
