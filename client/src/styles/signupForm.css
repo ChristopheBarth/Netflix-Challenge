@@ -1,26 +1,18 @@
-.signup-container {
+form {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem;
-  form {
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    background-color: var(--secondary-color);
-    border-radius: 5px;
-    padding: 1rem;
-    width: 326px;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  padding: 1rem;
+  width: 326px;
+  h1 {
+    text-align: left;
   }
   h3 {
     font-size: 0.9rem;
     font-style: oblique;
     font-weight: 300;
-    margin-bottom: 0.5rem;
-  }
-  .form-group {
-    display: flex;
-    flex-direction: column;
     margin-bottom: 0.5rem;
   }
   label {
@@ -35,31 +27,33 @@
     width: 100%;
     border: 1px solid var(--primary-color);
     border-radius: 5px;
+    margin-bottom: 0.5rem;
   }
   .password-input {
     position: relative;
-    user-select: none;
   }
-  span {
+  .password-input > button {
     position: absolute;
-    transform: translateY(+20%);
-    left: 88%;
-    cursor: pointer;
+    transform: translate(-50%, -50%);
+    top: 65%;
+    right: 50%;
   }
-  .checkbox-container {
+  .checkbox {
     display: flex;
-    margin: 1rem 0;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 0.5rem;
   }
-  .checkbox-container > p {
-    font-size: 0.5rem;
-    color: var(--primary-color);
-  }
-  .check {
+  .checkbox > input {
     width: auto;
-    margin-right: 0.5rem;
+    margin: 0.5rem;
     cursor: pointer;
   }
-  button {
+  .checkbox > p {
+    color: var(--primary-color);
+    font-size: 0.5rem;
+  }
+  .submit {
     padding: 0.5rem;
     background-color: var(--primary-color);
     color: var(--secondary-color);
@@ -67,26 +61,23 @@
     border-radius: 5px;
     cursor: pointer;
   }
+  .submit:disabled {
+    background-color: var(--primary-color);
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .submit:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    transition: 0.2s ease;
+  }
   a {
     color: var(--primary-color);
     opacity: 0.6;
     margin-top: 0.5rem;
     text-align: center;
   }
-}
-
-button:disabled {
-  background-color: var(--primary-color);
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-button:hover {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  transition: 0.2s ease;
-}
-
-a:hover {
-  color: var(--primary-color);
-  opacity: 1;
+  a:hover {
+    color: var(--primary-color);
+    opacity: 1;
+  }
 }
