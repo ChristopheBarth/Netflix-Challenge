@@ -5,16 +5,18 @@ type Movie = {
   id: number;
   title: string;
   synopsis: string;
-  release_year: string;
+  release_year: number;
   duration: string;
   poster: string;
   trailer: string;
+  casting: string;
+  production: string;
 };
 
 class MovieRepository {
   async create(movie: Omit<Movie, "id">) {
     const [result] = await databaseClient.query<Result>(
-      "insert into movie (title, synopsis, release_year, duration, poster, trailer) values (?, ?, ?, ?, ?, ?)",
+      "insert into movie (title, synopsis, release_year, duration, poster, trailer, casting, production) values (?, ?, ?, ?, ?, ?, ?, ?)",
       [
         movie.title,
         movie.synopsis,
@@ -22,6 +24,8 @@ class MovieRepository {
         movie.duration,
         movie.poster,
         movie.trailer,
+        movie.casting,
+        movie.production,
       ],
     );
 
@@ -52,6 +56,8 @@ class MovieRepository {
         movie.duration,
         movie.poster,
         movie.trailer,
+        movie.casting,
+        movie.production,
       ],
     );
     return result.affectedRows;

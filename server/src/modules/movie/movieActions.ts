@@ -34,6 +34,8 @@ const add: RequestHandler = async (req, res, next) => {
       duration: req.body.duration,
       poster: req.body.poster,
       trailer: req.body.trailer,
+      casting: req.body.casting,
+      production: req.body.production,
     };
     const insertId = await movieRepository.create(movie);
     res.status(201).json({ insertId });
@@ -52,6 +54,8 @@ const edit: RequestHandler = async (req, res, next) => {
       duration: req.body.duration,
       poster: req.body.poster,
       trailer: req.body.trailer,
+      casting: req.body.casting,
+      production: req.body.production,
     };
     const affectedRows = await movieRepository.update(movie);
     if (affectedRows === 0) {

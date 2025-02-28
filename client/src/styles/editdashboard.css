@@ -1,0 +1,9 @@
+.dashboard-movielist {
+  display: flex;
+}
+
+.movie-edit {
+  border: solid 1px #7e7e7e;
+  display: flex;
+  justify-content: space-between;
+}
