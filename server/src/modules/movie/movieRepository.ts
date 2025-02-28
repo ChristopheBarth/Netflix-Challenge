@@ -9,12 +9,15 @@ type Movie = {
   duration: string;
   poster: string;
   trailer: string;
+  casting: string;
+  production: string;
+  genres?: string;
 };
 
 class MovieRepository {
-  async create(movie: Omit<Movie, "id">) {
+  async create(movie: Omit<Movie, "id" | "genres">) {
     const [result] = await databaseClient.query<Result>(
-      "insert into movie (title, synopsis, release_year, duration, poster, trailer) values (?, ?, ?, ?, ?, ?)",
+      "insert into movie (title, synopsis, release_year, duration, poster, trailer, casting, production) values (?, ?, ?, ?, ?, ?, ?, ?)",
       [
         movie.title,
         movie.synopsis,
@@ -22,6 +25,8 @@ class MovieRepository {
         movie.duration,
         movie.poster,
         movie.trailer,
+        movie.casting,
+        movie.production,
       ],
     );
 
@@ -30,7 +35,22 @@ class MovieRepository {
 
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "select * from movie where id = ?",
+      `SELECT
+      m.id,
+      m.title,
+      m.synopsis,
+      m.release_year,
+      m.duration,
+      m.poster,
+      m.trailer,
+      m.casting,
+      m.production,
+      GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
+      FROM movie m
+      LEFT JOIN movie_genre mg ON m.id = mg.movie_id
+      LEFT JOIN genre g ON mg.genre_id = g.id
+      WHERE m.id = ?
+      GROUP BY m.id`,
       [id],
     );
 
@@ -38,13 +58,28 @@ class MovieRepository {
   }
 
   async readAll() {
-    const [rows] = await databaseClient.query<Rows>("select * from movie");
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT
+      m.id,
+      m.synopsis,
+      m.release_year,
+      m.duration,
+      m.poster,
+      m.trailer,
+      m.casting,
+      m.production,
+      GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
+      FROM movie m
+      LEFT JOIN movie_genre mg ON m.id = mg.movie_id
+      LEFT JOIN genre g ON mg.genre_id = g.id
+      GROUP BY m.id`,
+    );
     return rows as Movie[];
   }
 
   async update(movie: Movie) {
     const [result] = await databaseClient.query<Result>(
-      "update movie set title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?",
+      "update movie set title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?, casting = ?, production = ?, where id = ?",
       [
         movie.title,
         movie.synopsis,
@@ -52,6 +87,8 @@ class MovieRepository {
         movie.duration,
         movie.poster,
         movie.trailer,
+        movie.casting,
+        movie.production,
       ],
     );
     return result.affectedRows;

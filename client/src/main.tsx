@@ -10,6 +10,8 @@ import App from "./App";
 import ConnectionPage from "./pages/ConnectionPage";
 import HomePage from "./pages/HomePage";
 import MovieDetail from "./pages/MovieDetail";
+import Signup from "./pages/Signup";
+
 import { getMovieById, getMovies } from "./services/request";
 
 // Import additional components for new routes
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
         path: "/connectionpage",
         element: <ConnectionPage />,
         loader: getMovies,
+      },
+      {
+        path: "/signup",
+        element: <Signup />,
       },
     ],
     // Try adding a new route! For example, "/about" with an About component
