@@ -36,6 +36,7 @@ const add: RequestHandler = async (req, res, next) => {
       trailer: req.body.trailer,
       casting: req.body.casting,
       production: req.body.production,
+      landscape_image: req.body.landscape_image,
     };
     const insertId = await movieRepository.create(movie);
     res.status(201).json({ insertId });
@@ -56,6 +57,7 @@ const edit: RequestHandler = async (req, res, next) => {
       trailer: req.body.trailer,
       casting: req.body.casting,
       production: req.body.production,
+      landscape_image: req.body.landscape_image,
     };
     const affectedRows = await movieRepository.update(movie);
     if (affectedRows === 0) {
@@ -77,4 +79,4 @@ const destroy: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-export default { browse, read, add, destroy, edit };
+export default { browse, read, add, edit, destroy };

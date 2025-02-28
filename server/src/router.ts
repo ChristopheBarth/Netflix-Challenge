@@ -14,6 +14,19 @@ router.put("/api/movies/:id", movieActions.edit);
 router.delete("/api/movies/:id", movieActions.destroy);
 
 /* ************************************************************************ */
+// Define Route to get all landscapes of movies
+router.get("/api/movies/landscape", async (req, res, next) => {
+  try {
+    const movies = await movieActions.browse(req, res, next);
+    // On peut filtrer ou mapper pour retourner uniquement la propriété landscape_image
+    // const Landscape = movies.map((movie: any) => ({ id: movie.id, Landscape_image: movie.Landscape_image}));
+    // res.json(Landscapes);
+  } catch (err) {
+    next(err);
+  }
+});
+
+/* ************************************************************************ */
 import userAction from "./modules/user/userAction";
 
 router.get("/api/users", userAction.browse);
