@@ -45,11 +45,10 @@
   overflow-y: hidden;
   overflow-x: scroll;
   gap: 1rem;
-  margin: 1rem;
   margin-top: 1rem;
 }
-.card_movie,
-img {
+
+.card-movie-img {
   display: flex;
   max-height: 10rem;
   border-radius: var(--button-radius);

@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
+import ConnectionPage from "./pages/ConnectionPage";
 import HomePage from "./pages/HomePage";
 import MovieDetail from "./pages/MovieDetail";
 import { getMovieById, getMovies } from "./services/request";
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
         path: "/movies/:id",
         element: <MovieDetail />,
         loader: async ({ params }) => getMovieById(Number(params.id)),
+      },
+      {
+        path: "/connectionpage",
+        element: <ConnectionPage />,
+        loader: getMovies,
       },
     ],
     // Try adding a new route! For example, "/about" with an About component
