@@ -26,7 +26,7 @@ export default function FormDashBoard() {
         production: production,
       })
       .then((response) => {
-        console.info(response);
+        response;
       })
       .catch((error) => console.error(error));
   };
