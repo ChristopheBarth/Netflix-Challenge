@@ -1,8 +1,8 @@
 import { useState } from "react";
+import EditDashBoard from "../components/EditDashBoard";
 import FormDashBoard from "../components/FormDashBoard";
 import HomeDashBoard from "../components/HomeDashBoard";
 import UserDashBoard from "../components/UserDashBoard";
-import EditDashBoard from "../components/EditDashBoard";
 import "../styles/dashboard.css";
 
 export default function Dashboard() {

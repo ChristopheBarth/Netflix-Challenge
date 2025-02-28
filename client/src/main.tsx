@@ -7,11 +7,10 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
+import Dashboard from "./pages/Dashboard";
 import HomePage from "./pages/HomePage";
 import MovieDetail from "./pages/MovieDetail";
 import { getMovieById, getMovieCard, getUsers } from "./services/request";
-import Dashboard from "./pages/Dashboard";
-
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 
