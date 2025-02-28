@@ -1,9 +1,20 @@
-import { useLoaderData } from "react-router-dom";
+import axios from "axios";
+import { useLoaderData, useRevalidator } from "react-router-dom";
 import "../styles/editdashboard.css";
 
 export default function EditDashBoard() {
   const { movies } = useLoaderData() as { movies: MovieType[] };
-
+  const { revalidate } = useRevalidator();
+  const deleteMovie = (id: number) => {
+    return axios
+      .delete(`http://localhost:3310/api/movies/${id}`)
+      .then((response) => {
+        response;
+        revalidate();
+      })
+      .catch((error) => console.error(error));
+  };
+  console.info();
   return (
     <section className="list-movie">
       {movies.map((movie) => (
@@ -12,11 +23,11 @@ export default function EditDashBoard() {
             <p>{movie.title}</p>
           </div>
           <div key={movie.id}>
-            <button type="button">
-              <img src="" alt="" />
+            <button type="button" onClick={() => deleteMovie(movie.id)}>
+              <img src="/GarbageIcone.png" alt="" />
             </button>
             <button type="button">
-              <img src="" alt="" />
+              <img src="/EditIcone.png" alt="" />
             </button>
           </div>
         </section>

@@ -61,6 +61,7 @@ class MovieRepository {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT
       m.id,
+      m.title,
       m.synopsis,
       m.release_year,
       m.duration,

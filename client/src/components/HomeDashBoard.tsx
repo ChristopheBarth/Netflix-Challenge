@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-
+import "../styles/dashboard.css";
 export default function HomeDashBoard() {
   const { movies } = useLoaderData() as { movies: MovieType[] };
 
