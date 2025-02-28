@@ -25,18 +25,19 @@ const read: RequestHandler = async (req, res, next) => {
 };
 
 const add: RequestHandler = async (req, res, next) => {
+  console.info("dans add", req.body);
   try {
     const movie = {
-      id: req.body.id,
       title: req.body.title,
       synopsis: req.body.synopsis,
-      release_year: req.body.release_year,
+      releaseYear: Number(req.body.releaseYear),
       duration: req.body.duration,
       poster: req.body.poster,
       trailer: req.body.trailer,
       casting: req.body.casting,
       production: req.body.production,
     };
+    console.info("movie", movie);
     const insertId = await movieRepository.create(movie);
     res.status(201).json({ insertId });
   } catch (err) {
@@ -50,7 +51,7 @@ const edit: RequestHandler = async (req, res, next) => {
       id: Number(req.params.id),
       title: req.body.title,
       synopsis: req.body.synopsis,
-      release_year: req.body.release_year,
+      releaseYear: req.body.releaseYear,
       duration: req.body.duration,
       poster: req.body.poster,
       trailer: req.body.trailer,

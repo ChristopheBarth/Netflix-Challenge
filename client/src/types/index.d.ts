@@ -30,3 +30,12 @@ interface MovieType {
 interface MoviesProps {
   movie: MovieType;
 }
+
+interface UserType {
+  id: number;
+  firstName: string;
+  lastName: string;
+  role: string;
+  email: string;
+  subscription: boolean;
+}
