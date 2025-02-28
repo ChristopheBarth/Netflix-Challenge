@@ -1,3 +1,22 @@
+interface UserTypes {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  firstName: string;
+  lastName: string;
+}
+
+interface SvgTypes {
+  path: string;
+  width: string;
+  height: string;
+}
+
+interface FormTypes {
+  user: UserTypes;
+  handleChangeForm: React.ChangeEventHandler<HTMLInputElement>;
+}
+
 interface MovieType {
   id: number;
   title: string;
