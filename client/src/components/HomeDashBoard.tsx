@@ -1,11 +1,11 @@
 import { useLoaderData } from "react-router-dom";
 
 export default function HomeDashBoard() {
-  const { movie } = useLoaderData() as { movie: MovieType[] };
+  const { movies } = useLoaderData() as { movies: MovieType[] };
 
   return (
     <>
-      {movie.map((movie) => (
+      {movies.map((movie) => (
         <div className="dashboard-movies" key={movie.id}>
           <img src={movie.poster} alt="" />
           <p>{movie.title}</p>

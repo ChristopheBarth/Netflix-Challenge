@@ -5,7 +5,7 @@ type Movie = {
   id: number;
   title: string;
   synopsis: string;
-  release_year: number;
+  releaseYear: number;
   duration: string;
   poster: string;
   trailer: string;
@@ -21,7 +21,7 @@ class MovieRepository {
       [
         movie.title,
         movie.synopsis,
-        movie.release_year,
+        movie.releaseYear,
         movie.duration,
         movie.poster,
         movie.trailer,
@@ -83,7 +83,7 @@ class MovieRepository {
       [
         movie.title,
         movie.synopsis,
-        movie.release_year,
+        movie.releaseYear,
         movie.duration,
         movie.poster,
         movie.trailer,

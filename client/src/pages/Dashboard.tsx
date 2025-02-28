@@ -7,6 +7,7 @@ import "../styles/dashboard.css";
 
 export default function Dashboard() {
   const [activeComponent, setActiveComponent] = useState("dashboard");
+
   return (
     <>
       <section className="dashboard-left">

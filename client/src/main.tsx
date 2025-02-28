@@ -43,8 +43,8 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <Dashboard />,
         loader: async () => ({
-          movie: await getMovies(),
-          user: await getUsers(),
+          movies: await getMovies(),
+          users: await getUsers(),
         }),
       },
     ],

@@ -33,8 +33,8 @@ interface MoviesProps {
 
 interface UserType {
   id: number;
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   role: string;
   email: string;
   subscription: boolean;

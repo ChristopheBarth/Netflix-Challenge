@@ -3,111 +3,88 @@ import { useState } from "react";
 import "../styles/formdashboard.css";
 
 export default function FormDashBoard() {
-  const [title, setTitle] = useState("");
-  const [poster, setPoster] = useState("");
-  const [release_year, setRelease_year] = useState("");
-  const [synopsis, setSynopsis] = useState("");
-  const [duration, setDuration] = useState("");
-  const [trailer, setTrailer] = useState("");
-  const [casting, setCasting] = useState("");
-  const [production, setProduction] = useState("");
+  const [newMovie, setNewMovie] = useState({
+    title: "",
+    poster: "",
+    releaseYear: "",
+    synopsis: "",
+    duration: "",
+    trailer: "",
+    casting: "",
+    production: "",
+  });
 
   const sendForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     axios
-      .post("http://localhost:3310/api/movies/", {
-        title: title,
-        poster: poster,
-        release_year: release_year,
-        synopsis: synopsis,
-        duration: duration,
-        trailer: trailer,
-        casting: casting,
-        production: production,
-      })
+      .post("http://localhost:3310/api/movies/", newMovie)
       .then((response) => {
         response;
       })
       .catch((error) => console.error(error));
   };
 
-  const handleChangeTitle = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTitle(e.currentTarget.value);
+  const handleChangeMovieForm = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setNewMovie({ ...newMovie, [e.target.name]: e.target.value });
   };
-
-  const handleChangePoster = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPoster(e.currentTarget.value);
-  };
-
-  const handleChangeRelease_year = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setRelease_year(e.currentTarget.value);
-  };
-
-  const handleChangeSynopsis = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSynopsis(e.currentTarget.value);
-  };
-
-  const handleChangeDuration = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setDuration(e.currentTarget.value);
-  };
-
-  const handleChangeTrailer = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTrailer(e.currentTarget.value);
-  };
-
-  const handleChangeCasting = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCasting(e.currentTarget.value);
-  };
-
-  const handleChangeProduction = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setProduction(e.currentTarget.value);
-  };
-
+  console.info(newMovie);
   return (
     <form onSubmit={sendForm} className="form-dashboard">
       <p>Titre</p>
       <input
         type="text"
-        onChange={handleChangeTitle}
+        name="title"
+        onChange={handleChangeMovieForm}
         placeholder="Titre du film"
       />
       <p>Affiche</p>
       <input
         type="text"
-        onChange={handleChangePoster}
+        name="poster"
+        onChange={handleChangeMovieForm}
         id=""
         placeholder="URL"
       />
       <p>Date de sortie</p>
       <input
         type="text"
-        onChange={handleChangeRelease_year}
+        name="releaseYear"
+        onChange={handleChangeMovieForm}
         placeholder="AAAA"
       />
       <p>Synopsis</p>
       <input
         type="text"
-        onChange={handleChangeSynopsis}
+        name="synopsis"
+        onChange={handleChangeMovieForm}
         placeholder="Synopsis"
       />
       <p>Durée</p>
       <input
         type="text"
-        onChange={handleChangeDuration}
+        name="duration"
+        onChange={handleChangeMovieForm}
         placeholder="0:00:00"
       />
       <p>Bandes annonces</p>
-      <input type="text" onChange={handleChangeTrailer} placeholder="URL" />
+      <input
+        type="text"
+        name="trailer"
+        onChange={handleChangeMovieForm}
+        placeholder="URL"
+      />
       <p>Casting</p>
       <input
         type="text"
-        onChange={handleChangeCasting}
+        name="casting"
+        onChange={handleChangeMovieForm}
         placeholder="Nom/prénoms acteurs"
       />
       <p>Production</p>
       <input
         type="text"
-        onChange={handleChangeProduction}
+        name="production"
+        onChange={handleChangeMovieForm}
         placeholder="Noms/prénoms réalisateur"
       />
       <input type="submit" className="submit-form" />
