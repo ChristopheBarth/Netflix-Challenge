@@ -14,7 +14,6 @@ export default function EditDashBoard() {
       })
       .catch((error) => console.error(error));
   };
-  console.info();
   return (
     <section className="list-movie">
       {movies.map((movie) => (
