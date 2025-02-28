@@ -3,7 +3,7 @@ import "../styles/userdashboard.css";
 
 export default function UserDashBoard() {
   const { user } = useLoaderData() as { user: UserType[] };
-  console.info(user);
+
   return (
     <>
       {user.map((user) => (
