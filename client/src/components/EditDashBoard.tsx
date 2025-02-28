@@ -2,11 +2,11 @@ import { useLoaderData } from "react-router-dom";
 import "../styles/editdashboard.css";
 
 export default function EditDashBoard() {
-  const { movie } = useLoaderData() as { movie: MovieType[] };
+  const { movies } = useLoaderData() as { movies: MovieType[] };
 
   return (
     <section className="list-movie">
-      {movie.map((movie) => (
+      {movies.map((movie) => (
         <section className="movie-edit" key={movie.id}>
           <div className="dashboard-movielist" key={movie.id}>
             <p>{movie.title}</p>
