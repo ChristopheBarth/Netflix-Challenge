@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API = import.meta.env.VITE_API_URL;
-const getMovieCard = () => {
+
+const getMovies = () => {
   return axios
     .get(`${API}/api/movies`)
     .then((response) => response.data)
@@ -25,4 +26,4 @@ const getUsers = () => {
     });
 };
 
-export { getMovieById, getMovieCard, getUsers };
+export { getMovieById, getMovies, getUsers };
