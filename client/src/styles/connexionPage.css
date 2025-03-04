@@ -1,11 +1,11 @@
 .movie-container::after {
-  background-color: black;
+  background-color: rgb(161, 161, 161);
   position: absolute;
   display: block;
   height: 1px;
   width: 90%;
   content: "";
-  transform: translateY(24rem);
+  transform: translateY(15rem);
 }
 
 .movie-container:last-of-type::after {
@@ -17,7 +17,7 @@
   background-color: black;
   color: var(--secondary-color);
   padding: 0.5rem;
-  width: 11rem;
+  width: 10rem;
   border-radius: var(--button-radius);
   text-align: center;
   display: flex;
@@ -29,6 +29,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2rem;
   button {
     margin-top: 2rem;
   }
@@ -36,18 +37,25 @@
 
 .first-container svg {
   position: absolute;
-  transform: translateY(-2.1rem) translateX(3.5rem);
+  transform: translateY(-4.1rem) translateX(1.5rem);
 }
 
 .first-container .img-container {
-  margin: 1rem;
-  max-height: auto;
+  max-height: 42rem;
   max-width: 100%;
 }
 
 .show-movies h2 {
-  margin-top: 8rem;
-  font-size: 1.1rem;
+  margin-top: 1rem;
+  font-size: 18px;
+}
+
+.show-movies h2:first-of-type {
+  margin-top: 0;
+}
+
+.show-movies .movie-container {
+  margin-bottom: 2rem;
 }
 
 #site-search {
@@ -55,7 +63,7 @@
   width: 6.5rem;
   padding-left: 1rem;
   position: absolute;
-  transform: translateY(-2rem) translateX(-1rem);
+  transform: translateY(-4rem) translateX(-3rem);
   border-radius: 5px;
   border: 1px solid;
   background-color: var(--secondary-color);
@@ -116,9 +124,26 @@
   margin-top: 2rem;
   border-radius: var(--button-radius);
 }
-
-/* @media only screen and (min-width: 792px) {
-  .container section::after {
-    transform: translateY(22rem);
+@media only screen and (min-width: 391px) {
+  .movie-container::after {
+    display: none;
   }
-} */
+}
+@media only screen and (min-width: 1440px) {
+  .card-movie-img img {
+    height: 20rem;
+    width: 15rem;
+    margin: 2rem 2rem 2rem 0;
+  }
+
+  .movie-container::after {
+    width: 91.5%;
+    content: "";
+    transform: translateY(30rem);
+    display: block;
+  }
+
+  .show-movies h2 {
+    margin-top: 5rem;
+  }
+}

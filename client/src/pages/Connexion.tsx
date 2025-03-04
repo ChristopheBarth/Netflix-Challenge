@@ -12,7 +12,7 @@ export default function ConnectionPage() {
           id="site-search"
           name="q"
           placeholder="Rechercher"
-        />{" "}
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24px"
@@ -32,8 +32,9 @@ export default function ConnectionPage() {
           Décrouvrir nos offres
         </button>
       </div>
-      <h2>Tendances Actuelles</h2>
+
       <div className="show-movies">
+        <h2>Tendances Actuelles</h2>
         <section className="movie-container">
           {movies.map((movie) => (
             <MovieCards key={movie.id} movie={movie} />
