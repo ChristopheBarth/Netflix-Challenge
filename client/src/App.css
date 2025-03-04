@@ -21,6 +21,7 @@
 }
 
 body {
+  padding: 1rem;
   font-size: var(--font-size);
   line-height: 1.7;
   font-family: var(--body-font);
@@ -38,7 +39,11 @@ body {
     font-family: var(--title-font);
   }
 }
-@media only screen and (min-width: 792px) {
+
+@media only screen and (min-width: 1920px) {
+  body {
+    padding: 1.5rem 5rem;
+  }
   .all-element {
     background-image: none;
   }
