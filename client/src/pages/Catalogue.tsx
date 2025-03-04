@@ -1,8 +1,8 @@
 import { useLoaderData } from "react-router-dom";
 import MovieCards from "../components/MovieCards";
-import "../styles/connectionPage.css";
+import "../styles/catalogue.css";
 
-export default function ConnectionPage() {
+export default function ConnexionPage() {
   const movies = useLoaderData() as MovieType[];
   return (
     <>

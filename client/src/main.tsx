@@ -7,7 +7,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 // Import the main app component
 import App from "./App";
-import Connexion from "./pages/ConnexionPage";
+import Catalogue from "./pages/Catalogue";
 import Dashboard from "./pages/Dashboard";
 import HomePage from "./pages/HomePage";
 import MovieDetail from "./pages/MovieDetail";
@@ -37,8 +37,8 @@ const router = createBrowserRouter([
         loader: async ({ params }) => getMovieById(Number(params.id)),
       },
       {
-        path: "/connexion",
-        element: <Connexion />,
+        path: "/catalogue",
+        element: <Catalogue />,
         loader: getMovies,
       },
       {
