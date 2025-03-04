@@ -42,3 +42,7 @@
   height: 9rem;
   width: 7rem;
 }
+
+.dashboard-movies > p {
+  color: var(--primary-color);
+}
