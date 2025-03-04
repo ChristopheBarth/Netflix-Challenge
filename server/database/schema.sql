@@ -3,7 +3,7 @@ create table user (
   first_name VARCHAR(50) NOT NULL,
   last_name VARCHAR(50) NOT NULL,
   email varchar(255) not null unique,
-  password varchar(255) not null,
+  hashed_password varchar(255) not null,
   subscription BOOLEAN NOT NULL,
   role VARCHAR(50) NOT NULL
 );
@@ -90,10 +90,10 @@ VALUES
   ("In the Lost Land", "Une reine cherche désespérément à concrétiser son amour. Elle engage alors une puissante sorcière nommée Gray Alys et l’envoie dans le désert fantomatique des Lost Lands, où Alys et son guide, le vagabond Boyce, doivent surpasser l’Homme et le démon...", "2025", "1:41:00", "https://media.senscritique.com/media/000022586849/300/in_the_lost_lands.jpg", "https://youtu.be/hnPsOnw9-JU", "Milla Jovovich, Dave Bautista, Arly Jover, Amara Okereke, Fraser James, Simon Lööf", "Paul W. S. Anderson", "https://media.themoviedb.org/t/p/w1920_and_h800_multi_faces/eOKpbUpd178x9Z2grd3vC74kkkU.jpg");
 
 
-insert into user ( first_name, last_name, email, password, subscription, role)
+insert into user ( first_name, last_name, email, hashed_password, subscription, role)
 VALUES
-("Julien", "Picart", "jPicart@gmail.com", "taratata", true, "administrateur"),
-("Kevin", "Guiterrez", "K.guigui@gmail.com", "kaka", false, "utilisateur");
+("Julien", "Picart", "jPicart@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$nz6t40CzCcijUhj3Ntpz9A$4DW+9sqLdKvj27E3JYbImIIfZAadyDGXHFiwpBHli4s", true, "administrateur"),
+("Kevin", "Guiterrez", "K.guigui@gmail.com", "$argon2id$v=19$m=19456,t=2,p=1$nz6t40CzCcijUhj3Ntpz9A$4DW+9sqLdKvj27E3JYbImIIfZAadyDGXHFiwpBHli5s", false, "utilisateur");
 
 insert into genre (name)
 VALUES
