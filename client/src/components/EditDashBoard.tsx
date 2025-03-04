@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRef } from "react";
 import { useLoaderData, useRevalidator } from "react-router-dom";
 import "../styles/editdashboard.css";
 
@@ -6,6 +7,7 @@ export default function EditDashBoard() {
   const { movies } = useLoaderData() as { movies: MovieType[] };
   const { revalidate } = useRevalidator();
   const API = import.meta.env.VITE_API_URL;
+
   const deleteMovie = (id: number) => {
     return axios
       .delete(`${API}/api/movies/${id}`)
@@ -14,6 +16,17 @@ export default function EditDashBoard() {
       })
       .catch((error) => console.error(error));
   };
+
+  const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const openModal = () => {
+    dialogRef.current?.showModal();
+    document.body.style.overflow = "hidden";
+  };
+  const closeModal = () => {
+    dialogRef.current?.close();
+    document.body.style.overflow = "";
+  };
+
   return (
     <section className="list-movie">
       {movies.map((movie) => (
@@ -25,12 +38,24 @@ export default function EditDashBoard() {
             <button type="button" onClick={() => deleteMovie(movie.id)}>
               <img src="/GarbageIcone.png" alt="" />
             </button>
-            <button type="button">
+            <button type="button" onClick={openModal}>
               <img src="/EditIcone.png" alt="" />
             </button>
           </div>
         </section>
       ))}
+      <dialog
+        ref={dialogRef}
+        className="modal"
+        onClick={closeModal}
+        onKeyDown={(e) => {
+          if (e.key === "Escape") {
+            closeModal();
+          }
+        }}
+      >
+        <h1>test</h1>
+      </dialog>
     </section>
   );
 }
