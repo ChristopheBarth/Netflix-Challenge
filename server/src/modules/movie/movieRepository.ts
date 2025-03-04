@@ -11,13 +11,14 @@ type Movie = {
   trailer: string;
   casting: string;
   production: string;
+  landscape_image?: string;
   genres?: string;
 };
 
 class MovieRepository {
-  async create(movie: Omit<Movie, "id" | "genres">) {
+  async create(movie: Omit<Movie, "id" | "genres">): Promise<number> {
     const [result] = await databaseClient.query<Result>(
-      "insert into movie (title, synopsis, release_year, duration, poster, trailer, casting, production) values (?, ?, ?, ?, ?, ?, ?, ?)",
+      "insert into movie (title, synopsis, release_year, duration, poster, trailer, casting, production, landscape_image) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         movie.title,
         movie.synopsis,
@@ -27,13 +28,14 @@ class MovieRepository {
         movie.trailer,
         movie.casting,
         movie.production,
+        movie.landscape_image,
       ],
     );
 
     return result.insertId;
   }
 
-  async read(id: number) {
+  async read(id: number): Promise<Movie> {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT
       m.id,
@@ -45,6 +47,7 @@ class MovieRepository {
       m.trailer,
       m.casting,
       m.production,
+      m.landscape_image,
       GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
       FROM movie m
       LEFT JOIN movie_genre mg ON m.id = mg.movie_id
@@ -57,10 +60,11 @@ class MovieRepository {
     return rows[0] as Movie;
   }
 
-  async readAll() {
+  async readAll(): Promise<Movie[]> {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT
       m.id,
+      m.title,
       m.synopsis,
       m.release_year,
       m.duration,
@@ -68,6 +72,7 @@ class MovieRepository {
       m.trailer,
       m.casting,
       m.production,
+      m.landscape_image,
       GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
       FROM movie m
       LEFT JOIN movie_genre mg ON m.id = mg.movie_id
@@ -77,9 +82,9 @@ class MovieRepository {
     return rows as Movie[];
   }
 
-  async update(movie: Movie) {
+  async update(movie: Movie): Promise<number> {
     const [result] = await databaseClient.query<Result>(
-      "update movie set title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?, casting = ?, production = ?, where id = ?",
+      "update movie set title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?, casting = ?, production = ?, landscape_image = ?, where id = ?",
       [
         movie.title,
         movie.synopsis,
@@ -89,12 +94,14 @@ class MovieRepository {
         movie.trailer,
         movie.casting,
         movie.production,
+        movie.landscape_image,
+        movie.id,
       ],
     );
     return result.affectedRows;
   }
 
-  async delete(id: number) {
+  async delete(id: number): Promise<number> {
     const [result] = await databaseClient.query<Result>(
       "delete from movie where id = ?",
       [id],
