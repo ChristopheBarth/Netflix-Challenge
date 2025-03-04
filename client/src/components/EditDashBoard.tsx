@@ -5,9 +5,10 @@ import "../styles/editdashboard.css";
 export default function EditDashBoard() {
   const { movies } = useLoaderData() as { movies: MovieType[] };
   const { revalidate } = useRevalidator();
+  const API = import.meta.env.VITE_API_URL;
   const deleteMovie = (id: number) => {
     return axios
-      .delete(`http://localhost:3310/api/movies/${id}`)
+      .delete(`${API}/api/movies/${id}`)
       .then((response) => {
         response;
         revalidate();
