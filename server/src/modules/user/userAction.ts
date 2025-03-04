@@ -30,7 +30,7 @@ const add: RequestHandler = async (req, res, next) => {
       firstName: req.body.first_name,
       lastName: req.body.last_name,
       email: req.body.email,
-      password: req.body.password,
+      hashedPassword: req.body.hashed_password,
       subscription: req.body.subscription,
       role: req.body.role,
     };
@@ -48,7 +48,7 @@ const edit: RequestHandler = async (req, res, next) => {
       firstName: req.body.first_name,
       lastName: req.body.last_name,
       email: req.body.email,
-      password: req.body.password,
+      hashedPassword: req.body.hashed_password,
       subscription: req.body.subscription,
       role: req.body.role,
     };
