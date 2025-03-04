@@ -9,8 +9,7 @@ export default function EditDashBoard() {
   const deleteMovie = (id: number) => {
     return axios
       .delete(`${API}/api/movies/${id}`)
-      .then((response) => {
-        response;
+      .then(() => {
         revalidate();
       })
       .catch((error) => console.error(error));
