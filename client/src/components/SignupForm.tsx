@@ -17,6 +17,7 @@ const icon = {
 };
 
 export default function SignupForm() {
+  const [showFullForm, setShowFullForm] = useState(false);
   const [user, setUser] = useState({
     firstName: "",
     lastName: "",
@@ -24,6 +25,11 @@ export default function SignupForm() {
     password: "",
     confirmPassword: "",
   } as UserTypes);
+
+  const handleEmailSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setShowFullForm(true);
+  };
 
   const handleChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [e.target.name]: e.target.value });
@@ -55,102 +61,125 @@ export default function SignupForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Créer ton compte</h1>
-      <h3>Tous les champs sont obligatoires</h3>
-      <label htmlFor="first_name">
-        Prénom<p>*</p>
-      </label>
-      <input
-        type="text"
-        id="first_name"
-        name="first_name"
-        value={user.firstName}
-        onChange={handleChangeForm}
-        placeholder="Votre prénom"
-        required
-      />
-      <label htmlFor="last_name">
-        Nom<p>*</p>
-      </label>
-      <input
-        type="text"
-        id="last_name"
-        name="last_name"
-        value={user.lastName}
-        onChange={handleChangeForm}
-        placeholder="Votre nom"
-        required
-      />
-      <label htmlFor="email">
-        Email<p>*</p>
-      </label>
-      <input
-        type="email"
-        id="email"
-        name="email"
-        value={user.email}
-        onChange={handleChangeForm}
-        placeholder="Votre adresse email"
-        required
-      />
-      <div className="password-input">
-        <label htmlFor="password">
-          Mot de passe<p>*</p>
-        </label>
-        <input
-          type={showPassword ? "text" : "password"}
-          id="password"
-          name="password"
-          aria-invalid="false"
-          aria-describedby="password-error-password"
-          value={user.password}
-          onChange={handleChangeForm}
-          placeholder="Votre mot de passe"
-          required
-        />
-        <button type="button" onClick={togglePassword}>
-          <SvgIcons
-            path={showIconPassword.path}
-            height={showIconPassword.height}
-            width={showIconPassword.width}
+    <>
+      {!showFullForm ? (
+        <form onSubmit={handleEmailSubmit}>
+          <h1>S'inscrire</h1>
+          <label htmlFor="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={user.email}
+            onChange={(e) =>
+              setUser((prev) => ({ ...prev, email: e.target.value }))
+            }
+            placeholder="Votre email"
+            required
           />
-        </button>
-      </div>
-      <div className="password-input">
-        <label htmlFor="confirmPassword">
-          Confirmez votre mot de passe<p>*</p>
-        </label>
-        <input
-          type={confirmPassword ? "text" : "password"}
-          id="confirmPassword"
-          name="confirmPassword"
-          value={user.confirmPassword}
-          onChange={handleChangeForm}
-          placeholder="Confirmez votre mot de passe"
-          required
-        />
-        <button type="button" onClick={toggleConfirmPassword}>
-          <SvgIcons
-            path={showIconConfirmPassword.path}
-            height={showIconConfirmPassword.height}
-            width={showIconConfirmPassword.width}
+          <button type="submit">S'inscrire</button>
+          <h2>Déjà membre ?</h2>
+          <Link to="/login">Se connecter</Link>
+        </form>
+      ) : (
+        <form onSubmit={handleSubmit}>
+          <h1>Créer ton compte</h1>
+          <h3>Tous les champs sont obligatoires</h3>
+          <label htmlFor="first_name">
+            Prénom<p>*</p>
+          </label>
+          <input
+            type="text"
+            id="first_name"
+            name="first_name"
+            value={user.firstName}
+            onChange={handleChangeForm}
+            placeholder="Votre prénom"
+            required
           />
-        </button>
-      </div>
-      <label htmlFor="checkbox" className="checkbox">
-        <input
-          type="checkbox"
-          id="checkbox"
-          checked={checked}
-          onChange={toggleCheck}
-        />
-        <p>En cochant cette case, vous acceptez les CGU.</p>
-      </label>
-      <button type="submit" className="submit" disabled={!checked}>
-        Créer un compte
-      </button>
-      <Link to="#">Se connecter</Link>
-    </form>
+          <label htmlFor="last_name">
+            Nom<p>*</p>
+          </label>
+          <input
+            type="text"
+            id="last_name"
+            name="last_name"
+            value={user.lastName}
+            onChange={handleChangeForm}
+            placeholder="Votre nom"
+            required
+          />
+          <label htmlFor="email">
+            Email<p>*</p>
+          </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value={user.email}
+            onChange={handleChangeForm}
+            placeholder="Votre adresse email"
+            required
+          />
+          <div className="password-input">
+            <label htmlFor="password">
+              Mot de passe<p>*</p>
+            </label>
+            <input
+              type={showPassword ? "text" : "password"}
+              id="password"
+              name="password"
+              aria-invalid="false"
+              aria-describedby="password-error-password"
+              value={user.password}
+              onChange={handleChangeForm}
+              placeholder="Votre mot de passe"
+              required
+            />
+            <button type="button" onClick={togglePassword}>
+              <SvgIcons
+                path={showIconPassword.path}
+                height={showIconPassword.height}
+                width={showIconPassword.width}
+              />
+            </button>
+          </div>
+          <div className="password-input">
+            <label htmlFor="confirmPassword">
+              Confirmez votre mot de passe<p>*</p>
+            </label>
+            <input
+              type={confirmPassword ? "text" : "password"}
+              id="confirmPassword"
+              name="confirmPassword"
+              value={user.confirmPassword}
+              onChange={handleChangeForm}
+              placeholder="Confirmez votre mot de passe"
+              required
+            />
+            <button type="button" onClick={toggleConfirmPassword}>
+              <SvgIcons
+                path={showIconConfirmPassword.path}
+                height={showIconConfirmPassword.height}
+                width={showIconConfirmPassword.width}
+              />
+            </button>
+          </div>
+          <label htmlFor="checkbox" className="checkbox">
+            <input
+              type="checkbox"
+              id="checkbox"
+              checked={checked}
+              onChange={toggleCheck}
+            />
+            <p>En cochant cette case, vous acceptez les CGU.</p>
+          </label>
+          <button type="submit" className="submit" disabled={!checked}>
+            Créer un compte
+          </button>
+          <Link to="#">Se connecter</Link>
+        </form>
+      )}
+    </>
   );
 }
