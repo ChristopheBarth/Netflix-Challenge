@@ -20,11 +20,13 @@ interface FormTypes {
 interface MovieType {
   id: number;
   title: string;
-  release_year: string;
+  release_year: number;
   poster: string;
   duration: string;
   synopsis: string;
   trailer: string;
+  casting: string;
+  production: string;
 }
 
 interface MoviesProps {
