@@ -26,6 +26,10 @@ export default function SignupForm() {
     confirmPassword: "",
   } as UserTypes);
 
+  const isValidEmail = (email: string) => {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  };
+
   const handleEmailSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setShowFullForm(true);
@@ -71,13 +75,19 @@ export default function SignupForm() {
             id="email"
             name="email"
             value={user.email}
-            onChange={(e) =>
-              setUser((prev) => ({ ...prev, email: e.target.value }))
-            }
+            onChange={(e) => {
+              setUser((prev) => ({ ...prev, email: e.target.value }));
+            }}
             placeholder="Votre email"
             required
           />
-          <button type="submit">S'inscrire</button>
+          <button
+            type="submit"
+            className="submit"
+            disabled={!isValidEmail(user.email)}
+          >
+            S'inscrire
+          </button>
           <h2>Déjà membre ?</h2>
           <Link to="/login">Se connecter</Link>
         </form>
@@ -90,8 +100,8 @@ export default function SignupForm() {
           </label>
           <input
             type="text"
-            id="first_name"
-            name="first_name"
+            id="firstName"
+            name="firstName"
             value={user.firstName}
             onChange={handleChangeForm}
             placeholder="Votre prénom"
@@ -102,8 +112,8 @@ export default function SignupForm() {
           </label>
           <input
             type="text"
-            id="last_name"
-            name="last_name"
+            id="lastName"
+            name="lastName"
             value={user.lastName}
             onChange={handleChangeForm}
             placeholder="Votre nom"
