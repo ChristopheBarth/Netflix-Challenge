@@ -1,5 +1,5 @@
 .login {
-  height: 60vh;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -28,6 +28,7 @@
   }
   p {
     font-size: 1.2rem;
+    margin-top: 1rem;
     color: rgb(71, 71, 71);
   }
   button {
@@ -51,8 +52,17 @@
 
   button,
   input {
-    padding: 0.5rem 1.5rem;
     border-radius: var(--button-radius);
+    width: 13.75rem;
+    margin-bottom: 1rem;
+  }
+
+  input {
+    padding: 0.7rem;
+  }
+
+  button {
+    padding: 1rem;
   }
 
   button:hover {
@@ -65,12 +75,29 @@
 .login-form {
   display: flex;
   flex-direction: column;
-  width: auto;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+.login-form:last-of-type {
+  margin-bottom: 0;
+}
+
+.container-form {
+  border-radius: var(--button-radius);
+  border: 1px solid rgba(0, 0, 0, 0.382);
+  padding: 1rem 2rem;
+  margin-top: 2rem;
 }
 
 @media only screen and (max-width: 650px) {
+  .login {
+    height: 80vh;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
   .login-page {
-    max-width: 300px;
+    max-width: 336px;
     padding: 0;
   }
 }
