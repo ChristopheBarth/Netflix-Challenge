@@ -10,10 +10,10 @@ import App from "./App";
 import Catalogue from "./pages/Catalogue";
 import Dashboard from "./pages/Dashboard";
 import HomePage from "./pages/HomePage";
+import Login from "./pages/Login";
 import MovieDetail from "./pages/MovieDetail";
 import Signup from "./pages/Signup";
 import { getMovieById, getMovies, getUsers } from "./services/request";
-import Login from "./pages/Login";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
