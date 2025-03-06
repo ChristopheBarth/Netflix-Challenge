@@ -25,6 +25,7 @@ interface MovieType {
   duration: string;
   synopsis: string;
   trailer: string;
+  genres?: string;
 }
 
 interface MoviesProps {

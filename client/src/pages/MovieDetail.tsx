@@ -60,6 +60,10 @@ export default function MovieDetail() {
         />
       </div>
       {/* et ici je veux un section pour afficher la liste des films en correspondance au genre du film */}
+      <section>
+        <h2 className="same-genre">Films du même genre</h2>
+        <div>{movie.genres}</div>
+      </section>
     </>
   );
 }
