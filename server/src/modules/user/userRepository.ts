@@ -44,6 +44,14 @@ class UserRepository {
     return rows as User[];
   }
 
+  async readByEmailWithPassword(email: string) {
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from user where email = ?",
+      [email],
+    );
+    return rows[0];
+  }
+
   async update(user: User) {
     const [result] = await databaseClient.query<Result>(
       "update user set first_name = ?, last_name = ?, email = ?, hashed_password = ?, subscription = ?, role = ? where id = ?",
