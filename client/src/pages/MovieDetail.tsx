@@ -6,12 +6,17 @@ export default function MovieDetail() {
     <>
       <h1>Original digitals</h1>
       <div className="container-movies">
-        <button type="button">
-          <img
-            src={movie.poster}
-            alt={`Affiche de présentation du film ${movie.title}`}
-          />
-        </button>
+        <iframe
+          className="complete-movie"
+          width="100%"
+          height="315"
+          src={movie.trailer}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
         <h2>{movie.title}</h2>
         <div className="informations">
           <p>{movie.release_year}</p>
@@ -25,8 +30,38 @@ export default function MovieDetail() {
             </summary>
             <p>{movie.synopsis.substring(50)}</p>
           </details>
+          <button type="button" className="add-favorite">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="32px"
+              viewBox="0 -960 960 960"
+              width="32px"
+              fill="#black"
+              aria-hidden="true"
+            >
+              <path d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+            </svg>
+          </button>
         </div>
       </div>
+      <div>
+        <h2>Bande annonce</h2>
+        <iframe
+          className="short-movie"
+          width="100%"
+          height="315"
+          src={movie.trailer}
+          title="YouTube video player"
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerPolicy="strict-origin-when-cross-origin"
+          allowFullScreen
+        />
+      </div>
+      <section>
+        <h2 className="same-genre">Films du même genre</h2>
+        <p>{movie.genres}</p>
+      </section>
     </>
   );
 }

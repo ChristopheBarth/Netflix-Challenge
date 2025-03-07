@@ -44,17 +44,31 @@
   display: flex;
   overflow-y: hidden;
   overflow-x: scroll;
+  scrollbar-color: #76767639 transparent;
+  scrollbar-width: thin;
   gap: 1rem;
-  margin: 1rem;
-  margin-top: 1rem;
+  margin: 1rem 0;
+  min-height: auto;
 }
-.card_movie,
-img {
+
+.card-movie-img {
   display: flex;
-  max-height: 10rem;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.card-movie-img img {
+  height: 10.4rem;
+  width: 7.8rem;
+  margin-bottom: 1rem;
   border-radius: var(--button-radius);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px
     8px 16px -8px;
+}
+
+.card-movie-img p {
+  color: #767676;
+  font-size: 12px;
 }
 
 section > h2 {
@@ -182,5 +196,13 @@ section > h2 {
   .input-mail {
     margin: 1rem;
     margin-top: 2rem;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .card-movie-img img {
+    height: 20rem;
+    width: 15rem;
+    margin: 2rem 2rem 2rem 0;
   }
 }

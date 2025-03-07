@@ -9,7 +9,16 @@ h1 {
   margin: 2rem;
   border-radius: 10px;
 }
+.complete-movie {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+}
 
+.short-movie {
+  display: flex;
+  align-items: center;
+}
 .container-movies img {
   width: 85%;
   border-radius: 10px;

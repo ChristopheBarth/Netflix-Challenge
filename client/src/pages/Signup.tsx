@@ -3,7 +3,7 @@ import "../styles/signup.css";
 
 export default function Signup() {
   return (
-    <section>
+    <section className="section-signup">
       <SignupForm />
     </section>
   );
