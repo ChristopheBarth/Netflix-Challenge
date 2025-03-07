@@ -8,7 +8,7 @@ export default function MovieDetail() {
       <div className="container-movies">
         <iframe
           className="complete-movie"
-          width="293"
+          width="100%"
           height="315"
           src={movie.trailer}
           title="YouTube video player"
@@ -47,9 +47,10 @@ export default function MovieDetail() {
       </div>
       <div>
         {/* ici je veux faire une section bande annonce */}
+        <h2>Bande annonce</h2>
         <iframe
           className="short-movie"
-          width="293"
+          width="100%"
           height="315"
           src={movie.trailer}
           title="YouTube video player"
@@ -62,7 +63,7 @@ export default function MovieDetail() {
       {/* et ici je veux un section pour afficher la liste des films en correspondance au genre du film */}
       <section>
         <h2 className="same-genre">Films du même genre</h2>
-        <div>{movie.genres}</div>
+        <p>{movie.genres}</p>
       </section>
     </>
   );
