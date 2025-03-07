@@ -1,5 +1,4 @@
 import axios from "axios";
-
 const API = import.meta.env.VITE_API_URL;
 
 const getMovies = () => {
@@ -26,4 +25,14 @@ const getUsers = () => {
     });
 };
 
-export { getMovieById, getMovies, getUsers };
+const editMovie = async (id: number, updatedMovie: MovieType) => {
+  try {
+    const response = await axios.put(`${API}/api/movies/${id}`, updatedMovie);
+    return response;
+  } catch (error) {
+    console.error("Erreur lors de la mise à jour du film :", error);
+    throw error;
+  }
+};
+
+export { getMovieById, getMovies, getUsers, editMovie };

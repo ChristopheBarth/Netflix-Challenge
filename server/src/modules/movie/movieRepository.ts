@@ -5,7 +5,7 @@ type Movie = {
   id: number;
   title: string;
   synopsis: string;
-  releaseYear: number;
+  release_year: number;
   duration: string;
   poster: string;
   trailer: string;
@@ -22,7 +22,7 @@ class MovieRepository {
       [
         movie.title,
         movie.synopsis,
-        movie.releaseYear,
+        movie.release_year,
         movie.duration,
         movie.poster,
         movie.trailer,
@@ -84,11 +84,11 @@ class MovieRepository {
 
   async update(movie: Movie): Promise<number> {
     const [result] = await databaseClient.query<Result>(
-      "update movie set title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?, casting = ?, production = ?, landscape_image = ?, where id = ?",
+      "UPDATE movie SET title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?, casting = ?, production = ?, landscape_image = ? WHERE id = ?",
       [
         movie.title,
         movie.synopsis,
-        movie.releaseYear,
+        movie.release_year,
         movie.duration,
         movie.poster,
         movie.trailer,

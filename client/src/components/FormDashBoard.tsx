@@ -34,6 +34,7 @@ export default function FormDashBoard() {
       <input
         type="text"
         name="title"
+        value={newMovie.title}
         onChange={handleChangeMovieForm}
         placeholder="Titre du film"
       />

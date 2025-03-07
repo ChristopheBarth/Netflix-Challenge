@@ -30,7 +30,7 @@ const add: RequestHandler = async (req, res, next) => {
     const movie = {
       title: req.body.title,
       synopsis: req.body.synopsis,
-      releaseYear: Number(req.body.releaseYear),
+      release_year: Number(req.body.release_year),
       duration: req.body.duration,
       poster: req.body.poster,
       trailer: req.body.trailer,
@@ -52,7 +52,7 @@ const edit: RequestHandler = async (req, res, next) => {
       id: Number(req.params.id),
       title: req.body.title,
       synopsis: req.body.synopsis,
-      releaseYear: req.body.releaseYear,
+      release_year: req.body.release_year,
       duration: req.body.duration,
       poster: req.body.poster,
       trailer: req.body.trailer,
