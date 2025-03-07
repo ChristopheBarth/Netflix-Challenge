@@ -2,7 +2,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import { useLoaderData, useRevalidator } from "react-router-dom";
 import "../styles/editdashboard.css";
-import { putMovies } from "../services/request";
+import { editMovies } from "../services/request";
 
 export default function EditDashBoard() {
   const { movies } = useLoaderData() as { movies: MovieType[] };
@@ -34,7 +34,7 @@ export default function EditDashBoard() {
 
   const handleEditMovie = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    putMovies(updatedMovie.id, updatedMovie)
+    editMovies(updatedMovie.id, updatedMovie)
       .then(() => {
         revalidate();
         closeModal();

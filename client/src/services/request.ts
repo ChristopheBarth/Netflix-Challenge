@@ -25,7 +25,7 @@ const getUsers = () => {
     });
 };
 
-const putMovies = async (id: number, updatedMovie: MovieType) => {
+const editMovies = async (id: number, updatedMovie: MovieType) => {
   try {
     const response = await axios.put(`${API}/api/movies/${id}`, updatedMovie);
     return response;
@@ -35,4 +35,4 @@ const putMovies = async (id: number, updatedMovie: MovieType) => {
   }
 };
 
-export { getMovieById, getMovies, getUsers, putMovies };
+export { getMovieById, getMovies, getUsers, editMovies };
