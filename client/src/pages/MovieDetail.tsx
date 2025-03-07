@@ -30,7 +30,6 @@ export default function MovieDetail() {
             </summary>
             <p>{movie.synopsis.substring(50)}</p>
           </details>
-          {/* ici je veux creer un bouton qui permet d'ajouter un film a ma liste des favoris */}
           <button type="button" className="add-favorite">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -46,7 +45,6 @@ export default function MovieDetail() {
         </div>
       </div>
       <div>
-        {/* ici je veux faire une section bande annonce */}
         <h2>Bande annonce</h2>
         <iframe
           className="short-movie"
@@ -60,7 +58,6 @@ export default function MovieDetail() {
           allowFullScreen
         />
       </div>
-      {/* et ici je veux un section pour afficher la liste des films en correspondance au genre du film */}
       <section>
         <h2 className="same-genre">Films du même genre</h2>
         <p>{movie.genres}</p>
