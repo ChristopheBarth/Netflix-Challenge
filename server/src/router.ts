@@ -19,7 +19,7 @@ router.delete("/api/movies/:id", movieActions.destroy);
 import hashPassword from "./middlewares/hashPassword";
 import userAction from "./modules/user/userAction";
 
-router.get("/api/users", auth.verify, userAction.browse);
+router.get("/api/users", userAction.browse);
 
 router.get("/api/users/:id", userAction.read);
 router.post("/api/users", auth.hashPassword, userAction.add);

@@ -11,9 +11,7 @@ declare global {
         isAdmin: boolean;
       };
       //
-      user?: {
-        email: string;
-        password: string;
+      user: {
         role: string;
         id: number;
       };
