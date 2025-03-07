@@ -2,6 +2,7 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import { useLoaderData, useRevalidator } from "react-router-dom";
 import "../styles/editdashboard.css";
+import { putMovies } from "../services/request";
 
 export default function EditDashBoard() {
   const { movies } = useLoaderData() as { movies: MovieType[] };
@@ -18,22 +19,33 @@ export default function EditDashBoard() {
   };
 
   const [updatedMovie, setUpdatedMovie] = useState({
-    id: Number(""),
+    id: Number(),
     title: "",
     poster: "",
-    release_year: Number(""),
+    release_year: Number(),
     synopsis: "",
     duration: "",
     trailer: "",
     casting: "",
     production: "",
+    landscape_image: "",
+    genres: "",
   });
-  console.info(movies);
-  const editMovie = (id: number) => {
-    return axios
-      .put(`${API}/api/movies/${id}`, updatedMovie)
-      .then((response) => response.data)
-      .catch((error) => console.error(error));
+
+  const handleEditMovie = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    putMovies(updatedMovie.id, updatedMovie)
+      .then(() => {
+        revalidate();
+        closeModal();
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la mise à jour du film :", error);
+      });
+  };
+
+  const handleChangeMovieForm = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUpdatedMovie({ ...updatedMovie, [e.target.name]: e.target.value });
   };
 
   const dialogRef = useRef<HTMLDialogElement | null>(null);
@@ -88,16 +100,14 @@ export default function EditDashBoard() {
           }}
         >
           {updatedMovie && (
-            <form
-              onSubmit={() => editMovie(updatedMovie.id)}
-              className="form-dashboard"
-            >
+            <form onSubmit={handleEditMovie} className="form-dashboard">
               <p>Titre</p>
               <input
                 type="text"
                 value={updatedMovie.title}
                 name="title"
                 placeholder="Titre du film"
+                onChange={handleChangeMovieForm}
               />
               <p>Affiche</p>
               <input
@@ -106,6 +116,15 @@ export default function EditDashBoard() {
                 name="poster"
                 id=""
                 placeholder="URL"
+                onChange={handleChangeMovieForm}
+              />
+              <p>Genre</p>
+              <input
+                type="text"
+                value={updatedMovie.genres}
+                name="genre"
+                placeholder="Genre"
+                onChange={handleChangeMovieForm}
               />
               <p>Date de sortie</p>
               <input
@@ -114,6 +133,7 @@ export default function EditDashBoard() {
                 value={updatedMovie.release_year}
                 name="release_year"
                 placeholder="AAAA"
+                onChange={handleChangeMovieForm}
               />
               <p>Synopsis</p>
               <input
@@ -121,6 +141,7 @@ export default function EditDashBoard() {
                 value={updatedMovie.synopsis}
                 name="synopsis"
                 placeholder="Synopsis"
+                onChange={handleChangeMovieForm}
               />
               <p>Durée</p>
               <input
@@ -128,6 +149,7 @@ export default function EditDashBoard() {
                 value={updatedMovie.duration}
                 name="duration"
                 placeholder="0:00:00"
+                onChange={handleChangeMovieForm}
               />
               <p>Bandes annonces</p>
               <input
@@ -135,6 +157,7 @@ export default function EditDashBoard() {
                 value={updatedMovie.trailer}
                 name="trailer"
                 placeholder="URL"
+                onChange={handleChangeMovieForm}
               />
               <p>Casting</p>
               <input
@@ -142,6 +165,7 @@ export default function EditDashBoard() {
                 name="casting"
                 placeholder="Nom/prénoms acteurs"
                 value={updatedMovie.casting}
+                onChange={handleChangeMovieForm}
               />
               <p>Production</p>
               <input
@@ -149,8 +173,17 @@ export default function EditDashBoard() {
                 name="production"
                 placeholder="Noms/prénoms réalisateur"
                 value={updatedMovie.production}
+                onChange={handleChangeMovieForm}
               />
-              <input type="submit" className="submit-form" />
+              <p>Landscape image</p>
+              <input
+                type="text"
+                name="landscape_image"
+                placeholder="lien de l'image"
+                value={updatedMovie.landscape_image}
+                onChange={handleChangeMovieForm}
+              />
+              <button type="submit">Modifier</button>
             </form>
           )}
         </div>

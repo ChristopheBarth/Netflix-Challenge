@@ -27,6 +27,8 @@ interface MovieType {
   trailer: string;
   casting: string;
   production: string;
+  landscape_image: string;
+  genres: string;
 }
 
 interface MoviesProps {
