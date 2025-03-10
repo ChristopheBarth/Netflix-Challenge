@@ -9,7 +9,7 @@ export default function UserDashBoard() {
       {users.map((user) => (
         <div key={user.id} className="user-dashboard">
           <p>
-            {user.lastName} {user.firstName}
+            {user.last_name} {user.first_name}
           </p>
           <p>{user.email}</p>
           <p>{user.role}</p>
