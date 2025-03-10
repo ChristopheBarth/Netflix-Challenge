@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SvgIcons from "./SvgIcons";
 import "../styles/signupForm.css";
 import { createUser } from "../services/request";
@@ -18,6 +18,7 @@ const icon = {
 };
 
 export default function SignupForm() {
+  const navigate = useNavigate();
   const [showFullForm, setShowFullForm] = useState(false);
   const [user, setUser] = useState({
     first_name: "",
@@ -42,7 +43,9 @@ export default function SignupForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createUser(user);
+    createUser(user).then(() => {
+      navigate("/catalogue");
+    });
   };
 
   const [showPassword, setShowPassword] = useState(false);
