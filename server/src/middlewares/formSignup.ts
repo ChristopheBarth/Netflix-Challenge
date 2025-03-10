@@ -22,17 +22,16 @@ const signupSchema = Joi.object({
     "string.min": "minumum 8 characters",
     "string.max": "maximum 50 characters",
   }),
-  confirmPassword: Joi.string().min(8).max(50).required().messages({
-    "string.empty": "le champ est obligatoire",
-    "string.min": "minumum 8 characters",
-    "string.max": "maximum 50 characters",
+  confirmPassword: Joi.string().valid(Joi.ref("password")).required().messages({
+    "any.only": "Les mots de passe ne correspondent pas",
+    "string.empty": "Le champ est obligatoire",
   }),
 });
 
 const validate: RequestHandler = (req, res, next) => {
   const { error } = signupSchema.validate(req.body);
   if (error) {
-    res.json({ error: error.details[0].message });
+    res.status(400).json({ error: error.details.map((err) => err.message) });
   } else {
     next();
   }
