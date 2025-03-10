@@ -48,7 +48,7 @@ export default function SignupForm() {
       await createUser(user);
       notify();
       setTimeout(() => {
-        navigate("/catalogue");
+        navigate("/login");
       }, 5000);
     } catch (error) {
       toast.error("Erreur lors de la création du compte ❌", {
