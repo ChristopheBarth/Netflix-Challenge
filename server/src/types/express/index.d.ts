@@ -6,8 +6,15 @@ declare global {
     export interface Request {
       /* ************************************************************************* */
       // Add your custom properties here, for example:
+      auth: {
+        name: string;
+        isAdmin: boolean;
+      };
       //
-      // user?: { ... }
+      user: {
+        role: string;
+        id: number;
+      };
       /* ************************************************************************* */
     }
   }
