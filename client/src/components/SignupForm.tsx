@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import SvgIcons from "./SvgIcons";
 import "../styles/signupForm.css";
+import { Bounce, ToastContainer, toast } from "react-toastify";
 import { createUser } from "../services/request";
 
 const icon = {
@@ -41,11 +42,27 @@ export default function SignupForm() {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createUser(user).then(() => {
-      navigate("/catalogue");
-    });
+    try {
+      await createUser(user);
+      notify();
+      setTimeout(() => {
+        navigate("/catalogue");
+      }, 5000);
+    } catch (error) {
+      toast.error("Erreur lors de la création du compte ❌", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+    }
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -68,6 +85,19 @@ export default function SignupForm() {
   const toggleCheck = () => {
     setChecked(!checked);
   };
+
+  const notify = () =>
+    toast.success("Votre profil a bien été créé 🚀", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
 
   return (
     <>
@@ -189,9 +219,24 @@ export default function SignupForm() {
             />
             <p>En cochant cette case, vous acceptez les CGU.</p>
           </label>
-          <button type="submit" className="submit" disabled={!checked}>
-            Créer un compte
-          </button>
+          <div>
+            <button type="submit" className="submit" disabled={!checked}>
+              Créer un compte
+            </button>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              transition={Bounce}
+            />
+          </div>
         </form>
       )}
     </>
