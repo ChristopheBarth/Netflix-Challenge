@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import SvgIcons from "./SvgIcons";
 import "../styles/signupForm.css";
+import { createUser } from "../services/request";
 
 const icon = {
   visible: {
@@ -19,12 +20,12 @@ const icon = {
 export default function SignupForm() {
   const [showFullForm, setShowFullForm] = useState(false);
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
     confirmPassword: "",
-  } as UserTypes);
+  } as UserData);
 
   const isValidEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -41,6 +42,7 @@ export default function SignupForm() {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    createUser(user);
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -100,9 +102,9 @@ export default function SignupForm() {
           </label>
           <input
             type="text"
-            id="firstName"
-            name="firstName"
-            value={user.firstName}
+            id="first_name"
+            name="first_name"
+            value={user.first_name}
             onChange={handleChangeForm}
             placeholder="Votre prénom"
             required
@@ -112,9 +114,9 @@ export default function SignupForm() {
           </label>
           <input
             type="text"
-            id="lastName"
-            name="lastName"
-            value={user.lastName}
+            id="last_name"
+            name="last_name"
+            value={user.last_name}
             onChange={handleChangeForm}
             placeholder="Votre nom"
             required
@@ -187,7 +189,6 @@ export default function SignupForm() {
           <button type="submit" className="submit" disabled={!checked}>
             Créer un compte
           </button>
-          <Link to="#">Se connecter</Link>
         </form>
       )}
     </>

@@ -27,8 +27,8 @@ const read: RequestHandler = async (req, res, next) => {
 const add: RequestHandler = async (req, res, next) => {
   try {
     const user = {
-      firstName: req.body.first_name,
-      lastName: req.body.last_name,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       email: req.body.email,
       hashedPassword: req.body.hashed_password,
       subscription: req.body.subscription,
@@ -45,8 +45,8 @@ const edit: RequestHandler = async (req, res, next) => {
   try {
     const user = {
       id: Number(req.params.id),
-      firstName: req.body.first_name,
-      lastName: req.body.last_name,
+      first_name: req.body.first_name,
+      last_name: req.body.last_name,
       email: req.body.email,
       hashedPassword: req.body.hashed_password,
       subscription: req.body.subscription,

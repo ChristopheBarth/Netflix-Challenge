@@ -1,4 +1,5 @@
 import axios from "axios";
+
 const API = import.meta.env.VITE_API_URL;
 
 const getMovies = () => {
@@ -35,4 +36,14 @@ const editMovie = async (id: number, updatedMovie: MovieType) => {
   }
 };
 
-export { getMovieById, getMovies, getUsers, editMovie };
+const createUser = async (userData: UserData) => {
+  try {
+    const response = await axios.post(`${API}/api/users`, userData);
+    return response;
+  } catch (error) {
+    console.error("Erreur lors de la création utilisateur :", error);
+    throw error;
+  }
+};
+
+export { getMovieById, getMovies, getUsers, editMovie, createUser };
