@@ -1,6 +1,6 @@
 import databaseClient from "../../../database/client";
-
 import type { Result, Rows } from "../../../database/client";
+
 type User = {
   id: number;
   first_name: string;
@@ -66,6 +66,20 @@ class UserRepository {
       [id],
     );
     return result.affectedRows;
+  }
+
+  async readByUserId(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT m.* 
+      FROM user u 
+      INNER JOIN watchlist wa 
+      ON u.id = wa.user_id 
+      INNER JOIN movie m 
+      ON wa.movie_id = m.id 
+      WHERE u.id = ?`,
+      [id],
+    );
+    return rows;
   }
 }
 

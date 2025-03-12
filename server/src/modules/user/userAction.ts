@@ -72,4 +72,16 @@ const destroy: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-export default { browse, read, add, destroy, edit };
+
+const readByUserId: RequestHandler = async (req, res, next) => {
+  try {
+    const id = Number(req.params.id);
+    const user = await userRepository.read(id);
+    const watchlist = await userRepository.readByUserId(id);
+    res.json({ user: user, watchlist: watchlist });
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { browse, read, add, destroy, edit, readByUserId };

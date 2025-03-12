@@ -1,4 +1,3 @@
--- SQLBook: Code
 create table user (
   id int unsigned primary key auto_increment not null,
   first_name VARCHAR(50) NOT NULL,
@@ -201,4 +200,4 @@ insert into watchlist (movie_id, user_id)
 VALUES
 (1, 1),
 (2, 1),
-(3, 1),
+(3, 1);
