@@ -61,7 +61,7 @@ export default function Login() {
               value={credentials.password}
             />
           </div>
-          <input type="submit" />
+          <button type="submit">Continuer</button>
         </div>
       </form>
     </section>
