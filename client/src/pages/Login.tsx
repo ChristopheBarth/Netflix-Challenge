@@ -37,8 +37,12 @@ export default function Login() {
       .post(`${API}/api/login`, credentials, {
         withCredentials: true,
       })
-      .then(() => {
-        navigate("/dashboard");
+      .then((response) => {
+        if (response.data === "administrateur") {
+          navigate("/dashboard");
+        } else {
+          navigate("/");
+        }
       })
       .catch((error) => {
         console.error(error);

@@ -55,7 +55,8 @@ const login: RequestHandler = async (req, res, next) => {
         expiresIn: "1y",
       });
 
-      res.cookie("auth", token).send("Utilisateur connecté");
+      res.cookie("auth", token);
+      res.send(`${user.role}`);
     }
   } catch (error) {
     next(error);
