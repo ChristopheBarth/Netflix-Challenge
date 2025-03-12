@@ -45,9 +45,9 @@ export default function SignupForm() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const sucess = await createUser(user);
+      const success = await createUser(user);
 
-      if (sucess) {
+      if (success) {
         setTimeout(() => {
           navigate("/login");
         }, 5000);
