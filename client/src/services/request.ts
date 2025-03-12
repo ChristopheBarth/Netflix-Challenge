@@ -1,5 +1,4 @@
 import axios from "axios";
-/* import joi from "joi"; */
 import { Bounce, toast } from "react-toastify";
 
 const API = import.meta.env.VITE_API_URL;
