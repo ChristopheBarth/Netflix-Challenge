@@ -3,8 +3,8 @@ import databaseClient from "../../../database/client";
 import type { Result, Rows } from "../../../database/client";
 type User = {
   id: number;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   email: string;
   hashedPassword: string;
   subscription: boolean;
@@ -14,15 +14,8 @@ type User = {
 class UserRepository {
   async create(user: Omit<User, "id">) {
     const [result] = await databaseClient.query<Result>(
-      "insert into user (first_name, last_name, email, hashed_password, subscription, role) values (?, ?, ?, ?, ?, ?)",
-      [
-        user.firstName,
-        user.lastName,
-        user.email,
-        user.hashedPassword,
-        user.subscription,
-        user.role,
-      ],
+      "insert into user (first_name, last_name, email, hashed_password) values (?, ?, ?, ?)",
+      [user.first_name, user.last_name, user.email, user.hashedPassword],
     );
 
     return result.insertId;
@@ -39,7 +32,7 @@ class UserRepository {
 
   async readAll() {
     const [rows] = await databaseClient.query<Rows>(
-      "select *, first_name as firstName, last_name as lastName from user",
+      "select *, first_name, last_name from user",
     );
     return rows as User[];
   }
@@ -56,8 +49,8 @@ class UserRepository {
     const [result] = await databaseClient.query<Result>(
       "update user set first_name = ?, last_name = ?, email = ?, hashed_password = ?, subscription = ?, role = ? where id = ?",
       [
-        user.firstName,
-        user.lastName,
+        user.first_name,
+        user.last_name,
         user.email,
         user.hashedPassword,
         user.subscription,

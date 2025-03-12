@@ -35,10 +35,19 @@ interface MoviesProps {
   movie: MovieType;
 }
 
+interface UserData {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
+
 interface UserType {
   id: number;
-  firstName: string;
-  lastName: string;
+  first_name: string;
+  last_name: string;
   role: string;
   email: string;
   subscription: boolean;

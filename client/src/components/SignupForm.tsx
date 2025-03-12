@@ -1,7 +1,9 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SvgIcons from "./SvgIcons";
 import "../styles/signupForm.css";
+import { Bounce, ToastContainer } from "react-toastify";
+import { createUser } from "../services/request";
 
 const icon = {
   visible: {
@@ -17,14 +19,15 @@ const icon = {
 };
 
 export default function SignupForm() {
+  const navigate = useNavigate();
   const [showFullForm, setShowFullForm] = useState(false);
   const [user, setUser] = useState({
-    firstName: "",
-    lastName: "",
+    first_name: "",
+    last_name: "",
     email: "",
     password: "",
     confirmPassword: "",
-  } as UserTypes);
+  } as UserData);
 
   const isValidEmail = (email: string) => {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -39,8 +42,19 @@ export default function SignupForm() {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    try {
+      const success = await createUser(user);
+
+      if (success) {
+        setTimeout(() => {
+          navigate("/login");
+        }, 5000);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const [showPassword, setShowPassword] = useState(false);
@@ -100,24 +114,22 @@ export default function SignupForm() {
           </label>
           <input
             type="text"
-            id="firstName"
-            name="firstName"
-            value={user.firstName}
+            id="first_name"
+            name="first_name"
+            value={user.first_name}
             onChange={handleChangeForm}
             placeholder="Votre prénom"
-            required
           />
           <label htmlFor="last_name">
             Nom<p>*</p>
           </label>
           <input
             type="text"
-            id="lastName"
-            name="lastName"
-            value={user.lastName}
+            id="last_name"
+            name="last_name"
+            value={user.last_name}
             onChange={handleChangeForm}
             placeholder="Votre nom"
-            required
           />
           <label htmlFor="email">
             Email<p>*</p>
@@ -129,7 +141,6 @@ export default function SignupForm() {
             value={user.email}
             onChange={handleChangeForm}
             placeholder="Votre adresse email"
-            required
           />
           <div className="password-input">
             <label htmlFor="password">
@@ -144,7 +155,6 @@ export default function SignupForm() {
               value={user.password}
               onChange={handleChangeForm}
               placeholder="Votre mot de passe"
-              required
             />
             <button type="button" onClick={togglePassword}>
               <SvgIcons
@@ -165,7 +175,6 @@ export default function SignupForm() {
               value={user.confirmPassword}
               onChange={handleChangeForm}
               placeholder="Confirmez votre mot de passe"
-              required
             />
             <button type="button" onClick={toggleConfirmPassword}>
               <SvgIcons
@@ -184,10 +193,24 @@ export default function SignupForm() {
             />
             <p>En cochant cette case, vous acceptez les CGU.</p>
           </label>
-          <button type="submit" className="submit" disabled={!checked}>
-            Créer un compte
-          </button>
-          <Link to="#">Se connecter</Link>
+          <div>
+            <button type="submit" className="submit" disabled={!checked}>
+              Créer un compte
+            </button>
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+              transition={Bounce}
+            />
+          </div>
         </form>
       )}
     </>
