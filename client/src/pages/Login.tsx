@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/login.css";
 import axios from "axios";
 import { useState } from "react";
-import { ToastContainer, toast, Flip } from "react-toastify";
+import { Flip, ToastContainer, toast } from "react-toastify";
 export default function Login() {
   const API = import.meta.env.VITE_API_URL;
   const navigate = useNavigate();
