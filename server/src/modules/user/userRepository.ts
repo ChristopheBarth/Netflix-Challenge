@@ -23,7 +23,7 @@ class UserRepository {
 
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "select * from user where id = ?",
+      "SELECT first_name, last_name, email, role FROM user WHERE id = ?",
       [id],
     );
 
