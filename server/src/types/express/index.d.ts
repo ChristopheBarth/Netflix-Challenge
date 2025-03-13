@@ -14,6 +14,7 @@ declare global {
       user: {
         role: string;
         id: number;
+        email: string;
       };
       /* ************************************************************************* */
     }

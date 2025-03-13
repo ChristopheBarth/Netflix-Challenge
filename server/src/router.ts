@@ -22,12 +22,11 @@ router.delete("/api/movies/:id", movieActions.destroy);
 /* ************************************************************************ */
 
 import formSignup from "./middlewares/formSignup";
-import hashPassword from "./middlewares/hashPassword";
 import userAction from "./modules/user/userAction";
 
 router.get("/api/users", userAction.browse);
+router.get("/api/users/watchlist", auth.verify, userAction.readWatchlistUser);
 router.get("/api/users/:id", userAction.read);
-router.get("/api/watchlist/users/:id", userAction.readByUserId);
 
 router.post("/api/users", auth.hashPassword, userAction.add);
 router.post(

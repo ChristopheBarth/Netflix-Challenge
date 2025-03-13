@@ -68,7 +68,7 @@ class UserRepository {
     return result.affectedRows;
   }
 
-  async readByUserId(id: number) {
+  async readWatchlistByUser(id: number) {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT m.* 
       FROM user u 
