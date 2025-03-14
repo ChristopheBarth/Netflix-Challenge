@@ -17,7 +17,7 @@ import { getMovieById, getMovies, getUsers } from "./services/request";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
-
+import { AuthProvider } from "./services/AuthContext";
 /* ************************************************************************* */
 
 // Create router configuration with routes
@@ -74,7 +74,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 );
 
