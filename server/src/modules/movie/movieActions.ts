@@ -37,6 +37,7 @@ const add: RequestHandler = async (req, res, next) => {
       casting: req.body.casting,
       production: req.body.production,
       landscape_image: req.body.landscape_image,
+      premium: req.body.premium,
     };
     console.info("movie", movie);
     const insertId = await movieRepository.create(movie);
@@ -59,6 +60,7 @@ const edit: RequestHandler = async (req, res, next) => {
       casting: req.body.casting,
       production: req.body.production,
       landscape_image: req.body.landscape_image,
+      premium: req.body.premium,
     };
     const affectedRows = await movieRepository.update(movie);
     if (affectedRows === 0) {
