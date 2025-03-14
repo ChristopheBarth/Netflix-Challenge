@@ -81,12 +81,12 @@ class UserRepository {
     );
     return rows;
   }
-  async addWatchlist(userId: number, movieId: number) {
-    const [result] = await databaseClient.query<Result>(
-      "insert into watchlist ( movie_id, user_id ) values (?, ?)",
-      [movieId, userId],
+  async addToWatchlist(user_id: number, movie_id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "insert into watchlist (user_id, movie_id) values (?, ?)",
+      [user_id, movie_id],
     );
-    return result.insertId;
+    return rows;
   }
 }
 
