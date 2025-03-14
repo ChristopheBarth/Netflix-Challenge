@@ -39,7 +39,6 @@ const add: RequestHandler = async (req, res, next) => {
       landscape_image: req.body.landscape_image,
       premium: req.body.premium,
     };
-    console.info("movie", movie);
     const insertId = await movieRepository.create(movie);
     res.status(201).json({ insertId });
   } catch (err) {
