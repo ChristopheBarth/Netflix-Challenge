@@ -2,8 +2,13 @@ import { useLoaderData } from "react-router-dom";
 import MovieCards from "../components/MovieCards";
 import "../styles/catalogue.css";
 
-export default function ConnexionPage() {
+export default function Catalogue() {
   const movies = useLoaderData() as MovieType[];
+  const freeMovies = movies.filter((movie) => !movie.premium);
+  const premiumMovies = movies.filter((movie) => movie.premium);
+  const sfMovies = movies.filter((movie) =>
+    movie.genres.includes("Science-fiction"),
+  );
   return (
     <>
       <div className="first-container">
@@ -36,13 +41,13 @@ export default function ConnexionPage() {
       <div className="show-movies">
         <h2>Tendances Actuelles</h2>
         <section className="movie-container">
-          {movies.map((movie) => (
+          {sfMovies.map((movie) => (
             <MovieCards key={movie.id} movie={movie} />
           ))}
         </section>
         <h2>Offres Premium</h2>
         <section className="movie-container">
-          {movies.map((movie) => (
+          {premiumMovies.map((movie) => (
             <MovieCards key={movie.id} movie={movie} />
           ))}
         </section>
@@ -54,7 +59,7 @@ export default function ConnexionPage() {
         </section>
         <h2>Films gratuit</h2>
         <section className="movie-container">
-          {movies.map((movie) => (
+          {freeMovies.map((movie) => (
             <MovieCards key={movie.id} movie={movie} />
           ))}
         </section>

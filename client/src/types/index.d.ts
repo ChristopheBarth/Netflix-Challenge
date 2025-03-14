@@ -29,6 +29,7 @@ interface MovieType {
   production: string;
   landscape_image: string;
   genres: string;
+  premium: boolean;
 }
 
 interface MoviesProps {

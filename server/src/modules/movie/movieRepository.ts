@@ -13,12 +13,13 @@ type Movie = {
   production: string;
   landscape_image?: string;
   genres?: string;
+  premium: boolean;
 };
 
 class MovieRepository {
   async create(movie: Omit<Movie, "id" | "genres">): Promise<number> {
     const [result] = await databaseClient.query<Result>(
-      "insert into movie (title, synopsis, release_year, duration, poster, trailer, casting, production, landscape_image) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "insert into movie (title, synopsis, release_year, duration, poster, trailer, casting, production, landscape_image, premium) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         movie.title,
         movie.synopsis,
@@ -29,6 +30,7 @@ class MovieRepository {
         movie.casting,
         movie.production,
         movie.landscape_image,
+        movie.premium,
       ],
     );
 
@@ -48,6 +50,7 @@ class MovieRepository {
       m.casting,
       m.production,
       m.landscape_image,
+      m.premium,
       GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
       FROM movie m
       LEFT JOIN movie_genre mg ON m.id = mg.movie_id
@@ -73,6 +76,7 @@ class MovieRepository {
       m.casting,
       m.production,
       m.landscape_image,
+      m.premium,
       GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
       FROM movie m
       LEFT JOIN movie_genre mg ON m.id = mg.movie_id
@@ -84,7 +88,7 @@ class MovieRepository {
 
   async update(movie: Movie): Promise<number> {
     const [result] = await databaseClient.query<Result>(
-      "UPDATE movie SET title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?, casting = ?, production = ?, landscape_image = ? WHERE id = ?",
+      "UPDATE movie SET title = ?, synopsis = ?, release_year = ?, duration = ?, poster = ?, trailer = ?, casting = ?, production = ?, landscape_image = ?, premium = ? WHERE id = ?",
       [
         movie.title,
         movie.synopsis,
@@ -95,6 +99,7 @@ class MovieRepository {
         movie.casting,
         movie.production,
         movie.landscape_image,
+        movie.premium,
         movie.id,
       ],
     );
