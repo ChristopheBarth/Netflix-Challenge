@@ -47,6 +47,8 @@ export default function Login() {
         setRole(response.data.role);
         if (response.data.role === "utilisateur") {
           navigate("/catalogue");
+        } else if (response.data.role === "administrateur") {
+          navigate("/dashboard");
         } else {
           navigate("/");
         }
