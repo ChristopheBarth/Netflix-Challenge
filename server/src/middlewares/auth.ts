@@ -64,6 +64,7 @@ const login: RequestHandler = async (req, res, next) => {
 };
 
 const verify: RequestHandler = async (req, res, next) => {
+  console.info("coucou");
   if (!process.env.APP_SECRET) {
     throw new Error("Vous n'avez pas configuré votre APP_SECRET dans le .env");
   }
