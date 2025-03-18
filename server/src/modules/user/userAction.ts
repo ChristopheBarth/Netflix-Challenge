@@ -88,10 +88,12 @@ const addWatchlist: RequestHandler = async (req, res, next) => {
   try {
     const watchlist = {
       movie_id: req.body.movie_id,
-      user_id: req.body.user_id,
+      user_id: req.user.id,
     };
-    const insertId = await userRepository.addWatchlist(watchlist);
-    res.status(201).json({ insertId });
+    const id = Number(req.user.id);
+    const user = await userRepository.read(id);
+    const watchlistId = await userRepository.addMovieToUserWatchlist(watchlist);
+    res.status(201).json({ user: user, watchlist: watchlistId });
   } catch (err) {
     next(err);
   }
