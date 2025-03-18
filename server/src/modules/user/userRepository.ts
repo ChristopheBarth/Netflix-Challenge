@@ -89,13 +89,5 @@ class UserRepository {
     return result.insertId;
   }
 }
-// class UserRepository {
-//   async create(user: Omit<User, "id">) {
-//     const [result] = await databaseClient.query<Result>(
-//       "insert into user (first_name, last_name, email, hashed_password) values (?, ?, ?, ?)",
-//       [user.first_name, user.last_name, user.email, user.hashedPassword],
-//     );
-// return result.insertId;
-// }
 
 export default new UserRepository();
