@@ -35,6 +35,7 @@ router.post(
   auth.hashPassword,
   userAction.add,
 );
+router.post("/api/users/watchlist", auth.verify, userAction.addWatchlist);
 router.post("/api/login", auth.login);
 
 router.put("/api/users/:id", userAction.edit);
