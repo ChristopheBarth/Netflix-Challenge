@@ -78,7 +78,7 @@ const createUser = (userData: UserData): Promise<boolean> => {
 
 const getAuthorization = () => {
   return axios
-    .get("http://localhost:3310/api/checkAdmin", {
+    .get(`${API}/api/checkAdmin`, {
       withCredentials: true,
     })
     .then((response) => response)
