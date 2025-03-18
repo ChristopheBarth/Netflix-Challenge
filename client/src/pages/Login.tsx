@@ -3,9 +3,10 @@ import "../styles/login.css";
 import axios from "axios";
 import { useState } from "react";
 import { Flip, ToastContainer, toast } from "react-toastify";
+import { useAuth } from "../services/AuthContext";
+
 export default function Login() {
   const API = import.meta.env.VITE_API_URL;
-  const navigate = useNavigate();
   const notify = () =>
     toast.error(
       "Erreur lors de la connexion, mot de passe ou email incorrect",
@@ -25,6 +26,11 @@ export default function Login() {
     email: "",
     password: "",
   });
+
+  const navigate = useNavigate();
+
+  const { setRole } = useAuth();
+
   const handleChangeCredentials = (e: React.ChangeEvent<HTMLInputElement>) => {
     setCredentials({
       ...credentials,
@@ -38,10 +44,11 @@ export default function Login() {
         withCredentials: true,
       })
       .then((response) => {
-        if (response.data === "administrateur") {
+        setRole(response.data.role);
+        if (response.data.role === "administrateur") {
           navigate("/dashboard");
         } else {
-          navigate("/");
+          navigate("/catalogue");
         }
       })
       .catch((error) => {

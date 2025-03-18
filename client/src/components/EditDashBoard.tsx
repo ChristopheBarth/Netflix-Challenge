@@ -30,6 +30,7 @@ export default function EditDashBoard() {
     production: "",
     landscape_image: "",
     genres: "",
+    premium: true,
   });
 
   const handleEditMovie = (e: React.FormEvent<HTMLFormElement>) => {
