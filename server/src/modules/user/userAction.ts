@@ -84,6 +84,19 @@ const readWatchlistUser: RequestHandler = async (req, res, next) => {
   }
 };
 
+const addWatchlist: RequestHandler = async (req, res, next) => {
+  try {
+    const watchlist = {
+      movie_id: req.body.movie_id,
+      user_id: req.body.user_id,
+    };
+    const insertId = await userRepository.addWatchlist(watchlist);
+    res.status(201).json({ insertId });
+  } catch (err) {
+    next(err);
+  }
+};
+
 export default {
   browse,
   read,
@@ -91,4 +104,5 @@ export default {
   destroy,
   edit,
   readWatchlistUser,
+  addWatchlist,
 };

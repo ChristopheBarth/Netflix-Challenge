@@ -81,13 +81,21 @@ class UserRepository {
     );
     return rows;
   }
-  async addToWatchlist(user_id: number, movie_id: number) {
-    const [rows] = await databaseClient.query<Rows>(
+  async addWatchlist(watchlist: { user_id: number; movie_id: number }) {
+    const [result] = await databaseClient.query<Result>(
       "insert into watchlist (user_id, movie_id) values (?, ?)",
-      [user_id, movie_id],
+      [watchlist.user_id, watchlist.movie_id],
     );
-    return rows;
+    return result.insertId;
   }
 }
+// class UserRepository {
+//   async create(user: Omit<User, "id">) {
+//     const [result] = await databaseClient.query<Result>(
+//       "insert into user (first_name, last_name, email, hashed_password) values (?, ?, ?, ?)",
+//       [user.first_name, user.last_name, user.email, user.hashedPassword],
+//     );
+// return result.insertId;
+// }
 
 export default new UserRepository();
