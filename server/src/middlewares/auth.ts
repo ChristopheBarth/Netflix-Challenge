@@ -90,4 +90,16 @@ const verify: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { hashPassword, login, verify };
+const checkIfAdmin: RequestHandler = async (req, res, next) => {
+  try {
+    if (req.user.role === "administrateur") {
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default { hashPassword, login, verify, checkIfAdmin };
