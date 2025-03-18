@@ -99,6 +99,14 @@ const addWatchlist: RequestHandler = async (req, res, next) => {
   }
 };
 
+const sendSuccessStatus: RequestHandler = async (req, res, next) => {
+  try {
+    res.sendStatus(200);
+  } catch (error) {
+    next(error);
+  }
+};
+
 export default {
   browse,
   read,
@@ -107,4 +115,5 @@ export default {
   edit,
   readWatchlistUser,
   addWatchlist,
+  sendSuccessStatus,
 };

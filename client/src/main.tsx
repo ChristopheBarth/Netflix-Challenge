@@ -9,15 +9,22 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Catalogue from "./pages/Catalogue";
 import Dashboard from "./pages/Dashboard";
+import Forbidden from "./pages/Forbidden";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import MovieDetail from "./pages/MovieDetail";
 import Signup from "./pages/Signup";
-import { getMovieById, getMovies, getUsers } from "./services/request";
+import {
+  getAuthorization,
+  getMovieById,
+  getMovies,
+  getUsers,
+} from "./services/request";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
 import { AuthProvider } from "./services/AuthContext";
+
 /* ************************************************************************* */
 
 // Create router configuration with routes
@@ -50,9 +57,11 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <Dashboard />,
         loader: async () => ({
+          authorization: await getAuthorization(),
           movies: await getMovies(),
           users: await getUsers(),
         }),
+        errorElement: <Forbidden />,
       },
       {
         path: "/login",

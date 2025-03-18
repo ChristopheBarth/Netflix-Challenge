@@ -76,4 +76,22 @@ const createUser = (userData: UserData): Promise<boolean> => {
   });
 };
 
-export { getMovieById, getMovies, getUsers, editMovie, createUser };
+const getAuthorization = () => {
+  return axios
+    .get("http://localhost:3310/api/checkAdmin", {
+      withCredentials: true,
+    })
+    .then((response) => response)
+    .catch((error) => {
+      throw new Error(error);
+    });
+};
+
+export {
+  getAuthorization,
+  getMovieById,
+  getMovies,
+  getUsers,
+  editMovie,
+  createUser,
+};

@@ -42,6 +42,13 @@ router.put("/api/users/:id", auth.checkIfAdmin, userAction.edit);
 
 router.delete("/api/users/:id", auth.checkIfAdmin, userAction.destroy);
 
+router.get(
+  "/api/checkAdmin",
+  auth.verify,
+  auth.checkIfAdmin,
+  userAction.sendSuccessStatus,
+);
+
 /* ************************************************************************ */
 
 export default router;
