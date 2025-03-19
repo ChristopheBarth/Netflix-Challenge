@@ -73,6 +73,19 @@ const destroy: RequestHandler = async (req, res, next) => {
   }
 };
 
+const destroyWatchlistUser: RequestHandler = async (req, res, next) => {
+  try {
+    const deleteMovie = {
+      user_id: req.user.id,
+      movie_id: req.body.movie_id,
+    };
+    await userRepository.deleteMovieToUserWatchlist(deleteMovie);
+    res.sendStatus(204);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const readWatchlistUser: RequestHandler = async (req, res, next) => {
   try {
     const id = Number(req.user.id);
@@ -116,4 +129,5 @@ export default {
   readWatchlistUser,
   addWatchlist,
   sendSuccessStatus,
+  destroyWatchlistUser,
 };
