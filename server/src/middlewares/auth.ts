@@ -114,10 +114,19 @@ const checkIfAdminOrUser: RequestHandler = async (req, res, next) => {
   }
 };
 
+const logout: RequestHandler = async (req, res, next) => {
+  try {
+    res.clearCookie("auth").send("Déconnexion réussie");
+  } catch (error) {
+    next(error);
+  }
+};
+
 export default {
   hashPassword,
   login,
   verify,
   checkIfAdmin,
   checkIfAdminOrUser,
+  logout,
 };
