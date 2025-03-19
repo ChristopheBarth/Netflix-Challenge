@@ -87,8 +87,20 @@ const getAuthorization = () => {
     });
 };
 
+const getAuthorizationForUsersOrAdmin = () => {
+  return axios
+    .get(`${API}/api/checkAdminOrUser`, {
+      withCredentials: true,
+    })
+    .then((response) => response)
+    .catch((error) => {
+      throw new Error(error);
+    });
+};
+
 export {
   getAuthorization,
+  getAuthorizationForUsersOrAdmin,
   getMovieById,
   getMovies,
   getUsers,

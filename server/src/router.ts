@@ -49,6 +49,13 @@ router.get(
   userAction.sendSuccessStatus,
 );
 
+router.get(
+  "/api/checkAdminOrUser",
+  auth.verify,
+  auth.checkIfAdminOrUser,
+  userAction.sendSuccessStatus,
+);
+
 /* ************************************************************************ */
 
 export default router;
