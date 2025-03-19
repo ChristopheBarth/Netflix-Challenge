@@ -76,32 +76,4 @@ const createUser = (userData: UserData): Promise<boolean> => {
   });
 };
 
-// const addFavorite = async (movieId: number, userId: number) => {
-//   try {
-//     const response = await axios.post(`${API}/api/users/watchlist`, {
-//       movieId,
-//       userId,
-//     });
-//     console.info(response);
-//     return response;
-//   } catch (error) {
-//     console.error("Erreur lors de l'ajout du film aux favoris :", error);
-//     throw error;
-//   }
-// };
-// const addFavorite = () => {
-//   axios
-//     .post(`${API}/api/users/watchlist`)
-//     .then((response) => {
-//       if (response.status === 201) {
-//         console.info(response);
-//       } else {
-//         alert(response.data.error);
-//       }
-//     })
-//     .catch((error) => {
-//       console.error(error);
-//     });
-// };
-
 export { getMovieById, getMovies, getUsers, editMovie, createUser };

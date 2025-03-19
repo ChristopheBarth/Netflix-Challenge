@@ -31,7 +31,7 @@ export default function MovieDetail() {
             </summary>
             <p>{movie.synopsis.substring(50)}</p>
           </details>
-          <FavoriteButton />
+          <FavoriteButton id={movie.id} />
         </div>
       </div>
       <div className="trailer">

@@ -55,6 +55,5 @@ interface UserType {
 }
 
 interface WatchlistType {
-  user_id: number;
-  movie_id: number;
+  id: number;
 }

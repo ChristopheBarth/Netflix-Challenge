@@ -86,7 +86,6 @@ const readWatchlistUser: RequestHandler = async (req, res, next) => {
 
 const addWatchlist: RequestHandler = async (req, res, next) => {
   try {
-    console.info("coucou");
     const watchlist = {
       movie_id: req.body.movie_id,
       user_id: req.user.id,
