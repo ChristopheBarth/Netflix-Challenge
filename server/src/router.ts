@@ -56,6 +56,8 @@ router.get(
   userAction.sendSuccessStatus,
 );
 
+router.get("/api/logout", auth.logout);
+
 /* ************************************************************************ */
 
 export default router;
