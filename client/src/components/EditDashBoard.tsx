@@ -11,7 +11,9 @@ export default function EditDashBoard() {
 
   const deleteMovie = (id: number) => {
     return axios
-      .delete(`${API}/api/movies/${id}`)
+      .delete(`${API}/api/movies/${id}`, {
+        withCredentials: true,
+      })
       .then(() => {
         revalidate();
       })

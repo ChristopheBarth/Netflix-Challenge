@@ -20,7 +20,9 @@ const getMovieById = (id: number) => {
 
 const getUsers = () => {
   return axios
-    .get(`${API}/api/users`)
+    .get(`${API}/api/users`, {
+      withCredentials: true,
+    })
     .then((response) => response.data)
     .catch((error) => {
       console.error(error);
@@ -29,7 +31,9 @@ const getUsers = () => {
 
 const editMovie = async (id: number, updatedMovie: MovieType) => {
   try {
-    const response = await axios.put(`${API}/api/movies/${id}`, updatedMovie);
+    const response = await axios.put(`${API}/api/movies/${id}`, updatedMovie, {
+      withCredentials: true,
+    });
     return response;
   } catch (error) {
     console.error("Erreur lors de la mise à jour du film :", error);
@@ -81,7 +85,9 @@ const getAuthorization = () => {
     .get(`${API}/api/checkAdmin`, {
       withCredentials: true,
     })
-    .then((response) => response)
+    .then((response) => {
+      return response;
+    })
     .catch((error) => {
       throw new Error(error);
     });

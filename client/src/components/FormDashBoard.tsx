@@ -20,10 +20,11 @@ export default function FormDashBoard() {
   const sendForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     axios
-      .post(`${API}/api/movies/`, newMovie)
+      .post(`${API}/api/movies/`, newMovie, {
+        withCredentials: true,
+      })
       .then((response) => {
         if (response.status === 201) {
-          console.info("Film ajouté dans la base de données");
         } else {
           alert(response.data.error);
         }
