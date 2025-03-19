@@ -53,3 +53,7 @@ interface UserType {
   email: string;
   subscription: boolean;
 }
+
+interface WatchlistType {
+  id: number;
+}

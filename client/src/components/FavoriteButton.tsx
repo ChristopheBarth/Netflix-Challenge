@@ -1,10 +1,20 @@
+import axios from "axios";
 import { useState } from "react";
 import "../styles/favorite.css";
 
-export default function FavoriteButton() {
+export default function FavoriteButton({ id }: WatchlistType) {
   const [isFavorite, setIsFavorite] = useState(false);
+  const API = import.meta.env.VITE_API_URL;
 
   const handleToggleFavorite = () => {
+    axios
+      .post(
+        `${API}/api/users/watchlist`,
+        { movie_id: id },
+        { withCredentials: true },
+      )
+      .then((response) => response.data)
+      .catch((error) => console.error(error));
     setIsFavorite((prev) => !prev);
   };
 
