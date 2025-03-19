@@ -91,6 +91,17 @@ class UserRepository {
     );
     return result.insertId;
   }
+
+  async deleteMovieToUserWatchlist(watchlist: {
+    user_id: number;
+    movie_id: number;
+  }) {
+    const [result] = await databaseClient.query<Result>(
+      "DELETE FROM watchlist WHERE user_id = ? AND movie_id = ?",
+      [watchlist.user_id, watchlist.movie_id],
+    );
+    return result.affectedRows;
+  }
 }
 
 export default new UserRepository();

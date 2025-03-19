@@ -40,6 +40,12 @@ router.post("/api/login", auth.login);
 
 router.put("/api/users/:id", auth.checkIfAdmin, userAction.edit);
 
+router.delete(
+  "/api/users/watchlist",
+  auth.verify,
+  userAction.destroyWatchlistUser,
+);
+
 router.delete("/api/users/:id", auth.checkIfAdmin, userAction.destroy);
 
 router.get(
