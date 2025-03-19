@@ -18,16 +18,27 @@ export default function FavoriteButton({ id }: WatchlistType) {
     setIsFavorite((prev) => !prev);
   };
 
+  const handleToggleDeleteFavorite = () => {
+    axios
+      .delete(`${API}/api/users/watchlist`, {
+        data: { movie_id: id },
+        withCredentials: true,
+      })
+      .then((response) => response.data)
+      .catch((error) => console.error(error));
+    setIsFavorite((prev) => !prev);
+  };
+
   return (
     <button
       type="button"
       className={`favorite-button ${isFavorite ? "active" : ""}`}
-      onClick={handleToggleFavorite}
+      onClick={!isFavorite ? handleToggleFavorite : handleToggleDeleteFavorite}
       aria-label={isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
     >
       <span className="favorite-icon">{isFavorite ? "★" : "☆"}</span>
       <span className="button-text">
-        {isFavorite ? "Ajouté aux favoris" : "Ajouter aux favoris"}
+        {isFavorite ? "Retirer des favoris" : "Ajouter aux favoris"}
       </span>
     </button>
   );
