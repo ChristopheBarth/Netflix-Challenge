@@ -16,6 +16,7 @@ import MovieDetail from "./pages/MovieDetail";
 import Signup from "./pages/Signup";
 import {
   getAuthorization,
+  getAuthorizationForUsersOrAdmin,
   getMovieById,
   getMovies,
   getUsers,
@@ -47,7 +48,11 @@ const router = createBrowserRouter([
       {
         path: "/catalogue",
         element: <Catalogue />,
-        loader: getMovies,
+        loader: async () => ({
+          authorization: await getAuthorizationForUsersOrAdmin(),
+          movies: await getMovies(),
+        }),
+        errorElement: <Forbidden />,
       },
       {
         path: "/signup",

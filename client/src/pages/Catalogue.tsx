@@ -3,7 +3,10 @@ import MovieCards from "../components/MovieCards";
 import "../styles/catalogue.css";
 
 export default function Catalogue() {
-  const movies = useLoaderData() as MovieType[];
+  const { movies } = useLoaderData() as {
+    movies: MovieType[];
+  };
+
   const freeMovies = movies.filter((movie) => !movie.premium);
   const premiumMovies = movies.filter((movie) => movie.premium);
   const sfMovies = movies.filter((movie) =>
@@ -37,7 +40,6 @@ export default function Catalogue() {
           Décrouvrir nos offres
         </button>
       </div>
-
       <div className="show-movies">
         <h2>Tendances Actuelles</h2>
         <section className="movie-container">
@@ -64,7 +66,6 @@ export default function Catalogue() {
           ))}
         </section>
       </div>
-
       <section id="acces" className="connection-bottom">
         <h2>Nos différentes souscriptions</h2>
         <div className="bottom-container">

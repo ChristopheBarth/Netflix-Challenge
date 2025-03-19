@@ -102,4 +102,22 @@ const checkIfAdmin: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { hashPassword, login, verify, checkIfAdmin };
+const checkIfAdminOrUser: RequestHandler = async (req, res, next) => {
+  try {
+    if (req.user.role === "administrateur" || req.user.role === "utilisateur") {
+      next();
+    } else {
+      res.sendStatus(403);
+    }
+  } catch (error) {
+    next(error);
+  }
+};
+
+export default {
+  hashPassword,
+  login,
+  verify,
+  checkIfAdmin,
+  checkIfAdminOrUser,
+};
