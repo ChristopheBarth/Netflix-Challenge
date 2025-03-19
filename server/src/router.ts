@@ -12,19 +12,29 @@ import movieActions from "./modules/movie/movieActions";
 router.get("/api/movies", movieActions.browse);
 router.get("/api/movies/:id", movieActions.read);
 
-router.post("/api/movies", movieActions.add);
+router.post("/api/movies", auth.verify, auth.checkIfAdmin, movieActions.add);
 router.post("/api/movies", form.validate, auth.checkIfAdmin, movieActions.add);
 
-router.put("/api/movies/:id", auth.checkIfAdmin, movieActions.edit);
+router.put(
+  "/api/movies/:id",
+  auth.verify,
+  auth.checkIfAdmin,
+  movieActions.edit,
+);
 
-router.delete("/api/movies/:id", auth.checkIfAdmin, movieActions.destroy);
+router.delete(
+  "/api/movies/:id",
+  auth.verify,
+  auth.checkIfAdmin,
+  movieActions.destroy,
+);
 
 /* ************************************************************************ */
 
 import formSignup from "./middlewares/formSignup";
 import userAction from "./modules/user/userAction";
 
-router.get("/api/users", auth.checkIfAdmin, userAction.browse);
+router.get("/api/users", auth.verify, auth.checkIfAdmin, userAction.browse);
 router.get("/api/users/watchlist", auth.verify, userAction.readWatchlistUser);
 router.get("/api/users/:id", auth.checkIfAdmin, userAction.read);
 
