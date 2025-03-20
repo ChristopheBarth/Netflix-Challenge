@@ -19,9 +19,40 @@ export default function NavBar() {
       });
   };
 
+  const links = [
+    {
+      name: "Accueil",
+      path: "/",
+      role: ["anonymous"],
+    },
+    {
+      name: "Dashboard",
+      path: "/dashboard",
+      role: ["administrateur"],
+    },
+    {
+      name: "Se connecter",
+      path: "/login",
+      role: ["anonymous"],
+    },
+    {
+      name: "catalogue",
+      path: "/catalogue",
+      role: ["utilisateur", "administrateur"],
+    },
+  ];
+
   return (
     <nav>
-      <img src="/Logo_OriginalDigital.webp" alt="Logo" />
+      <ul>
+        {links
+          .filter((link) => link.role.includes(role))
+          .map((link) => (
+            <li key={link.name}>
+              <Link to={link.path}>{link.name}</Link>
+            </li>
+          ))}
+      </ul>
       {role === "anonymous" ? (
         <Link to="/signup">Nous rejoindre</Link>
       ) : (
