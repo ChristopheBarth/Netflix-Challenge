@@ -10,7 +10,10 @@ interface AuthProps {
   setRole: (role: string) => void;
 }
 
-const authContext = createContext<AuthProps | null>(null);
+const authContext = createContext<AuthProps>({
+  role: "anonymous",
+  setRole: () => {},
+});
 
 export function AuthProvider({ children }: AuthProviderProps) {
   const [role, setRole] = useState(localStorage.getItem("role") || "anonymous");
