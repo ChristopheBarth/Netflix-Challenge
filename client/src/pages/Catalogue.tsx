@@ -21,7 +21,7 @@ export default function Catalogue() {
           alt=""
         />
         <button type="button" className="decouvrir-nos-offres">
-          <a href="#acces">Décrouvrir nos offres</a>
+          <a href="#acces">Découvrir nos offres</a>
         </button>
       </div>
       <div className="show-movies">
