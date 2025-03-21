@@ -1,4 +1,5 @@
 import axios from "axios";
+import type { useNavigate } from "react-router-dom";
 import { Bounce, toast } from "react-toastify";
 
 const API = import.meta.env.VITE_API_URL;
@@ -9,6 +10,7 @@ const getMovies = () => {
     .then((response) => response.data)
     .catch((error) => console.error(error));
 };
+
 const getMovieById = (id: number) => {
   return axios
     .get(`${API}/api/movies/${id}`)
@@ -104,6 +106,54 @@ const getAuthorizationForUsersOrAdmin = () => {
     });
 };
 
+const loginUser = (
+  loginData: LoginData,
+  navigate: ReturnType<typeof useNavigate>,
+  setRole: (role: string) => void,
+) => {
+  const notifySuccess = () =>
+    toast.success("Bienvenue sur Original Digital 🚀", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+
+  const notifyError = (
+    errorMessage = "Erreur lors de la connexion, mot de passe ou email incorrect",
+  ) =>
+    toast.error(errorMessage, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+
+  return axios
+    .post(`${API}/api/login`, loginData, { withCredentials: true })
+    .then(({ data }) => {
+      setRole(data.role);
+      notifySuccess();
+      setTimeout(() => {
+        navigate(data.role === "administrateur" ? "/dashboard" : "/catalogue");
+      }, 3000);
+    })
+    .catch((error) => {
+      notifyError();
+      console.error(error);
+    });
+};
+
 export {
   getAuthorization,
   getAuthorizationForUsersOrAdmin,
@@ -112,4 +162,5 @@ export {
   getUsers,
   editMovie,
   createUser,
+  loginUser,
 };
