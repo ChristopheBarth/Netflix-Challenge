@@ -96,8 +96,6 @@ export default function EditDashBoard() {
           </div>
         </section>
       ))}
-
-      {/* Modal de confirmation de suppression */}
       {showDeleteConfirmation && (
         <dialog
           ref={confirmDialogRef}
@@ -127,8 +125,6 @@ export default function EditDashBoard() {
           </div>
         </dialog>
       )}
-
-      {/* Modal d'édition */}
       <dialog
         ref={dialogRef}
         className="modal"
