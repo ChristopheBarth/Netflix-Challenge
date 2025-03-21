@@ -8,6 +8,8 @@ export default function EditDashBoard() {
   const { movies } = useLoaderData() as { movies: MovieType[] };
   const { revalidate } = useRevalidator();
   const API = import.meta.env.VITE_API_URL;
+  const [movieToDelete, setMovieToDelete] = useState<number | null>(null);
+  const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   const deleteMovie = (id: number) => {
     return axios
@@ -16,8 +18,20 @@ export default function EditDashBoard() {
       })
       .then(() => {
         revalidate();
+        setMovieToDelete(null);
+        setShowDeleteConfirmation(false);
       })
       .catch((error) => console.error(error));
+  };
+
+  const handleDeleteClick = (id: number) => {
+    setMovieToDelete(id);
+    setShowDeleteConfirmation(true);
+  };
+
+  const cancelDelete = () => {
+    setMovieToDelete(null);
+    setShowDeleteConfirmation(false);
   };
 
   const [updatedMovie, setUpdatedMovie] = useState({
@@ -52,6 +66,7 @@ export default function EditDashBoard() {
   };
 
   const dialogRef = useRef<HTMLDialogElement | null>(null);
+  const confirmDialogRef = useRef<HTMLDialogElement | null>(null);
 
   const openModal = (movie: MovieType) => {
     setUpdatedMovie(movie);
@@ -72,7 +87,7 @@ export default function EditDashBoard() {
             <p>{movie.title}</p>
           </div>
           <div>
-            <button type="button" onClick={() => deleteMovie(movie.id)}>
+            <button type="button" onClick={() => handleDeleteClick(movie.id)}>
               <img src="/GarbageIcone.png" alt="Delete" />
             </button>
             <button type="button" onClick={() => openModal(movie)}>
@@ -81,6 +96,39 @@ export default function EditDashBoard() {
           </div>
         </section>
       ))}
+
+      {/* Modal de confirmation de suppression */}
+      {showDeleteConfirmation && (
+        <dialog
+          ref={confirmDialogRef}
+          className="modal confirmation-modal"
+          open
+        >
+          <div className="modal-content confirmation-content">
+            <p>Êtes-vous sûr de vouloir supprimer ce film ?</p>
+            <div className="confirmation-buttons">
+              <button
+                type="button"
+                className="confirm-button"
+                onClick={() =>
+                  movieToDelete !== null && deleteMovie(movieToDelete)
+                }
+              >
+                Confirmer
+              </button>
+              <button
+                type="button"
+                className="cancel-button"
+                onClick={cancelDelete}
+              >
+                Annuler
+              </button>
+            </div>
+          </div>
+        </dialog>
+      )}
+
+      {/* Modal d'édition */}
       <dialog
         ref={dialogRef}
         className="modal"
