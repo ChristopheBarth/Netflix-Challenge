@@ -45,7 +45,7 @@ const createUser = (userData: UserData): Promise<boolean> => {
   const notifySucces = () =>
     toast.success("Votre profil a bien été créé 🚀", {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,

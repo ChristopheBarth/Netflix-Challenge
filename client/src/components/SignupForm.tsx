@@ -50,7 +50,7 @@ export default function SignupForm() {
       if (success) {
         setTimeout(() => {
           navigate("/login");
-        }, 5000);
+        }, 3000);
       }
     } catch (error) {
       console.error(error);
