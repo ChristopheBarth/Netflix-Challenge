@@ -23,7 +23,7 @@ export default function NavBar() {
     {
       name: "Accueil",
       path: "/",
-      role: ["anonymous"],
+      role: ["anonymous", "administrateur"],
     },
     {
       name: "Dashboard",
@@ -44,6 +44,7 @@ export default function NavBar() {
 
   return (
     <nav>
+      <img src="/Logo_OriginalDigital.webp" alt="logo" />
       <ul>
         {links
           .filter((link) => link.role.includes(role))

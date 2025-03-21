@@ -213,11 +213,3 @@ section > h2 {
     }
   }
 }
-
-@media only screen and (min-width: 1440px) {
-  .card-movie-img img {
-    height: 20rem;
-    width: 15rem;
-    margin: 2rem 2rem 2rem 0;
-  }
-}

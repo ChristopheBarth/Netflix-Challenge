@@ -15,7 +15,6 @@ export default function MovieCards({ movie }: MoviesProps) {
           <img src={movie.poster} alt="" />
         </Link>
         <p className="movie-title">{movie.title}</p>
-        <p className="movie-year">{movie.release_year}</p>
       </div>
     </>
   );
