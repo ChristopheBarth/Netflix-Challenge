@@ -57,3 +57,8 @@ interface UserType {
 interface WatchlistType {
   id: number;
 }
+
+interface LoginData {
+  email: string;
+  password: string;
+}
