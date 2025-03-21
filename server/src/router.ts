@@ -38,7 +38,6 @@ router.get("/api/users", auth.verify, auth.checkIfAdmin, userAction.browse);
 router.get("/api/users/watchlist", auth.verify, userAction.readWatchlistUser);
 router.get("/api/users/:id", auth.checkIfAdmin, userAction.read);
 
-router.post("/api/users", auth.hashPassword, userAction.add);
 router.post(
   "/api/users",
   formSignup.validate,
