@@ -169,7 +169,15 @@ const editPremium = () => {
     });
 
   return axios
-    .put(`${API}/api/users/premium`)
+    .put(
+      `${API}/api/users/premium`,
+      {
+        subscription: true,
+      },
+      {
+        withCredentials: true,
+      },
+    )
     .then((response) => {
       console.info(response);
       notifySuccess();
