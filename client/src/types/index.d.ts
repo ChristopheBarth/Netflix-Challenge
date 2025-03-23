@@ -66,7 +66,7 @@ interface LoginData {
 interface CardData {
   cardName: string;
   cardNumbers: string;
-  expireDay: string;
+  expiryDay: string;
   cvv: string;
   country: string;
 }
