@@ -154,7 +154,7 @@ const loginUser = (
     });
 };
 
-const editPremium = () => {
+const editPremium = (navigate: ReturnType<typeof useNavigate>) => {
   const notifySuccess = () =>
     toast.success("Votre abonnement Premium a bien été activé 🚀", {
       position: "top-right",
@@ -179,8 +179,12 @@ const editPremium = () => {
       },
     )
     .then((response) => {
-      console.info(response);
-      notifySuccess();
+      if (response.status === 204) {
+        notifySuccess();
+        setTimeout(() => {
+          navigate("/catalogue");
+        }, 3000);
+      }
     })
     .catch((error) => console.error(error));
 };

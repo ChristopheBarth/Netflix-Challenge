@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Bounce, ToastContainer } from "react-toastify";
 import { editPremium } from "../services/request";
 
 export default function PaymentForm() {
+  const navigate = useNavigate();
   const [cardNumbers, setCardNumbers] = useState({
     cardName: "",
     cardNumbers: "",
@@ -60,7 +61,7 @@ export default function PaymentForm() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    editPremium();
+    editPremium(navigate);
   };
 
   return (
