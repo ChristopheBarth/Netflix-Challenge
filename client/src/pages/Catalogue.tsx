@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import MovieCards from "../components/MovieCards";
 import "../styles/catalogue.css";
 
@@ -69,9 +69,11 @@ export default function Catalogue() {
             <p>Gérez vos listes de films à voir</p>
           </div>
         </div>
-        <button type="button" className="button-bottom">
-          Devenir Premium
-        </button>
+        <Link to="/payment">
+          <button type="button" className="button-premium">
+            Devenir Premium
+          </button>
+        </Link>
       </section>
     </>
   );

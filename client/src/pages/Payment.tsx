@@ -1,3 +1,5 @@
+import "../styles/payment.css";
+
 export default function Payment() {
   return (
     <>
