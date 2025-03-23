@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Bounce, ToastContainer } from "react-toastify";
 import { editPremium } from "../services/request";
+import "../styles/paymentForm.css";
 
 export default function PaymentForm() {
   const navigate = useNavigate();
@@ -24,6 +25,10 @@ export default function PaymentForm() {
     "Espagne 🇪🇸",
     "Italie 🇮🇹",
   ];
+
+  const cancelPayment = () => {
+    navigate("/catalogue");
+  };
 
   const handleChangeCardNumber = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value.replaceAll(" ", "");
@@ -65,82 +70,90 @@ export default function PaymentForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Formulaire de paiement</h2>
-      <h3>Tous les champs sont obligatoires</h3>
-      <label htmlFor="billed_to">Nom indiqué sur la carte</label>
-      <input
-        type="text"
-        id="cardName"
-        name="cardName"
-        value={cardNumbers.cardName}
-        onChange={handleChangeForm}
-        placeholder="Votre prénom et nom de famille"
-      />
-      <label htmlFor="payment_details">Détails du paiement</label>
-      <input
-        type="text"
-        id="cardNumbers"
-        name="cardNumbers"
-        maxLength={19}
-        value={cardNumbers.cardNumbers}
-        onChange={handleChangeCardNumber}
-        placeholder="XXXX XXXX XXXX XXXX"
-      />
-      <div className="expiry-cvv">
+    <section className="payment-form">
+      <form onSubmit={handleSubmit}>
+        <h2>Paiement</h2>
+        <h3>Tous les champs sont obligatoires</h3>
+        <label htmlFor="billed_to">
+          Nom indiqué sur la carte <p>*</p>
+        </label>
         <input
           type="text"
-          id="expireDay"
-          name="expireDay"
-          maxLength={5}
-          value={cardNumbers.expiryDay}
-          onChange={handleChangeExpiryDate}
-          placeholder="MM/YY"
-        />
-        <input
-          type="text"
-          id="cvv"
-          name="cvv"
-          maxLength={3}
-          value={cardNumbers.cvv}
+          id="cardName"
+          name="cardName"
+          value={cardNumbers.cardName}
           onChange={handleChangeForm}
-          placeholder="XXX"
+          placeholder="Votre prénom et nom de famille"
         />
-      </div>
-      <label htmlFor="country">Pays</label>
-      <input
-        list="country-list"
-        id="country"
-        name="country"
-        value={cardNumbers.country}
-        onChange={handleChangeForm}
-        onFocus={handleFocus}
-        placeholder="Sélectionnez votre pays"
-      />
-      <datalist id="country-list">
-        {countries.map((country) => (
-          <option key={country} value={country} />
-        ))}
-      </datalist>
-      <div className="button-cancel-submit">
-        <Link to="/catalogue">
-          <button type="button">Annuler</button>
-        </Link>
-        <button type="submit">Payer</button>
-      </div>
-      <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Bounce}
-      />
-    </form>
+        <label htmlFor="payment_details">
+          Détails du paiement <p>*</p>
+        </label>
+        <input
+          type="text"
+          id="cardNumbers"
+          name="cardNumbers"
+          maxLength={19}
+          value={cardNumbers.cardNumbers}
+          onChange={handleChangeCardNumber}
+          placeholder="XXXX XXXX XXXX XXXX"
+        />
+        <div className="expiry-cvv">
+          <input
+            type="text"
+            id="expireDay"
+            name="expireDay"
+            maxLength={5}
+            value={cardNumbers.expiryDay}
+            onChange={handleChangeExpiryDate}
+            placeholder="MM/YY"
+          />
+          <input
+            type="text"
+            id="cvv"
+            name="cvv"
+            maxLength={3}
+            value={cardNumbers.cvv}
+            onChange={handleChangeForm}
+            placeholder="XXX"
+          />
+        </div>
+        <label htmlFor="country">
+          Pays <p>*</p>
+        </label>
+        <input
+          list="country-list"
+          id="country"
+          name="country"
+          value={cardNumbers.country}
+          onChange={handleChangeForm}
+          onFocus={handleFocus}
+          placeholder="Sélectionnez votre pays"
+        />
+        <datalist id="country-list">
+          {countries.map((country) => (
+            <option key={country} value={country} />
+          ))}
+        </datalist>
+        <div className="button-cancel-submit">
+          <button type="button" onClick={cancelPayment}>
+            Annuler
+          </button>
+          <button type="submit">Payer</button>
+        </div>
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+          transition={Bounce}
+        />
+      </form>
+    </section>
   );
 }
