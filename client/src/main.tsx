@@ -13,6 +13,7 @@ import Forbidden from "./pages/Forbidden";
 import HomePage from "./pages/HomePage";
 import Login from "./pages/Login";
 import MovieDetail from "./pages/MovieDetail";
+import Payment from "./pages/Payment";
 import Signup from "./pages/Signup";
 import {
   getAuthorization,
@@ -71,6 +72,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login />,
+      },
+      {
+        path: "/payment",
+        element: <Payment />,
       },
     ],
     // Try adding a new route! For example, "/about" with an About component
