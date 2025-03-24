@@ -124,5 +124,6 @@
 @media only screen and (max-width: 792px) {
   .first-container .img-container {
     height: 18rem;
+    margin-top: 1rem;
   }
 }
