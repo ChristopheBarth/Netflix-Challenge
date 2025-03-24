@@ -12,19 +12,11 @@ export default function MovieDetail() {
   const movieId = movieData.movieId;
   const movies = movieData.movies;
 
-  // const sameGenre = movies
-  //   .filter((movie) =>
-  //     movie.genres.split(",").some((genre) => movieId.genres.includes(genre)),
-  //   )
-  //   .slice(0, 12);
   const sameGenre = movies
-    .filter((movie) => {
-      const movieFirstGenre = movie.genres.split(",")[0];
-      const movieIdFirstGenre = movieId.genres.split(",")[0];
-      return movieFirstGenre === movieIdFirstGenre;
-    })
+    .filter((movie) =>
+      movie.genres.split(",").some((genre) => movieId.genres.includes(genre)),
+    )
     .slice(0, 12);
-  console.info(sameGenre);
 
   return (
     <>
@@ -74,9 +66,7 @@ export default function MovieDetail() {
           allowFullScreen
         />
       </div>
-      <h2 className="same-genre">
-        Notre sélection de Films {movieId.genres.split(",")[0]}
-      </h2>
+      <h2 className="same-genre">Vous pourriez aimer aussi...</h2>
       <section className="movie-container">
         {sameGenre.map((movie) => (
           <MovieCards key={movie.id} movie={movie} />
