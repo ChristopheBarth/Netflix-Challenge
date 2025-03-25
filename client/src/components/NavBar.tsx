@@ -57,7 +57,7 @@ export default function NavBar() {
       </div>
 
       <div className="menu-container">
-        {role !== "anonymous" ? (
+        {role !== "anonymous" && (
           <div
             className="menu-icon"
             onClick={toggleMenu}
@@ -65,8 +65,9 @@ export default function NavBar() {
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
-        ) : null}
-        {role !== "anonymous" ? (
+        )}
+
+        {role !== "anonymous" && (
           <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
             {links
               .filter((link) => link.role.includes(role))
@@ -77,16 +78,15 @@ export default function NavBar() {
                   </Link>
                 </li>
               ))}
-            {role === "anonymous" ? null : (
-              <li className="disconnect-button-mobile">
-                <button type="button" onClick={disconnect}>
-                  Se déconnecter
-                </button>
-              </li>
-            )}
+            <li className="disconnect-button-mobile">
+              <button type="button" onClick={disconnect}>
+                Se déconnecter
+              </button>
+            </li>
           </ul>
-        ) : null}
+        )}
       </div>
+
       {role === "anonymous" ? (
         <Link to="/signup" className="link-signup">
           Nous rejoindre
