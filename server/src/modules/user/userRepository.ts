@@ -23,7 +23,7 @@ class UserRepository {
 
   async read(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "SELECT first_name, last_name, email, role FROM user WHERE id = ?",
+      "SELECT first_name, last_name, email, role, subscription FROM user WHERE id = ?",
       [id],
     );
 
@@ -105,8 +105,8 @@ class UserRepository {
 
   async updatePremium(user: User) {
     const [result] = await databaseClient.query<Result>(
-      "UPDATE user SET subscription = ? WHERE id = ?",
-      [user.subscription, user.id],
+      "UPDATE user SET subscription = TRUE WHERE id = ?",
+      [user.id],
     );
     return result.affectedRows;
   }
