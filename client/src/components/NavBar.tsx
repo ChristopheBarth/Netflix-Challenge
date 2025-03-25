@@ -56,8 +56,8 @@ export default function NavBar() {
         </Link>
       </div>
 
-      <div className="menu-container">
-        {role !== "anonymous" && (
+      {role !== "anonymous" && (
+        <div className="menu-container">
           <div
             className="menu-icon"
             onClick={toggleMenu}
@@ -65,9 +65,6 @@ export default function NavBar() {
           >
             {isMenuOpen ? <FaTimes /> : <FaBars />}
           </div>
-        )}
-
-        {role !== "anonymous" && (
           <ul className={`nav-links ${isMenuOpen ? "active" : ""}`}>
             {links
               .filter((link) => link.role.includes(role))
@@ -84,9 +81,8 @@ export default function NavBar() {
               </button>
             </li>
           </ul>
-        )}
-      </div>
-
+        </div>
+      )}
       {role === "anonymous" ? (
         <Link to="/signup" className="link-signup">
           Nous rejoindre
