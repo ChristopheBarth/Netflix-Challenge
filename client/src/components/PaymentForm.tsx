@@ -6,7 +6,7 @@ import "../styles/paymentForm.css";
 
 export default function PaymentForm() {
   const navigate = useNavigate();
-  const [cardNumbers, setCardNumbers] = useState({
+  const [cardData, setCardData] = useState({
     cardName: "",
     cardNumbers: "",
     expiryDay: "",
@@ -39,7 +39,7 @@ export default function PaymentForm() {
       }
       formattedValue += value[i];
     }
-    setCardNumbers((prev) => ({
+    setCardData((prev) => ({
       ...prev,
       cardNumbers: formattedValue.slice(0, 19),
     }));
@@ -50,18 +50,18 @@ export default function PaymentForm() {
     if (value.length > 2) {
       value = `${value.slice(0, 2)}/${value.slice(2, 4)}`;
     }
-    setCardNumbers((prev) => ({
+    setCardData((prev) => ({
       ...prev,
       expiryDay: value.slice(0, 5),
     }));
   };
 
   const handleChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCardNumbers({ ...cardNumbers, [e.target.name]: e.target.value });
+    setCardData({ ...cardData, [e.target.name]: e.target.value });
   };
 
   const handleFocus = () => {
-    setCardNumbers((prev) => ({ ...prev, country: "" }));
+    setCardData((prev) => ({ ...prev, country: "" }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -81,7 +81,7 @@ export default function PaymentForm() {
           type="text"
           id="cardName"
           name="cardName"
-          value={cardNumbers.cardName}
+          value={cardData.cardName}
           onChange={handleChangeForm}
           placeholder="Votre prénom et nom de famille"
         />
@@ -93,7 +93,7 @@ export default function PaymentForm() {
           id="cardNumbers"
           name="cardNumbers"
           maxLength={19}
-          value={cardNumbers.cardNumbers}
+          value={cardData.cardNumbers}
           onChange={handleChangeCardNumber}
           placeholder="XXXX XXXX XXXX XXXX"
         />
@@ -103,7 +103,7 @@ export default function PaymentForm() {
             id="expireDay"
             name="expireDay"
             maxLength={5}
-            value={cardNumbers.expiryDay}
+            value={cardData.expiryDay}
             onChange={handleChangeExpiryDate}
             placeholder="MM/YY"
           />
@@ -112,7 +112,7 @@ export default function PaymentForm() {
             id="cvv"
             name="cvv"
             maxLength={3}
-            value={cardNumbers.cvv}
+            value={cardData.cvv}
             onChange={handleChangeForm}
             placeholder="XXX"
           />
@@ -124,7 +124,7 @@ export default function PaymentForm() {
           list="country-list"
           id="country"
           name="country"
-          value={cardNumbers.country}
+          value={cardData.country}
           onChange={handleChangeForm}
           onFocus={handleFocus}
           placeholder="Sélectionnez votre pays"
