@@ -84,8 +84,8 @@ export default function NavBar() {
         </div>
       )}
       {role === "anonymous" ? (
-        <Link to="/signup" className="link-signup">
-          Nous rejoindre
+        <Link to="/login" className="link-signup">
+          Se connecter
         </Link>
       ) : (
         <button

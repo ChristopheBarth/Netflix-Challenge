@@ -50,6 +50,7 @@ const router = createBrowserRouter([
           movieId: await getMovieById(Number(params.id)),
           movies: await getMovies(),
         }),
+        errorElement: <Signup />,
       },
       {
         path: "/catalogue",
