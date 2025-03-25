@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import MovieCards from "../components/MovieCards";
 import "../styles/catalogue.css";
 
@@ -31,7 +31,7 @@ export default function Catalogue() {
             <MovieCards key={movie.id} movie={movie} />
           ))}
         </section>
-        <h2>Offres Premium</h2>
+        <h2>Films Premium</h2>
         <section className="movie-container">
           {premiumMovies.map((movie) => (
             <MovieCards key={movie.id} movie={movie} />
@@ -43,7 +43,7 @@ export default function Catalogue() {
             <MovieCards key={movie.id} movie={movie} />
           ))}
         </section>
-        <h2>Films gratuit</h2>
+        <h2>Films gratuits</h2>
         <section className="movie-container">
           {freeMovies.map((movie) => (
             <MovieCards key={movie.id} movie={movie} />
@@ -54,7 +54,7 @@ export default function Catalogue() {
         <h2>Nos différentes souscriptions</h2>
         <div className="bottom-container">
           <div className="bottom-left">
-            <h3>Accès Gratuit</h3>
+            <h3>Offre Gratuite</h3>
             <p>Visionnez 4 films par mois</p>
             <p className="bottom-free">Accédez à notre catalogue complet</p>
             <p className="bottom-free">Regardez en haute qualité</p>
@@ -62,16 +62,18 @@ export default function Catalogue() {
           </div>
 
           <div className="bottom-right">
-            <h3>Accès Premium</h3>
+            <h3>Offre Premium</h3>
             <p>Films illimités en haute qualité</p>
             <p>Accédez à notre catalogue complet</p>
             <p>Regardez en haute qualité</p>
             <p>Gérez vos listes de films à voir</p>
           </div>
         </div>
-        <button type="button" className="button-bottom">
-          Devenir Premium
-        </button>
+        <Link to="/payment">
+          <button type="button" className="button-premium">
+            Devenir Premium
+          </button>
+        </Link>
       </section>
     </>
   );

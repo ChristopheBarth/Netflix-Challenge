@@ -154,6 +154,41 @@ const loginUser = (
     });
 };
 
+const editPremium = (navigate: ReturnType<typeof useNavigate>) => {
+  const notifySuccess = () =>
+    toast.success("Votre abonnement Premium a bien été activé 🚀", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      transition: Bounce,
+    });
+
+  return axios
+    .put(
+      `${API}/api/users/premium`,
+      {
+        subscription: true,
+      },
+      {
+        withCredentials: true,
+      },
+    )
+    .then((response) => {
+      if (response.status === 204) {
+        notifySuccess();
+        setTimeout(() => {
+          navigate("/catalogue");
+        }, 3000);
+      }
+    })
+    .catch((error) => console.error(error));
+};
+
 export {
   getAuthorization,
   getAuthorizationForUsersOrAdmin,
@@ -163,4 +198,5 @@ export {
   editMovie,
   createUser,
   loginUser,
+  editPremium,
 };

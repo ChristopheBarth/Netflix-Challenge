@@ -3,12 +3,12 @@ import type { Result, Rows } from "../../../database/client";
 
 type User = {
   id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  hashedPassword: string;
-  subscription: boolean;
-  role: string;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+  hashedPassword?: string;
+  subscription?: boolean;
+  role?: string;
 };
 
 class UserRepository {
@@ -99,6 +99,14 @@ class UserRepository {
     const [result] = await databaseClient.query<Result>(
       "DELETE FROM watchlist WHERE user_id = ? AND movie_id = ?",
       [watchlist.user_id, watchlist.movie_id],
+    );
+    return result.affectedRows;
+  }
+
+  async updatePremium(user: User) {
+    const [result] = await databaseClient.query<Result>(
+      "UPDATE user SET subscription = ? WHERE id = ?",
+      [user.subscription, user.id],
     );
     return result.affectedRows;
   }
