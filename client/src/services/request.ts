@@ -177,7 +177,7 @@ const editPremium = (navigate: ReturnType<typeof useNavigate>) => {
       },
     )
     .then((response) => {
-      if (response.status === 204) {
+      if (response.status === 200) {
         notifySuccess();
         setTimeout(() => {
           window.location.reload();
