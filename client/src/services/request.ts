@@ -110,6 +110,7 @@ const loginUser = (
   loginData: LoginData,
   navigate: ReturnType<typeof useNavigate>,
   setRole: (role: string) => void,
+  setSubscription: (subscription: boolean) => void,
 ) => {
   const notifySuccess = () =>
     toast.success("Bienvenue sur Original Digital 🚀", {
@@ -143,6 +144,7 @@ const loginUser = (
     .post(`${API}/api/login`, loginData, { withCredentials: true })
     .then(({ data }) => {
       setRole(data.role);
+      setSubscription(data.subscription);
       notifySuccess();
       setTimeout(() => {
         navigate(data.role === "administrateur" ? "/dashboard" : "/catalogue");

@@ -12,6 +12,7 @@ export default function Catalogue() {
   const sfMovies = movies.filter((movie) =>
     movie.genres.includes("Science-fiction"),
   );
+
   return (
     <>
       <div className="first-container">
