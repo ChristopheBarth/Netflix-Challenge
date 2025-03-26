@@ -182,7 +182,6 @@ const editPremium = (navigate: ReturnType<typeof useNavigate>) => {
       if (response.status === 200) {
         notifySuccess();
         setTimeout(() => {
-          window.location.reload();
           navigate("/catalogue");
         }, 3000);
       }
