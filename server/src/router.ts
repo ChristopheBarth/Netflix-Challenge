@@ -47,7 +47,12 @@ router.post(
 router.post("/api/users/watchlist", auth.verify, userAction.addWatchlist);
 router.post("/api/login", auth.login);
 
-router.put("/api/users/premium", auth.verify, userAction.editPremium);
+router.put(
+  "/api/users/premium",
+  auth.verify,
+  auth.upgradeToPremium,
+  userAction.editPremium,
+);
 router.put("/api/users/:id", auth.checkIfAdmin, userAction.edit);
 
 router.delete(

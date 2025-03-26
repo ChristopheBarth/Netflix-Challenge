@@ -171,17 +171,16 @@ const editPremium = (navigate: ReturnType<typeof useNavigate>) => {
   return axios
     .put(
       `${API}/api/users/premium`,
-      {
-        subscription: true,
-      },
+      {},
       {
         withCredentials: true,
       },
     )
     .then((response) => {
-      if (response.status === 204) {
+      if (response.status === 200) {
         notifySuccess();
         setTimeout(() => {
+          window.location.reload();
           navigate("/catalogue");
         }, 3000);
       }
