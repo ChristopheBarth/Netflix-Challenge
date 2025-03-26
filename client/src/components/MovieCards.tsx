@@ -8,8 +8,8 @@ export default function MovieCards({ movie }: MoviesProps) {
       behavior: "smooth",
     });
   };
-  const { role } = useAuth();
-
+  const { role, subscription } = useAuth();
+  console.info(subscription);
   return (
     <>
       <div className="card-movie-img">
@@ -17,14 +17,17 @@ export default function MovieCards({ movie }: MoviesProps) {
           <Link to="/signup" onClick={scrollToTop}>
             <img src={movie.poster} alt="" />
           </Link>
-        ) : (
+        ) : subscription ? (
           <Link to={`/movies/${movie.id}`} onClick={scrollToTop}>
             <img src={movie.poster} alt="" />
           </Link>
+        ) : (
+          <Link to="/payment" onClick={scrollToTop}>
+            <img src={movie.poster} alt="" />
+          </Link>
         )}
-
-        <p className="movie-title">{movie.title}</p>
       </div>
+      <p className="movie-title">{movie.title}</p>
     </>
   );
 }
