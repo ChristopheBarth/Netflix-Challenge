@@ -6,7 +6,6 @@ export default function Catalogue() {
   const { movies } = useLoaderData() as {
     movies: MovieType[];
   };
-  // const { subscription } = useAuth();
 
   const freeMovies = movies.filter((movie) => !movie.premium);
   const premiumMovies = movies.filter((movie) => movie.premium);
