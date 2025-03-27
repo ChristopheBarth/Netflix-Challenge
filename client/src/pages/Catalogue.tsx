@@ -26,6 +26,12 @@ export default function Catalogue() {
         </button>
       </div>
       <div className="show-movies">
+        <h2>Films gratuits</h2>
+        <section className="movie-container">
+          {freeMovies.map((movie) => (
+            <MovieCards key={movie.id} movie={movie} />
+          ))}
+        </section>
         <h2>Tendances Actuelles</h2>
         <section className="movie-container">
           {sfMovies.map((movie) => (
@@ -41,12 +47,6 @@ export default function Catalogue() {
         <h2>Ma Liste</h2>
         <section className="movie-container">
           {movies.map((movie) => (
-            <MovieCards key={movie.id} movie={movie} />
-          ))}
-        </section>
-        <h2>Films gratuits</h2>
-        <section className="movie-container">
-          {freeMovies.map((movie) => (
             <MovieCards key={movie.id} movie={movie} />
           ))}
         </section>
