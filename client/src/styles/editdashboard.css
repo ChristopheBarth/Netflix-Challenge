@@ -2,6 +2,16 @@
   display: flex;
   flex-direction: column;
 }
+
+.confirmation-modal {
+  margin: 0 auto;
+  padding: 1rem;
+  margin: 1rem;
+  border-radius: var(--button-radius);
+  border: 2px solid black;
+  animation: openModal 0.3s linear;
+}
+
 .movie-edit {
   border: solid 1px #7e7e7e;
   display: flex;

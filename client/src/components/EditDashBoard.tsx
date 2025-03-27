@@ -97,12 +97,8 @@ export default function EditDashBoard() {
         </section>
       ))}
       {showDeleteConfirmation && (
-        <dialog
-          ref={confirmDialogRef}
-          className="modal confirmation-modal"
-          open
-        >
-          <div className="modal-content confirmation-content">
+        <dialog ref={confirmDialogRef} className="confirmation-modal" open>
+          <div className="modal-content">
             <p>Êtes-vous sûr de vouloir supprimer ce film ?</p>
             <div className="confirmation-buttons">
               <button
