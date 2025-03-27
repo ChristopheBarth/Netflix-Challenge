@@ -15,13 +15,13 @@ export default function Dashboard() {
           Dashboard
         </button>
         <button type="button" onClick={() => setActiveComponent("form")}>
-          Ajout
+          Ajouter un film
         </button>
         <button type="button" onClick={() => setActiveComponent("users")}>
-          Utilisateur
+          Liste utilisateurs
         </button>
         <button type="button" onClick={() => setActiveComponent("edit")}>
-          Edit
+          Modifier un film
         </button>
       </section>
       <section className="dashboard-right">
