@@ -86,7 +86,7 @@ export default function EditDashBoard() {
           <div className="dashboard-movielist">
             <p>{movie.title}</p>
           </div>
-          <div>
+          <div className="button-edit">
             <button type="button" onClick={() => handleDeleteClick(movie.id)}>
               <img src="/GarbageIcone.png" alt="Delete" />
             </button>
@@ -230,7 +230,16 @@ export default function EditDashBoard() {
                 value={updatedMovie.landscape_image}
                 onChange={handleChangeMovieForm}
               />
-              <button type="submit">Modifier</button>
+              <button type="submit" className="modify-form">
+                Modifier
+              </button>
+              <button
+                type="submit"
+                className="close-modal"
+                onClick={closeModal}
+              >
+                Fermer
+              </button>
             </form>
           )}
         </div>

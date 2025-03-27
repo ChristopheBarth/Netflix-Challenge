@@ -7,9 +7,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem;
+  margin-bottom: 1rem;
   padding: 1rem;
   border-radius: 5px;
+}
+
+.button-edit {
+  display: flex;
+  flex-direction: row;
+  gap: 0.5rem;
 }
 
 .movie-edit > button {
@@ -18,4 +24,52 @@
   border-radius: var(--button-radius);
   border: none;
   padding: 0.5rem 0.5rem;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  border-radius: var(--button-radius);
+  border: none;
+  animation: openModal 0.3s linear;
+  button {
+    padding: 0.5rem 0;
+    cursor: pointer;
+    border-radius: var(--button-radius);
+  }
+  .modify-form {
+    margin-bottom: 0.5rem;
+    border: none;
+  }
+  .modify-form:hover {
+    background-color: gray;
+    color: var(--secondary-color);
+  }
+  .close-modal {
+    background-color: red;
+    color: var(--secondary-color);
+    border: none;
+  }
+  .close-modal:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+  }
+}
+
+::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+@keyframes openModal {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
 }
