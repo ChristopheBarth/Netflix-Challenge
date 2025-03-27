@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useLoaderData, useRevalidator } from "react-router-dom";
 import "../styles/editdashboard.css";
 import { editMovie } from "../services/request";
@@ -10,6 +10,12 @@ export default function EditDashBoard() {
   const API = import.meta.env.VITE_API_URL;
   const [movieToDelete, setMovieToDelete] = useState<number | null>(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
+
+  useEffect(() => {
+    if (showDeleteConfirmation) {
+      deleteDialogRef.current?.showModal();
+    }
+  }, [showDeleteConfirmation]);
 
   const deleteMovie = (id: number) => {
     return axios
@@ -22,16 +28,6 @@ export default function EditDashBoard() {
         setShowDeleteConfirmation(false);
       })
       .catch((error) => console.error(error));
-  };
-
-  const handleDeleteClick = (id: number) => {
-    setMovieToDelete(id);
-    setShowDeleteConfirmation(true);
-  };
-
-  const cancelDelete = () => {
-    setMovieToDelete(null);
-    setShowDeleteConfirmation(false);
   };
 
   const [updatedMovie, setUpdatedMovie] = useState({
@@ -66,7 +62,7 @@ export default function EditDashBoard() {
   };
 
   const dialogRef = useRef<HTMLDialogElement | null>(null);
-  const confirmDialogRef = useRef<HTMLDialogElement | null>(null);
+  const deleteDialogRef = useRef<HTMLDialogElement | null>(null);
 
   const openModal = (movie: MovieType) => {
     setUpdatedMovie(movie);
@@ -79,6 +75,17 @@ export default function EditDashBoard() {
     document.body.style.overflow = "";
   };
 
+  const openDeleteModal = (id: number) => {
+    setMovieToDelete(id);
+    setShowDeleteConfirmation(true);
+  };
+
+  const closeDeleteModal = () => {
+    deleteDialogRef.current?.close();
+    setShowDeleteConfirmation(false);
+    document.body.style.overflow = "";
+  };
+
   return (
     <section className="list-movie">
       {movies.map((movie) => (
@@ -87,7 +94,7 @@ export default function EditDashBoard() {
             <p>{movie.title}</p>
           </div>
           <div className="button-edit">
-            <button type="button" onClick={() => handleDeleteClick(movie.id)}>
+            <button type="button" onClick={() => openDeleteModal(movie.id)}>
               <img src="/GarbageIcone.png" alt="Delete" />
             </button>
             <button type="button" onClick={() => openModal(movie)}>
@@ -97,8 +104,27 @@ export default function EditDashBoard() {
         </section>
       ))}
       {showDeleteConfirmation && (
-        <dialog ref={confirmDialogRef} className="confirmation-modal" open>
-          <div className="modal-content">
+        <dialog
+          ref={deleteDialogRef}
+          className="confirmation-modal"
+          onClick={closeDeleteModal}
+          onKeyDown={(e) => {
+            if (e.key === "Escape") {
+              closeDeleteModal();
+            }
+          }}
+        >
+          <div
+            className="modal-content"
+            onClick={(e) => e.stopPropagation()}
+            tabIndex={-1}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                e.stopPropagation();
+              }
+            }}
+          >
             <p>Êtes-vous sûr de vouloir supprimer ce film ?</p>
             <div className="confirmation-buttons">
               <button
@@ -113,7 +139,7 @@ export default function EditDashBoard() {
               <button
                 type="button"
                 className="cancel-button"
-                onClick={cancelDelete}
+                onClick={closeDeleteModal}
               >
                 Annuler
               </button>
