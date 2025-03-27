@@ -4,12 +4,43 @@
 }
 
 .confirmation-modal {
-  margin: 0 auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 80%;
   padding: 1rem;
-  margin: 1rem;
+  transform: translate(-50%, -50%);
   border-radius: var(--button-radius);
-  border: 2px solid black;
+  border: none;
   animation: openModal 0.3s linear;
+  p {
+    margin-bottom: 1rem;
+  }
+  strong {
+    color: #575aef;
+  }
+  .confirmation-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    button {
+      padding: 0.5rem 0;
+      cursor: pointer;
+      border-radius: var(--button-radius);
+      border: none;
+    }
+  }
+  .confirm-button:hover {
+    background-color: gray;
+    color: var(--secondary-color);
+  }
+  .cancel-button {
+    background-color: red;
+    color: var(--secondary-color);
+  }
+  .cancel-button:hover {
+    background-color: rgba(255, 0, 0, 0.8);
+  }
 }
 
 .movie-edit {
@@ -26,6 +57,9 @@
   display: flex;
   flex-direction: row;
   gap: 0.5rem;
+  button {
+    cursor: pointer;
+  }
 }
 
 .movie-edit > button {
@@ -49,10 +83,10 @@
     padding: 0.5rem 0;
     cursor: pointer;
     border-radius: var(--button-radius);
+    border: none;
   }
   .modify-form {
     margin-bottom: 0.5rem;
-    border: none;
   }
   .modify-form:hover {
     background-color: gray;
@@ -61,7 +95,6 @@
   .close-modal {
     background-color: red;
     color: var(--secondary-color);
-    border: none;
   }
   .close-modal:hover {
     background-color: rgba(255, 0, 0, 0.8);

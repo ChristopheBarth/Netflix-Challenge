@@ -8,14 +8,14 @@ export default function EditDashBoard() {
   const { movies } = useLoaderData() as { movies: MovieType[] };
   const { revalidate } = useRevalidator();
   const API = import.meta.env.VITE_API_URL;
-  const [movieToDelete, setMovieToDelete] = useState<number | null>(null);
+  const [movieToDelete, setMovieToDelete] = useState<MovieType | null>(null);
   const [showDeleteConfirmation, setShowDeleteConfirmation] = useState(false);
 
   useEffect(() => {
-    if (showDeleteConfirmation) {
+    if (showDeleteConfirmation && movieToDelete) {
       deleteDialogRef.current?.showModal();
     }
-  }, [showDeleteConfirmation]);
+  }, [showDeleteConfirmation, movieToDelete]);
 
   const deleteMovie = (id: number) => {
     return axios
@@ -75,15 +75,15 @@ export default function EditDashBoard() {
     document.body.style.overflow = "";
   };
 
-  const openDeleteModal = (id: number) => {
-    setMovieToDelete(id);
+  const openDeleteModal = (movie: MovieType) => {
+    setMovieToDelete(movie);
     setShowDeleteConfirmation(true);
   };
 
   const closeDeleteModal = () => {
-    deleteDialogRef.current?.close();
     setShowDeleteConfirmation(false);
-    document.body.style.overflow = "";
+    setMovieToDelete(null);
+    deleteDialogRef.current?.close();
   };
 
   return (
@@ -94,7 +94,7 @@ export default function EditDashBoard() {
             <p>{movie.title}</p>
           </div>
           <div className="button-edit">
-            <button type="button" onClick={() => openDeleteModal(movie.id)}>
+            <button type="button" onClick={() => openDeleteModal(movie)}>
               <img src="/GarbageIcone.png" alt="Delete" />
             </button>
             <button type="button" onClick={() => openModal(movie)}>
@@ -125,13 +125,16 @@ export default function EditDashBoard() {
               }
             }}
           >
-            <p>Êtes-vous sûr de vouloir supprimer ce film ?</p>
+            <p>
+              Êtes-vous sûr de vouloir supprimer{" "}
+              <strong>{movieToDelete?.title}</strong> ?
+            </p>
             <div className="confirmation-buttons">
               <button
                 type="button"
                 className="confirm-button"
                 onClick={() =>
-                  movieToDelete !== null && deleteMovie(movieToDelete)
+                  movieToDelete !== null && deleteMovie(movieToDelete.id)
                 }
               >
                 Confirmer
