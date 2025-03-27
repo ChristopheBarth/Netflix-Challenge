@@ -23,23 +23,27 @@ export default function MovieDetail() {
       <h1>Original digitals</h1>
       <img className="landscape" src={movieId.landscape_image} alt="" />
       <h2 className="movie-titleDetail">{movieId.title}</h2>
-
       <div className="container-movies">
         <div className="landscape-information">
-          <p>année : {movieId.release_year}</p>
-          <p>durée : {movieId.duration}</p>
-          <p>genres : {movieId.genres}</p>
-          <p>casting : {movieId.casting}</p>
-          <p>production : {movieId.production}</p>
-          <div className="bio">
-            <p>synopsis : {movieId.synopsis.slice(0, 50)}...</p>
-            <details>
-              <summary>
-                <p>En savoir plus</p>
-              </summary>
-              <p>{movieId.synopsis.substring(50)}</p>
-            </details>
-            <FavoriteButton id={movieId.id} />
+          <div className="information-wrap">
+            <div className="information-left">
+              <p>
+                {movieId.release_year} {movieId.duration}
+              </p>
+              <p>{movieId.genres}</p>
+            </div>
+            <div className="bio">
+              <p>synopsis : {movieId.synopsis.slice(0, 50)}...</p>
+              <details>
+                <summary>Voir plus</summary>
+                <p>{movieId.synopsis.substring(50)}</p>
+              </details>
+              <FavoriteButton id={movieId.id} />
+            </div>
+            <div className="information-right">
+              <p>casting : {movieId.casting}</p>
+              <p>production : {movieId.production}</p>
+            </div>
           </div>
         </div>
         <iframe

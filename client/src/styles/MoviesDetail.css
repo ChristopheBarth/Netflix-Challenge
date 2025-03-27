@@ -21,6 +21,15 @@ h1 {
   display: flex;
   flex-direction: column;
 }
+.information-left {
+  font-size: 14px;
+}
+.bio {
+  font-size: 16px;
+}
+.information-right {
+  font-size: 14px;
+}
 
 .short-movie {
   margin: 1rem 0;
@@ -36,4 +45,61 @@ h1 {
 
 details summary {
   list-style: none;
+}
+
+@media only screen and (min-width: 1200px) {
+  .movie-titleDetail {
+    font-size: 56px;
+    transform: translateY(-28rem);
+  }
+  .landscape {
+    border-radius: 10px;
+    filter: brightness(70%);
+  }
+  .container-movies {
+    transform: translateY(-16rem);
+    .information-wrap {
+      display: flex;
+      flex-direction: wrap;
+      justify-content: space-between;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      color: white;
+      margin-bottom: 7rem;
+    }
+  }
+  .information-right {
+    max-width: 20vw;
+    p {
+      margin-bottom: 1rem;
+      border: 1px solid white;
+      padding: 0.3rem;
+      font-size: 12px;
+    }
+  }
+  .information-left {
+    p {
+      margin-bottom: 1rem;
+      border: 1px solid white;
+      padding: 0.3rem;
+      font-size: 12px;
+    }
+  }
+  .favorite-button {
+    color: white;
+  }
+  .favorite-button:hover {
+    color: black;
+  }
+  .short-movie {
+    width: 45%;
+    height: 250px;
+    margin: 0 auto;
+    border-radius: 10px;
+  }
+  .same-genre {
+    margin-top: 4rem;
+    font-size: 16px;
+    color: rgb(102, 102, 102);
+  }
 }
