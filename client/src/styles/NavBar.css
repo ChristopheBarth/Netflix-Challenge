@@ -41,6 +41,10 @@ nav {
   display: none;
 }
 
+.disconnect-button {
+  cursor: pointer;
+}
+
 .disconnect-button-mobile {
   visibility: hidden;
 }
