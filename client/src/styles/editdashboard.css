@@ -116,3 +116,12 @@
     opacity: 1;
   }
 }
+
+@media only screen and (min-width: 792px) {
+  .confirmation-modal {
+    max-width: 390px;
+  }
+  .modal {
+    max-width: 792px;
+  }
+}

@@ -48,3 +48,18 @@
 .dashboard-movies > p {
   color: var(--primary-color);
 }
+
+@media only screen and (min-width: 792px) {
+  .button-container {
+    button {
+      padding: 1rem 2rem;
+      margin-right: 1rem;
+    }
+  }
+  .dashboard-right {
+    max-width: 1440px;
+  }
+  .user-dashboard {
+    max-width: 390px;
+  }
+}
