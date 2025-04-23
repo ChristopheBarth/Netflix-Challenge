@@ -15,6 +15,13 @@
 }
 
 body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(to right, #0d0b1e, #2a2159); /* Couleurs ajustées pour correspondre à l'image */
+  background-repeat: no-repeat;
+  background-attachment: fixed; /* Fixe le fond lors du défilement */
+  /* Ici on a mis en place notre gradient*/
+  /* ---------------------------------------------------------- */
   padding: 1rem;
   font-size: var(--font-size);
   line-height: 1.7;

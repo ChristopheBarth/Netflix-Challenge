@@ -52,7 +52,7 @@ export default function NavBar() {
     <nav>
       <div className="title">
         <Link to="/" onClick={closeMenu}>
-          <img src="/Logo_OriginalDigital.webp" alt="logo" className="logo" />
+          <img src="/netflix.png" alt="logo" className="logo" />
         </Link>
       </div>
 
