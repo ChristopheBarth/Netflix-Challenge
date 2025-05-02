@@ -1,9 +1,28 @@
+import { useEffect, useState } from "react";
 import "../styles/NetflixIntro.css";
 
-export default function NetflixIntro() {
+// Définir les types des props
+interface NetflixIntroProps {
+  isLoggedIn: boolean;
+}
+
+export default function NetflixIntro({ isLoggedIn }: NetflixIntroProps) {
+  const [animate, setAnimate] = useState(false);
+
+  // Déclencher l'animation lorsque `isLoggedIn` passe à true
+  useEffect(() => {
+    if (isLoggedIn) {
+      console.info("Utilisateur connecté, animation déclenchée");
+      setAnimate(true);
+    }
+  }, [isLoggedIn]); // Dépendance sur `isLoggedIn`
+
   return (
     <div id="container">
-      <div className="netflixintro" data-letter="N">
+      <div
+        className={`netflixintro ${animate ? "netflix-animate" : ""}`}
+        data-letter="N"
+      >
         <div className="helper-1">
           <div className="effect-brush">
             <span className="fur-31" />
