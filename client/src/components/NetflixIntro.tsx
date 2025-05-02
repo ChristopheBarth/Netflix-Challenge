@@ -1,21 +1,14 @@
 import { useEffect, useState } from "react";
 import "../styles/NetflixIntro.css";
 
-// Définir les types des props
-interface NetflixIntroProps {
-  isLoggedIn: boolean;
-}
-
-export default function NetflixIntro({ isLoggedIn }: NetflixIntroProps) {
+export default function NetflixIntro() {
   const [animate, setAnimate] = useState(false);
 
-  // Déclencher l'animation lorsque `isLoggedIn` passe à true
+  // Dès que le composant est monté, on lance l'animation
   useEffect(() => {
-    if (isLoggedIn) {
-      console.info("Utilisateur connecté, animation déclenchée");
-      setAnimate(true);
-    }
-  }, [isLoggedIn]); // Dépendance sur `isLoggedIn`
+    console.info("Animation Netflix déclenchée");
+    setAnimate(true);
+  }, []);
 
   return (
     <div id="container">

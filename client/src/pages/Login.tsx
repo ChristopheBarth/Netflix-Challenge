@@ -21,6 +21,7 @@ export default function Login() {
       [e.currentTarget.name]: e.currentTarget.value,
     });
   };
+
   const sendCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     loginUser(credentials, navigate, setRole, setSubscription);
