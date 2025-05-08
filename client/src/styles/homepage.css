@@ -24,10 +24,12 @@
 .top-element > h1 {
   font-size: 2rem;
   margin: 1rem;
+  color: silver;
 }
 
 .top-element > p {
   margin-top: 2rem;
+  color: silver;
 }
 
 .input-mail > input {
@@ -74,6 +76,7 @@
 section > h2 {
   text-align: center;
   margin: 1rem;
+  color: silver;
 }
 
 .offer {

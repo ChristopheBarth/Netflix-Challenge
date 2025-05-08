@@ -8,14 +8,18 @@ footer {
   }
   h3 {
     margin-top: 1rem;
+    color: silver;
   }
   a {
-    color: black;
+    color: silver;
     opacity: 0.8;
   }
   div:nth-child(3) {
     margin-top: 1rem;
     opacity: 0.6;
+  }
+  div {
+    color: silver;
   }
 }
 

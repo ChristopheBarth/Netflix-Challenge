@@ -20,7 +20,7 @@ export default function MovieDetail() {
 
   return (
     <>
-      <h1>Original digitals</h1>
+      {/* <h1>Original digitals</h1> */}
       <img className="landscape" src={movieId.landscape_image} alt="" />
       <h2 className="movie-titleDetail">{movieId.title}</h2>
       <div className="container-movies">

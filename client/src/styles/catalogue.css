@@ -51,6 +51,7 @@
 .show-movies h2 {
   margin-top: 1rem;
   font-size: 18px;
+  color: white;
 }
 
 .show-movies h2:first-of-type {

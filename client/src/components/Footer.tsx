@@ -1,11 +1,9 @@
 import "../styles/footer.css";
 import { Link } from "react-router-dom";
-import Logo from "../assets/images/Logo_OriginalDigital.webp";
 
 export default function Footer() {
   return (
     <footer>
-      <img src={Logo} alt="Original Digital" />
       <div className="nav-footer">
         <div>
           <h3>Support</h3>
@@ -48,7 +46,7 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <div>© 2025 Original Digital by Wilders</div>
+      <div>© 2025 Netflix</div>
     </footer>
   );
 }

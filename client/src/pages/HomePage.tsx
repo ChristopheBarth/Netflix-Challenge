@@ -10,7 +10,7 @@ export default function HomePage() {
   return (
     <section className="all-element">
       <section className="top-element">
-        <h1>L’original au service du digital</h1>
+        <h1>See what's next</h1>
         <p>
           Profitez d'un catalogue qui contient le meilleur du cinéma. Saisissez
           votre adresse e-mail pour nous rejoindre.

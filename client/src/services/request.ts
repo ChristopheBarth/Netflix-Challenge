@@ -113,7 +113,7 @@ const loginUser = (
   setSubscription: (subscription: boolean) => void,
 ) => {
   const notifySuccess = () =>
-    toast.success("Bienvenue sur Original Digital 🚀", {
+    toast.success("Bienvenue sur Netflix 🚀", {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
