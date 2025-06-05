@@ -1,0 +1,100 @@
+/* ==== Reset & fond sombre ==== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  width: 100%;
+  /* height: 100%;
+  background-color: #141414; */
+  font-family: sans-serif;
+  color: #fff;
+}
+
+/* ==== Conteneur global ==== */
+.top-list {
+  padding: 20px;
+}
+.top-list h1 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* ==== Scroll horizontal des items ==== */
+.items-container {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+}
+.items-container::-webkit-scrollbar {
+  height: 8px;
+}
+.items-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 4px;
+}
+
+/* ==== Chaque item (carte) ==== */
+.item {
+  position: relative;
+  width: 200px; /* Largeur fixe de la carte */
+  flex-shrink: 0;
+  text-align: center;
+}
+
+/* 1) Numéro en filigrane (derrière l’image) */
+.item::before {
+  content: attr(data-rank);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 10rem; /* Taille augmentée pour plus de visibilité */
+  font-weight: bold;
+  color: rgba(255, 255, 255, 0.1); /* Un peu plus visible */
+  /* Légère bordure pour contraster sur l’image ; non standard WebKit mais très répandu */
+  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.2);
+  z-index: 0; /* Derrière l’image */
+  pointer-events: none;
+}
+
+/* 2) Réduire la vignette pour laisser assez de contour */
+.thumbnail {
+  position: relative;
+  width: 80%; /* Passe à 80% pour que le N apparaisse nettement sur les côtés */
+  margin: 0 auto; /* Centre horizontalement dans .item */
+  z-index: 1; /* Au-dessus du ::before */
+}
+
+/* 3) Affichage de l’image à l’intérieur de .thumbnail */
+.thumbnail img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 4px;
+}
+
+/* 4) Badge rouge “Ajout récent” (inflagé) */
+.thumbnail .badge {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #e50914;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 4px 8px;
+  border-radius: 2px;
+  z-index: 2; /* Au-dessus de l’image */
+}
+
+/* 5) Titre sous l’image (inchangé) */
+.item .title {
+  margin-top: 8px;
+  font-size: 0.9rem;
+  line-height: 1.2;
+  z-index: 1;
+}
