@@ -2,8 +2,10 @@ import { Link, useNavigate } from "react-router-dom";
 import "../styles/login.css";
 import { useState } from "react";
 import { Bounce, ToastContainer } from "react-toastify";
+import NetflixIntro from "../components/NetflixIntro";
 import { useAuth } from "../services/AuthContext";
 import { loginUser } from "../services/request";
+import "../styles/netflixintro.css";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -12,6 +14,9 @@ export default function Login() {
     email: "",
     password: "",
   });
+  // ---------------------------------------------------
+  const [showIntro, setShowIntro] = useState(false);
+  // ---------------------------------------------------
 
   const { setRole, setSubscription } = useAuth();
 
@@ -22,10 +27,18 @@ export default function Login() {
     });
   };
 
+  // ----------------------------------------------------
   const sendCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    loginUser(credentials, navigate, setRole, setSubscription);
+
+    await loginUser(credentials, navigate, setRole, setSubscription);
+    setShowIntro(true);
   };
+
+  if (showIntro) {
+    return <NetflixIntro />;
+  }
+  // ----------------------------------------------------
 
   return (
     <div>

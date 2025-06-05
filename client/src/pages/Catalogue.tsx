@@ -20,9 +20,9 @@ export default function Catalogue() {
     <>
       <div className="first-container">
         <img
-          src="/Background_connection.jpg"
+          src="/BackgroundConnection.jpg"
           className="img-container"
-          alt=""
+          alt="Background films vignettes"
         />
         {!subscription && (
           <button type="button" className="decouvrir-nos-offres">
