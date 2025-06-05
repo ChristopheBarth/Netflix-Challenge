@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../styles/NetflixIntro.css";
+import "../styles/netflixintro.css";
 
 export default function NetflixIntro() {
   const [animate, setAnimate] = useState(false);
