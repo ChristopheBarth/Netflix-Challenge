@@ -27,20 +27,12 @@ export default function Login() {
     });
   };
 
-  // const sendCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   loginUser(credentials, navigate, setRole, setSubscription);
-  // };
-
   // ----------------------------------------------------
   const sendCredentials = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     await loginUser(credentials, navigate, setRole, setSubscription);
     setShowIntro(true);
-    setTimeout(() => {
-      navigate("/Catalogue");
-    }, 3000); // Durée de l'intro
   };
 
   if (showIntro) {

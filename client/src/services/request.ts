@@ -148,7 +148,7 @@ const loginUser = (
       notifySuccess();
       setTimeout(() => {
         navigate(data.role === "administrateur" ? "/dashboard" : "/catalogue");
-      }, 3000);
+      }, 5000);
     })
     .catch((error) => {
       notifyError();
