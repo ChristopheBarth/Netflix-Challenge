@@ -1,9 +1,10 @@
 #container {
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  /* -------------------------- */
+  padding: 2rem;
+  /* ------------------------- */
   background-color: #000000;
   overflow: hidden;
 }
@@ -11,8 +12,10 @@
 #container .netflixintro {
   position: relative;
   overflow: hidden;
-  height: 100%;
-  width: 100%;
+  /* ------------------------- */
+  width: 200px !important;
+  height: 200px !important;
+  /* ------------------------- */
   animation-name: zoom-in;
   animation-delay: 0.5s;
   animation-duration: 3.5s;
@@ -20,7 +23,7 @@
   animation-fill-mode: forwards;
   background-size: cover;
   background-position: center;
-  transition: transform 0.5s ease, opacity 0.5s ease; /* Ajout ici */
+  transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .netflix-animate {
@@ -1174,7 +1177,7 @@
     transform: scale(1);
   }
   100% {
-    transform: scale(15);
+    transform: scale(5);
   }
 }
 @keyframes showing-lumieres {
@@ -1191,5 +1194,12 @@
   }
   100% {
     background-color: rgba(228, 9, 19, 0);
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  #container .netflixintro {
+    width: 350px !important;
+    height: 350px !important;
   }
 }

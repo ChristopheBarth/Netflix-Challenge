@@ -9,7 +9,7 @@ export default function Footer() {
           <h3>Support</h3>
           <ul>
             <li>
-              <Link to={"#"}>À propos d'Original Digital</Link>
+              <Link to={"#"}>À propos de Netflix</Link>
             </li>
             <li>
               <Link to={"#"}>Nous contacter</Link>

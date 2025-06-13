@@ -1,5 +1,13 @@
 .all-element {
   padding: 1rem;
+  /* ------------------------------------------------- */
+  position: relative;
+  z-index: 1;
+  background: url("bg-header.png") top center no-repeat;
+  /* background-position: top center;
+  background-repeat: no-repeat; */
+  background-size: contain;
+  /* ------------------------------------------------- */
 }
 .input-mail {
   display: flex;
@@ -13,6 +21,25 @@
     border-radius: var(--button-radius);
   }
 }
+
+/* ---------------------------------------------------- */
+/* .input-mail {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+} */
+
+.background-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+/* ---------------------------------------------------- */
 
 .top-element {
   text-align: center;
@@ -75,7 +102,7 @@
 
 section > h2 {
   text-align: center;
-  margin: 1rem;
+  /* margin: 1rem; */
   color: silver;
 }
 
@@ -123,14 +150,14 @@ section > h2 {
   }
 }
 
-.all-element {
+/* .all-element {
   background: url("bg-header.png");
   background-position: top center;
   background-repeat: no-repeat;
   background-size: contain;
-}
+} */
 
-@media only screen and (min-width: 792px) {
+/* @media only screen and (min-width: 792px) {
   .all-element {
     display: flex;
     margin: 5rem;
@@ -138,7 +165,19 @@ section > h2 {
     justify-content: space-between;
     gap: 4rem;
     background-image: none;
+  } */
+
+/* ------------------------------------------ */
+@media only screen and (min-width: 792px) {
+  .all-element {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+    background-image: none;
   }
+  /* ------------------------------------------- */
 
   .bottom-element {
     display: none;
@@ -156,15 +195,19 @@ section > h2 {
     align-items: center;
   }
 
-  .top-element {
+  /* .top-element {
     display: flex;
     flex-direction: column;
     width: calc(100% / 3);
     text-align: left;
-  }
+  } */
+
   .top-element > h2 {
     text-align: left;
-    margin: 0;
+    /* margin: 0; */
+    /* -------------------------------------- */
+    margin: 1rem;
+    /* -------------------------------------- */
     margin-top: 1rem;
   }
   .arrow {
@@ -206,7 +249,7 @@ section > h2 {
   }
 }
 
-@media only screen and (max-width: 792px) {
+/* @media only screen and (max-width: 792px) {
   .button-middle {
     display: none;
   }
@@ -217,5 +260,17 @@ section > h2 {
     img {
       display: none;
     }
+  }
+} */
+
+@media only screen and (max-width: 768px) {
+  .background-video {
+    object-fit: contain; /* La vidéo s'ajuste sans être coupée */
+    height: auto; /* La hauteur s'ajuste automatiquement */
+  }
+
+  .input-mail {
+    height: auto; /* Permet au conteneur de s'ajuster automatiquement */
+    width: auto;
   }
 }
