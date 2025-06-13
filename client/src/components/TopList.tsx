@@ -65,7 +65,7 @@ export default function TopList() {
 
   return (
     <section className="top-list">
-      <h1>Top 5 des séries aujourd’hui : France</h1>
+      <h1>Top 5 des films aujourd’hui : France</h1>
       <div className="items-container">
         {items.map(({ rank, title, imgSrc }) => (
           <div key={rank} className="item" data-rank={rank}>
