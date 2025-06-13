@@ -6,14 +6,14 @@ import TopList from "./components/TopList";
 
 function App() {
   return (
-    <>
+    <div id="root-container">
       <NavBar />
       <div className="page-content">
         <Outlet />
         <TopList />
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
