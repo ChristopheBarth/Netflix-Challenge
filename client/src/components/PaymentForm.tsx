@@ -85,7 +85,7 @@ export default function PaymentForm() {
           name="cardName"
           value={cardData.cardName}
           onChange={handleChangeForm}
-          placeholder="Votre prénom et nom de famille"
+          placeholder="👤 Votre prénom et nom de famille"
         />
         <label htmlFor="payment_details">
           Détails du paiement <p>*</p>
@@ -97,7 +97,7 @@ export default function PaymentForm() {
           maxLength={19}
           value={cardData.cardNumbers}
           onChange={handleChangeCardNumber}
-          placeholder="XXXX XXXX XXXX XXXX"
+          placeholder="💳 XXXX XXXX XXXX XXXX"
         />
         <div className="expiry-cvv">
           <input
@@ -107,7 +107,7 @@ export default function PaymentForm() {
             maxLength={5}
             value={cardData.expiryDay}
             onChange={handleChangeExpiryDate}
-            placeholder="MM/YY"
+            placeholder="🗓️ MM/YY"
           />
           <input
             type="text"
@@ -116,7 +116,7 @@ export default function PaymentForm() {
             maxLength={3}
             value={cardData.cvv}
             onChange={handleChangeForm}
-            placeholder="XXX"
+            placeholder="🔍 XXX"
           />
         </div>
         <label htmlFor="country">
@@ -129,7 +129,7 @@ export default function PaymentForm() {
           value={cardData.country}
           onChange={handleChangeForm}
           onFocus={handleFocus}
-          placeholder="Sélectionnez votre pays"
+          placeholder="🌍 Sélectionnez votre pays"
         />
         <datalist id="country-list">
           {countries.map((country) => (

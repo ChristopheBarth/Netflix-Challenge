@@ -6,6 +6,10 @@
     display: flex;
     justify-content: space-between;
   }
+
+  .payment-form > h2 {
+    color: black;
+  }
   .button-cancel-submit > button {
     margin-top: 0.5rem;
     cursor: pointer;

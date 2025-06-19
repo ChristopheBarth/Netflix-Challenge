@@ -14,7 +14,7 @@ export default function MovieDetail() {
 
   const sameGenre = movies
     .filter((movie) =>
-      movie.genres.split(",").some((genre) => movieId.genres.includes(genre)),
+      movie.genres.some((genre: string) => movieId.genres.includes(genre)),
     )
     .slice(0, 12);
 

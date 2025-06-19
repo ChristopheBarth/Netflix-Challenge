@@ -1,3 +1,14 @@
+.movie-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 1rem;
+  padding: 1rem;
+}
+.movie-container::-webkit-scrollbar {
+  display: none;
+}
+
 .movie-container::after {
   background-color: rgb(161, 161, 161);
 

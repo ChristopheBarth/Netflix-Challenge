@@ -30,23 +30,24 @@ export default function EditDashBoard() {
       .catch((error) => console.error(error));
   };
 
-  const [updatedMovie, setUpdatedMovie] = useState({
-    id: Number(),
+  const [updatedMovie, setUpdatedMovie] = useState<MovieType>({
+    id: 0,
     title: "",
     poster: "",
-    release_year: Number(),
+    release_year: 0,
     synopsis: "",
     duration: "",
     trailer: "",
     casting: "",
     production: "",
     landscape_image: "",
-    genres: "",
+    genres: [],
     premium: true,
   });
 
   const handleEditMovie = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
     editMovie(updatedMovie.id, updatedMovie)
       .then(() => {
         revalidate();
@@ -190,13 +191,18 @@ export default function EditDashBoard() {
                 placeholder="URL"
                 onChange={handleChangeMovieForm}
               />
-              <p>Genre</p>
+              <p>Genres</p>
               <input
                 type="text"
-                value={updatedMovie.genres}
-                name="genre"
-                placeholder="Genre"
-                onChange={handleChangeMovieForm}
+                name="genres"
+                value={updatedMovie.genres.join(", ")}
+                placeholder="Action, Drame, Comédie"
+                onChange={(e) =>
+                  setUpdatedMovie({
+                    ...updatedMovie,
+                    genres: e.target.value.split(",").map((g) => g.trim()),
+                  })
+                }
               />
               <p>Date de sortie</p>
               <input
@@ -205,7 +211,12 @@ export default function EditDashBoard() {
                 value={updatedMovie.release_year}
                 name="release_year"
                 placeholder="AAAA"
-                onChange={handleChangeMovieForm}
+                onChange={(e) =>
+                  setUpdatedMovie({
+                    ...updatedMovie,
+                    release_year: Number(e.target.value),
+                  })
+                }
               />
               <p>Synopsis</p>
               <input
@@ -259,7 +270,7 @@ export default function EditDashBoard() {
                 Modifier
               </button>
               <button
-                type="submit"
+                type="button"
                 className="close-modal"
                 onClick={closeModal}
               >

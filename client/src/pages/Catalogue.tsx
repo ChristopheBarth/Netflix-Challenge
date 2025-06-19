@@ -1,7 +1,8 @@
 import { Link, useLoaderData } from "react-router-dom";
 import MovieCards from "../components/MovieCards";
-import "../styles/catalogue.css";
 import { useAuth } from "../services/AuthContext";
+import "../styles/catalogue.css";
+import { useState } from "react";
 
 export default function Catalogue() {
   const { movies } = useLoaderData() as {
@@ -9,12 +10,31 @@ export default function Catalogue() {
   };
 
   const { subscription } = useAuth();
+  const [selectedGenre, setSelectedGenre] = useState("all");
 
-  const freeMovies = movies.filter((movie) => !movie.premium);
-  const premiumMovies = movies.filter((movie) => movie.premium);
-  const sfMovies = movies.filter((movie) =>
-    movie.genres.includes("Science-fiction"),
-  );
+  // Genres uniques
+  const allGenres = Array.from(
+    new Set(movies.flatMap((movie) => movie.genres)),
+  ).sort();
+
+  // Résultat du filtre
+  const filteredMovies =
+    selectedGenre === "all"
+      ? movies
+      : movies.filter((movie) => movie.genres.includes(selectedGenre));
+
+  // Sections spécifiques
+  const topRatedMovies = [...movies]
+    .filter((m) => m.rating !== undefined)
+    .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0))
+    .slice(0, 10);
+
+  const latestMovies = [...movies]
+    .filter((m) => m.release_year)
+    .sort((a, b) => b.release_year - a.release_year)
+    .slice(0, 10);
+
+  const freeMovies = movies.filter((movie) => !movie.premium).slice(0, 10);
 
   return (
     <>
@@ -30,32 +50,60 @@ export default function Catalogue() {
           </button>
         )}
       </div>
+
       <div className="show-movies">
-        <h2>Films gratuits</h2>
+        <h2>Les mieux notés</h2>
         <section className="movie-container">
-          {freeMovies.map((movie) => (
+          {topRatedMovies.length > 0 ? (
+            topRatedMovies.map((movie) => (
+              <MovieCards key={movie.id} movie={movie} />
+            ))
+          ) : (
+            <p>Aucun film noté pour le moment.</p>
+          )}
+        </section>
+
+        <h2>Nouveautés sur Netflix</h2>
+        <section className="movie-container">
+          {latestMovies.map((movie) => (
             <MovieCards key={movie.id} movie={movie} />
           ))}
         </section>
-        <h2>Tendances Actuelles</h2>
+
+        <h2>Films offerts</h2>
         <section className="movie-container">
-          {sfMovies.map((movie) => (
-            <MovieCards key={movie.id} movie={movie} />
-          ))}
+          {freeMovies.length > 0 ? (
+            freeMovies.map((movie) => (
+              <MovieCards key={movie.id} movie={movie} />
+            ))
+          ) : (
+            <p>Aucun film gratuit disponible.</p>
+          )}
         </section>
-        <h2>Films Premium</h2>
+
+        <h2>Rechercher un film par genre</h2>
+        <div className="genre-filter">
+          <label htmlFor="genre-select">🎬 : </label>
+          <select
+            id="genre-select"
+            value={selectedGenre}
+            onChange={(e) => setSelectedGenre(e.target.value)}
+          >
+            <option value="all">Tous</option>
+            {allGenres.map((genre) => (
+              <option key={genre} value={genre}>
+                {genre}
+              </option>
+            ))}
+          </select>
+        </div>
         <section className="movie-container">
-          {premiumMovies.map((movie) => (
-            <MovieCards key={movie.id} movie={movie} />
-          ))}
-        </section>
-        <h2>Ma Liste</h2>
-        <section className="movie-container">
-          {movies.map((movie) => (
+          {filteredMovies.map((movie) => (
             <MovieCards key={movie.id} movie={movie} />
           ))}
         </section>
       </div>
+
       {!subscription && (
         <section id="acces" className="connection-bottom">
           <h2>Nos différentes souscriptions</h2>
