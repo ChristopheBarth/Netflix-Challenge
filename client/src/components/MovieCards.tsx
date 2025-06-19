@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
 import { useAuth } from "../services/AuthContext";
 
+interface MoviesProps {
+  movie: MovieType; // ✅ Utilise le type global
+}
+
 export default function MovieCards({ movie }: MoviesProps) {
   const scrollToTop = () => {
     window.scrollTo({

@@ -26,10 +26,11 @@ interface MovieType {
   synopsis: string;
   trailer: string;
   casting: string;
-  production: string;
-  landscape_image: string;
-  genres: string;
+  production?: string;
+  landscape_image?: string;
+  genres: string[];
   premium: boolean;
+  rating?: number;
 }
 
 interface MoviesProps {
