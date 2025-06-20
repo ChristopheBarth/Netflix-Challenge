@@ -10,6 +10,7 @@ const router = express.Router();
 import movieActions from "./modules/movie/movieActions";
 
 router.get("/api/movies", movieActions.browse);
+router.get("/api/movies/top10", movieActions.getTop10);
 router.get("/api/movies/:id", auth.verify, movieActions.read);
 
 router.post("/api/movies", auth.verify, auth.checkIfAdmin, movieActions.add);
