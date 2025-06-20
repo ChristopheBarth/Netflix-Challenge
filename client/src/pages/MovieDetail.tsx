@@ -13,8 +13,11 @@ export default function MovieDetail() {
   const movies = movieData.movies;
 
   const sameGenre = movies
-    .filter((movie) =>
-      movie.genres.some((genre: string) => movieId.genres.includes(genre)),
+    .filter(
+      (movie) =>
+        Array.isArray(movie.genres) &&
+        Array.isArray(movieId.genres) &&
+        movie.genres.some((genre: string) => movieId.genres.includes(genre)),
     )
     .slice(0, 12);
 

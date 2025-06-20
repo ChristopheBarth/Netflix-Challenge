@@ -30,7 +30,7 @@ export default function MovieCards({ movie }: MoviesProps) {
             <img src={movie.poster} alt={movie.title} />
           </Link>
         )}
-        <p className="movie-title">{movie.title}</p>
+        {/* <p className="movie-title">{movie.title}</p> */}
       </div>
     </>
   );
