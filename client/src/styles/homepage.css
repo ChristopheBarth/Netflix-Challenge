@@ -2,7 +2,7 @@
   padding: 1rem;
   position: relative;
   z-index: 1;
-  background: url("bg-header.png") top center no-repeat;
+  /* background: url("bg-header.png") top center no-repeat; */
   background-size: contain;
 }
 .input-mail {
@@ -111,13 +111,14 @@ section > h2 {
   border: none;
   font-size: large;
   background: none;
+  color: white;
 }
 
 .middle-element > h2 {
   line-height: 1.7rem;
 }
 .button.active {
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid grey;
 }
 
 .bottom-element {
@@ -151,7 +152,7 @@ section > h2 {
   }
 
   .middle-element {
-    background-image: url("/bg-desktop.svg");
+    background-image: url("/arrow_down.png");
     background-size: cover;
     border-radius: var(--button-radius);
     width: 70%;
@@ -173,7 +174,7 @@ section > h2 {
 
   .button-middle {
     border: none;
-    background-color: black;
+    background-color: grey;
     color: var(--secondary-color);
     padding: 0.5rem;
     width: 15rem;
