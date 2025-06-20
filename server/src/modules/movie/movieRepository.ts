@@ -1,6 +1,6 @@
 import databaseClient from "../../../database/client";
-
 import type { Result, Rows } from "../../../database/client";
+
 type Movie = {
   id: number;
   title: string;
@@ -19,7 +19,7 @@ type Movie = {
 class MovieRepository {
   async create(movie: Omit<Movie, "id" | "genres">): Promise<number> {
     const [result] = await databaseClient.query<Result>(
-      "insert into movie (title, synopsis, release_year, duration, poster, trailer, casting, production, landscape_image, premium) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "INSERT INTO movie (title, synopsis, release_year, duration, poster, trailer, casting, production, landscape_image, premium) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         movie.title,
         movie.synopsis,
@@ -33,15 +33,14 @@ class MovieRepository {
         movie.premium,
       ],
     );
-
     return result.insertId;
   }
 
   async read(id: number): Promise<Movie> {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT
-     m.*,
-      GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
+        m.*,
+        GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
       FROM movie m
       LEFT JOIN movie_genre mg ON m.id = mg.movie_id
       LEFT JOIN genre g ON mg.genre_id = g.id
@@ -49,19 +48,33 @@ class MovieRepository {
       GROUP BY m.id`,
       [id],
     );
-
     return rows[0] as Movie;
   }
 
   async readAll(): Promise<Movie[]> {
     const [rows] = await databaseClient.query<Rows>(
       `SELECT
-     m.*,
-      GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
+        m.*,
+        GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
       FROM movie m
       LEFT JOIN movie_genre mg ON m.id = mg.movie_id
       LEFT JOIN genre g ON mg.genre_id = g.id
       GROUP BY m.id`,
+    );
+    return rows as Movie[];
+  }
+
+  async readTop10(): Promise<Movie[]> {
+    const [rows] = await databaseClient.query<Rows>(
+      `SELECT
+        m.*,
+        GROUP_CONCAT(g.name SEPARATOR ', ') AS genres
+      FROM movie m
+      LEFT JOIN movie_genre mg ON m.id = mg.movie_id
+      LEFT JOIN genre g ON mg.genre_id = g.id
+      GROUP BY m.id
+      ORDER BY m.id DESC
+      LIMIT 10`,
     );
     return rows as Movie[];
   }
@@ -88,10 +101,11 @@ class MovieRepository {
 
   async delete(id: number): Promise<number> {
     const [result] = await databaseClient.query<Result>(
-      "delete from movie where id = ?",
+      "DELETE FROM movie WHERE id = ?",
       [id],
     );
     return result.affectedRows;
   }
 }
+
 export default new MovieRepository();

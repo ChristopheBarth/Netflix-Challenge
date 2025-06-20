@@ -1,84 +1,100 @@
-/* ==== Reset & fond sombre ==== */
+/* ==== Reset & base ==== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-html,
+
 body {
-  width: 100%;
-  /* height: 100%;
-  background-color: #141414; */
   font-family: sans-serif;
   color: #fff;
+  background-color: #141414;
 }
 
-/* ==== Conteneur global ==== */
+/* ==== Container principal ==== */
+/* ==== Section Top 10 ==== */
 .top-list {
-  padding: 20px;
-}
-.top-list h1 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
 }
 
-/* ==== Scroll horizontal des items ==== */
+.top-list h1 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: white;
+}
+
+/* ==== Scroll horizontal des films ==== */
 .items-container {
   display: flex;
   gap: 20px;
   overflow-x: auto;
   padding-bottom: 10px;
+  padding-inline: 20px;
+  scroll-padding-left: 20px;
+  min-width: 100%;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
 }
+
 .items-container::-webkit-scrollbar {
-  height: 8px;
-}
-.items-container::-webkit-scrollbar-thumb {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 4px;
+  display: none; /* Chrome, Safari */
 }
 
-/* ==== Chaque item (carte) ==== */
+/* ==== Item : carte film ==== */
 .item {
-  position: relative;
-  width: 200px; /* Largeur fixe de la carte */
+  width: 200px;
   flex-shrink: 0;
+  scroll-snap-align: start;
   text-align: center;
+  position: relative;
 }
 
-/* 1) Numéro en filigrane (derrière l’image) */
-.item::before {
-  content: attr(data-rank);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-size: 10rem; /* Taille augmentée pour plus de visibilité */
-  font-weight: bold;
-  color: rgba(255, 255, 255, 0.1); /* Un peu plus visible */
-  /* Légère bordure pour contraster sur l’image ; non standard WebKit mais très répandu */
-  -webkit-text-stroke: 2px rgba(0, 0, 0, 0.2);
-  z-index: 0; /* Derrière l’image */
-  pointer-events: none;
+/* Numéro de classement à gauche */
+.top-item-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: flex-start;
 }
 
-/* 2) Réduire la vignette pour laisser assez de contour */
+/* Numéro (gros et visible) */
+.rank-number {
+  font-size: 3rem;
+  font-weight: 900;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+  flex-shrink: 0;
+  margin-left: 10px;
+}
+
+/* Image */
 .thumbnail {
   position: relative;
-  width: 80%; /* Passe à 80% pour que le N apparaisse nettement sur les côtés */
-  margin: 0 auto; /* Centre horizontalement dans .item */
-  z-index: 1; /* Au-dessus du ::before */
+  width: 100%;
+  height: 270px;
+  aspect-ratio: 2 / 3;
+  overflow: hidden;
+  border-radius: 4px;
+  transition: transform 0.3s ease;
 }
 
-/* 3) Affichage de l’image à l’intérieur de .thumbnail */
+.thumbnail:hover {
+  transform: scale(1.05);
+  z-index: 3;
+}
+
 .thumbnail img {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   display: block;
-  border-radius: 4px;
 }
 
-/* 4) Badge rouge “Ajout récent” (inflagé) */
-.thumbnail .badge {
+/* Badge */
+.badge {
   position: absolute;
   bottom: 8px;
   left: 50%;
@@ -88,13 +104,20 @@ body {
   font-size: 0.75rem;
   padding: 4px 8px;
   border-radius: 2px;
-  z-index: 2; /* Au-dessus de l’image */
+  z-index: 4;
 }
 
-/* 5) Titre sous l’image (inchangé) */
-.item .title {
-  margin-top: 8px;
-  font-size: 0.9rem;
-  line-height: 1.2;
-  z-index: 1;
+/* ==== Responsive ==== */
+@media (max-width: 768px) {
+  .rank-number {
+    font-size: 2rem;
+  }
+
+  .item {
+    width: 160px;
+  }
+
+  .thumbnail {
+    height: 220px;
+  }
 }

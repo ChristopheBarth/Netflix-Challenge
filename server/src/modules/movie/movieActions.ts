@@ -1,5 +1,6 @@
 import type { RequestHandler } from "express";
 import movieRepository from "./movieRepository";
+import { get } from "node:http";
 
 const browse: RequestHandler = async (req, res, next) => {
   try {
@@ -81,4 +82,14 @@ const destroy: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
-export default { browse, read, add, edit, destroy };
+
+const getTop10: RequestHandler = async (req, res, next) => {
+  try {
+    const top10 = await movieRepository.readTop10();
+    res.json(top10);
+  } catch (err) {
+    next(err);
+  }
+};
+
+export default { browse, read, add, edit, destroy, getTop10 };
