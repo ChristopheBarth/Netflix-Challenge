@@ -42,7 +42,9 @@ export default function FormDashBoard() {
   console.info(newMovie);
   return (
     <form onSubmit={sendForm} className="form-dashboard">
-      <p>Titre</p>
+      <label htmlFor="title">
+        Titre <p>*</p>
+      </label>
       <input
         type="text"
         name="title"
@@ -50,7 +52,9 @@ export default function FormDashBoard() {
         onChange={handleChangeMovieForm}
         placeholder="Titre du film"
       />
-      <p>Affiche</p>
+      <label htmlFor="poster">
+        Affiche <p>*</p>
+      </label>
       <input
         type="text"
         name="poster"
@@ -58,54 +62,78 @@ export default function FormDashBoard() {
         id=""
         placeholder="URL"
       />
-      <p>Date de sortie</p>
+      <label htmlFor="release_year">
+        Date de sortie <p>*</p>
+      </label>
       <input
         type="number"
         name="release_year"
         onChange={handleChangeMovieForm}
         placeholder="AAAA"
       />
-      <p>Synopsis</p>
+      <label htmlFor="synopsis">
+        Synopsis <p>*</p>
+      </label>
       <input
         type="text"
         name="synopsis"
         onChange={handleChangeMovieForm}
         placeholder="Synopsis"
       />
-      <p>Durée</p>
+      <label htmlFor="duration">
+        Durée <p>*</p>
+      </label>
       <input
         type="text"
         name="duration"
         onChange={handleChangeMovieForm}
         placeholder="0:00:00"
       />
-      <p>Bandes annonces</p>
+      <label htmlFor="trailer">
+        Bandes annonces <p>*</p>
+      </label>
       <input
         type="text"
         name="trailer"
         onChange={handleChangeMovieForm}
         placeholder="URL"
       />
-      <p>Casting</p>
+      <label htmlFor="casting">
+        Casting <p>*</p>
+      </label>
       <input
         type="text"
         name="casting"
         onChange={handleChangeMovieForm}
         placeholder="Nom/prénoms acteurs"
       />
-      <p>Production</p>
+      <label htmlFor="production">
+        Production <p>*</p>
+      </label>
       <input
         type="text"
         name="production"
         onChange={handleChangeMovieForm}
         placeholder="Noms/prénoms réalisateur"
       />
-      <p>Landscape</p>
+      <label htmlFor="landscape_image">
+        Landscape <p>*</p>
+      </label>
       <input
         type="text"
         name="landscape_image"
         onChange={handleChangeMovieForm}
         placeholder="URL"
+      />
+      <label htmlFor="nationality">
+        Nationality <p>*</p>
+      </label>
+      <input
+        required
+        type="text"
+        name="nationality"
+        onChange={handleChangeMovieForm}
+        placeholder="Noms"
       />
       <input type="submit" className="submit-form" />
     </form>
