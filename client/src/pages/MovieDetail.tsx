@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import "../styles/MoviesDetail.css";
 import { useState } from "react";
 import MovieCards from "../components/MovieCards";
+import { WithNetflixLogo } from "../components/WithNetflixLogo";
 
 export default function MovieDetail() {
   const movieData = useLoaderData() as {
@@ -43,43 +44,59 @@ export default function MovieDetail() {
 
   return (
     <section className="movie-details">
-      <div
-        className="movie-header"
-        style={{
-          backgroundImage: `linear-gradient(rgba(11, 11, 11, 0.2), rgba(11, 11, 11, 0.2)), url(${movieId?.landscape_image || ""})`,
-        }}
+      {/* Header avec fond et logo Netflix */}
+      <WithNetflixLogo
+        logoSize={48}
+        logoOffset={16}
+        style={{ display: "block", width: "100%", borderRadius: 0 }}
       >
-        <h2>{movieId?.title}</h2>
-        <p>
-          {movieId?.genres} . {formatDuration(movieId?.duration)} .{" "}
-          {movieId?.release_year}
-        </p>
-        <div className="content-details">
-          <span className="badge-4k" aria-label="4K" role="img" />
-          <span className="dolby-vision" aria-label="Dolby Vision" role="img" />
-          <span className="dolby-atmos" aria-label="Dolby Atmos" role="img" />
-          <span className="cc" aria-label="Sous-titres codés" role="img" />
-          <span className="ad" aria-label="Audiodescription" role="img" />
-          <span
-            className="sdh"
-            aria-label="Sous-titrage pour les sourds et malentendants"
-            role="img"
-          />
+        <div
+          className="movie-header"
+          style={{
+            backgroundImage: `linear-gradient(rgba(11,11,11,0.2), rgba(11,11,11,0.2)), url(${movieId.landscape_image || ""})`,
+          }}
+        >
+          <h2>{movieId.title}</h2>
+          <p>
+            {Array.isArray(movieId.genres)
+              ? movieId.genres.join(", ")
+              : movieId.genres}{" "}
+            · {formatDuration(movieId.duration)} · {movieId.release_year}
+          </p>
+          <div className="content-details">
+            <span className="badge-4k" aria-label="4K" role="img" />
+            <span
+              className="dolby-vision"
+              aria-label="Dolby Vision"
+              role="img"
+            />
+            <span className="dolby-atmos" aria-label="Dolby Atmos" role="img" />
+            <span className="cc" aria-label="Sous-titres codés" role="img" />
+            <span className="ad" aria-label="Audiodescription" role="img" />
+            <span
+              className="sdh"
+              aria-label="Sous-titrage pour les sourds et malentendants"
+              role="img"
+            />
+          </div>
         </div>
-      </div>
+      </WithNetflixLogo>
+
+      {/* Footer avec synopsis et bouton Lecture */}
       <div className="movie-footer">
         <div className="button-content">
           <button type="button" onClick={handleOpenModal}>
-            <span aria-label="Logo player" role="img" />
-            LECTURE
+            <span aria-label="Logo player" role="img" /> LECTURE
           </button>
         </div>
         <div className="production-content">
-          <p>{movieId?.synopsis}</p>
-          <p>Avec : {movieId?.casting}</p>
-          <p>Production : {movieId?.production}</p>
+          <p>{movieId.synopsis}</p>
+          <p>Avec : {movieId.casting}</p>
+          <p>Production : {movieId.production}</p>
         </div>
       </div>
+
+      {/* Modal de la bande-annonce */}
       {isModalOpen && (
         <div className="modal-overlay">
           <div className="modal">
@@ -90,7 +107,7 @@ export default function MovieDetail() {
               <iframe
                 width="100%"
                 height="350px"
-                src={movieId?.trailer || ""}
+                src={movieId.trailer || ""}
                 title="Trailer"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -100,6 +117,7 @@ export default function MovieDetail() {
         </div>
       )}
 
+      {/* Bande-annonces et recommandations */}
       <div className="trailer-content">
         <h2>
           Bande-annonces <span />
@@ -107,7 +125,7 @@ export default function MovieDetail() {
         <iframe
           width="100%"
           height="350px"
-          src={movieId?.trailer || ""}
+          src={movieId.trailer || ""}
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
@@ -117,6 +135,8 @@ export default function MovieDetail() {
           Vous pourriez aimer aussi... <span />
         </h3>
       </div>
+
+      {/* Carrousel de suggestions */}
       <section className="movie-container">
         {sameGenre.map((movie) => (
           <MovieCards key={movie.id} movie={movie} />
