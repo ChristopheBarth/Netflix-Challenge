@@ -3,6 +3,7 @@ import MovieCards from "../components/MovieCards";
 import { useAuth } from "../services/AuthContext";
 import "../styles/catalogue.css";
 import { useState } from "react";
+import { WithNetflixLogo } from "../components/WithNetflixLogo";
 
 export default function Catalogue() {
   const { movies } = useLoaderData() as {
@@ -56,7 +57,13 @@ export default function Catalogue() {
         <section className="movie-container">
           {topRatedMovies.length > 0 ? (
             topRatedMovies.map((movie) => (
-              <MovieCards key={movie.id} movie={movie} />
+              <WithNetflixLogo
+                key={movie.id}
+                logoSize={24} // taille du logo en px
+                logoOffset={8} // marge du logo en px
+              >
+                <MovieCards movie={movie} />
+              </WithNetflixLogo>
             ))
           ) : (
             <p>Aucun film noté pour le moment.</p>
@@ -66,7 +73,9 @@ export default function Catalogue() {
         <h2>Nouveautés sur Netflix</h2>
         <section className="movie-container">
           {latestMovies.map((movie) => (
-            <MovieCards key={movie.id} movie={movie} />
+            <WithNetflixLogo key={movie.id} logoSize={24} logoOffset={8}>
+              <MovieCards movie={movie} />
+            </WithNetflixLogo>
           ))}
         </section>
 
@@ -74,7 +83,9 @@ export default function Catalogue() {
         <section className="movie-container">
           {freeMovies.length > 0 ? (
             freeMovies.map((movie) => (
-              <MovieCards key={movie.id} movie={movie} />
+              <WithNetflixLogo key={movie.id} logoSize={24} logoOffset={8}>
+                <MovieCards movie={movie} />
+              </WithNetflixLogo>
             ))
           ) : (
             <p>Aucun film gratuit disponible.</p>
@@ -99,7 +110,9 @@ export default function Catalogue() {
         </div>
         <section className="movie-container">
           {filteredMovies.map((movie) => (
-            <MovieCards key={movie.id} movie={movie} />
+            <WithNetflixLogo key={movie.id} logoSize={24} logoOffset={8}>
+              <MovieCards movie={movie} />
+            </WithNetflixLogo>
           ))}
         </section>
       </div>

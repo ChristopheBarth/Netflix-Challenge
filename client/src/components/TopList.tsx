@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { WithNetflixLogo } from "./WithNetflixLogo";
 import "../styles/toplist.css";
 
 export default function TopList() {
@@ -31,10 +32,15 @@ export default function TopList() {
           <div key={movie.id} className="item">
             <div className="top-item-content">
               <span className="rank-number">{index + 1}</span>
-              <div className="thumbnail">
+              {/* ← On remplace la div.thumbnail brute par le HOC */}
+              <WithNetflixLogo
+                className="thumbnail" // conserve ta classe CSS existante
+                logoSize={24} // taille du N en px
+                logoOffset={8} // marge du N en px
+              >
                 <img src={movie.poster} alt={movie.title} />
                 <span className="badge">Ajout récent</span>
-              </div>
+              </WithNetflixLogo>
             </div>
           </div>
         ))}

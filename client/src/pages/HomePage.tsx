@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import MovieCards from "../components/MovieCards";
+import { WithNetflixLogo } from "../components/WithNetflixLogo";
 import "../styles/homepage.css";
 
 export default function HomePage() {
@@ -22,7 +23,17 @@ export default function HomePage() {
           <h2>Offres de bienvenue</h2>
           <section className="movie-container">
             {freeMovies.map((movie) => (
-              <MovieCards key={movie.id} movie={movie} />
+              <WithNetflixLogo
+                key={movie.id}
+                logoSize={24}
+                logoOffset={8}
+                style={{
+                  width: 160,
+                  borderRadius: "8px", // identique au border-radius de tes vignettes
+                }}
+              >
+                <MovieCards movie={movie} />
+              </WithNetflixLogo>
             ))}
           </section>
         </section>
