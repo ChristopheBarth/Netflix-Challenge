@@ -46,6 +46,7 @@ export default function FormDashBoard() {
         Titre <p>*</p>
       </label>
       <input
+        required
         type="text"
         name="title"
         value={newMovie.title}
@@ -56,6 +57,7 @@ export default function FormDashBoard() {
         Affiche <p>*</p>
       </label>
       <input
+        required
         type="text"
         name="poster"
         onChange={handleChangeMovieForm}
@@ -66,6 +68,7 @@ export default function FormDashBoard() {
         Date de sortie <p>*</p>
       </label>
       <input
+        required
         type="number"
         name="release_year"
         onChange={handleChangeMovieForm}
@@ -75,6 +78,7 @@ export default function FormDashBoard() {
         Synopsis <p>*</p>
       </label>
       <input
+        required
         type="text"
         name="synopsis"
         onChange={handleChangeMovieForm}
@@ -84,6 +88,7 @@ export default function FormDashBoard() {
         Durée <p>*</p>
       </label>
       <input
+        required
         type="text"
         name="duration"
         onChange={handleChangeMovieForm}
@@ -93,6 +98,7 @@ export default function FormDashBoard() {
         Bandes annonces <p>*</p>
       </label>
       <input
+        required
         type="text"
         name="trailer"
         onChange={handleChangeMovieForm}
@@ -102,6 +108,7 @@ export default function FormDashBoard() {
         Casting <p>*</p>
       </label>
       <input
+        required
         type="text"
         name="casting"
         onChange={handleChangeMovieForm}
@@ -111,6 +118,7 @@ export default function FormDashBoard() {
         Production <p>*</p>
       </label>
       <input
+        required
         type="text"
         name="production"
         onChange={handleChangeMovieForm}
@@ -120,6 +128,7 @@ export default function FormDashBoard() {
         Landscape <p>*</p>
       </label>
       <input
+        required
         type="text"
         name="landscape_image"
         onChange={handleChangeMovieForm}
