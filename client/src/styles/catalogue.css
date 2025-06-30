@@ -1,3 +1,4 @@
+/* Pagination horizontale des vignettes */
 .movie-container {
   display: flex;
   overflow-x: auto;
@@ -9,21 +10,23 @@
   display: none;
 }
 
+/* Ligne grise sous chaque ligne de vignettes */
 .movie-container::after {
-  background-color: rgb(161, 161, 161);
-
+  content: "";
   display: block;
+  background-color: rgb(161, 161, 161);
   height: 1px;
   width: 90%;
-  content: "";
   transform: translateY(15rem);
 }
-
 .movie-container:last-of-type::after {
   display: none;
 }
 
+/* Bouton Découvrir nos offres */
 .decouvrir-nos-offres {
+  position: relative;
+  z-index: 2;
   border: none;
   background-color: black;
   color: var(--secondary-color);
@@ -33,46 +36,64 @@
   text-align: center;
   display: flex;
   justify-content: center;
-  transform: translateY(-7rem);
 }
 
+/* Header vidéo remplaçant l'ancienne image */
 .first-container {
+  position: relative;
+  width: 100%;
+  /* Ratio 16:9 (ajuste si nécessaire) */
+  padding-top: 56.25%;
+  max-height: 42rem;
+  margin-top: 2rem;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
-  button {
-    margin-top: 2rem;
-  }
-  a {
-    color: var(--secondary-color);
-  }
+  justify-content: center;
 }
 
-.first-container svg {
+/* Vidéo en arrière-plan, cover complet */
+.first-container .background-video {
   position: absolute;
-  transform: translateY(-4.1rem) translateX(1.5rem);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
-.first-container .img-container {
-  max-height: 42rem;
-  max-width: 100%;
+/* Overlay sombre pour contraste texte/bouton */
+.first-container .video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
 }
 
+/* Lien et bouton internes */
+.first-container a {
+  color: var(--secondary-color);
+}
+.first-container button {
+  margin-top: 2rem;
+}
+
+/* Titres des sections */
 .show-movies h2 {
   margin-top: 1rem;
   font-size: 18px;
   color: white;
 }
-
 .show-movies h2:first-of-type {
   margin-top: 0;
 }
-
 .show-movies .movie-container {
   margin-bottom: 2rem;
 }
 
+/* Barre de recherche (si présente) */
 #site-search {
   text-align: center;
   width: 6.5rem;
@@ -84,11 +105,11 @@
   background-color: var(--secondary-color);
 }
 
+/* Section bas de page abonnements */
 .connection-bottom {
-  background-image: url("/bg-desktop.svg");
+  /* background-image: url("/bg-desktop.svg"); */
   text-align: center;
-  padding: 1rem;
-  padding-bottom: 2rem;
+  padding: 1rem 1rem 2rem;
   background-repeat: no-repeat;
   background-size: cover;
   border-radius: var(--button-radius);
@@ -96,36 +117,34 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  h2 {
-    color: var(--secondary-color);
-    font-weight: 500;
-    font-size: 1.8rem;
-  }
+}
+.connection-bottom h2 {
+  color: var(--secondary-color);
+  font-weight: 500;
+  font-size: 1.8rem;
 }
 
 .bottom-container {
   display: flex;
-  flex-direction: row;
   justify-content: space-evenly;
-  height: auto;
-  p {
-    color: var(--secondary-color);
-  }
-
-  h3 {
-    color: var(--secondary-color);
-    font-weight: 400;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-  }
-  .bottom-free {
-    color: rgb(108, 108, 108);
-  }
+  width: 100%;
+}
+.bottom-container p {
+  color: var(--secondary-color);
+}
+.bottom-container h3 {
+  color: var(--secondary-color);
+  font-weight: 400;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+.bottom-container .bottom-free {
+  color: rgb(108, 108, 108);
 }
 
+/* Bouton devenir Premium */
 .button-premium {
   background-color: black;
-  width: auto;
   color: var(--secondary-color);
   border: none;
   padding: 1rem 2rem;
@@ -134,9 +153,11 @@
   cursor: pointer;
 }
 
+/* Responsive sur petits écrans */
 @media only screen and (max-width: 792px) {
-  .first-container .img-container {
-    height: 18rem;
-    margin-top: 1rem;
+  .first-container {
+    /* Ex. ratio mobile différent */
+    padding-top: 75%;
+    max-height: none;
   }
 }
